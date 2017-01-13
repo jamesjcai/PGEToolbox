@@ -15,7 +15,7 @@ end
 sumout.memo={'C--Inferred clusters','idvnames--names of individuals',...
     'sortidx--order when sorted by Q','LnP--Estimated Ln Prob of Data'};
 
-if nargin<2,
+if nargin<2
     sortbyq=1;
 end
 
