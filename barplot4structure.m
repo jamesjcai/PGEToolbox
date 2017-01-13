@@ -141,7 +141,6 @@ C=[0.002 0.000 0.002 0.001 0.994 0.000 0.001
 end
 %%
 
-
 if isstr(C)
 filename=C;   % 'structure_result.txt';
 
