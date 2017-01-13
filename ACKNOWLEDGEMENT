@@ -1,0 +1,37 @@
+GTFAnnotation class
+
+
+Thanks:
+
+Steven Huang - mStirling.c
+John Burkardt - stirling1.m
+A. Trujillo-Ortiz, R. Hernandez-Walls and A. Castro-Perez - fisherextest.m
+Mukhtar Ullah - freqtable.m
+Peter Wasmeier - choosebox.m
+L.Cavin - CSEFlagDialog.m
+
+
+=========================
+Dear all,
+
+I would like to announce the release of PGEToolbox version 1.0.
+
+PGEToolbox is a Matlab-based software package for analysis of polymorphism and 
+divergence data for population genetics and evolution. It estimates several 
+basic statistics of DNA sequence variation and carries out statistical tests 
+of selective neutrality under the infinite alleles model, such as Tajima's D 
+test, Fu & Li's tests and Fay & Wu's H test. The significance of tests is 
+determined from the distribution of the statistics obtained by coalescent 
+simulation. The toolbox performs McDonald-Kreitman test (and several extensions). 
+PGEToolbox also contains functions for handling SNP (Single Nucleotide 
+Polymorphism) genotype data. PGEToolbox is open-sourced, can be easily 
+extended or tailored for specific tasks, and scaled up for large data sets.
+For academic uses, PGEToolbox is available free of charge at
+http://bioinformatics.org/pgetoolbox
+
+
+Best regards,
+
+James J. Cai  
+jamescai@stanford.edu
+=========================

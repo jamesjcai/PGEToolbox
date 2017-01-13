@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<demos>
+   <name>PGEToolbox</name>
+   <type>pgetoolbox</type>
+   <icon>$toolbox/matlab/icons/matlabicon.gif</icon>
+   <description>
+   	  &lt;title&gt;PGEToolbox Demos&lt;/title&gt;
+&lt;h2&gt;&lt;font color="#990000"&gt;PGEToolbox Demos&lt;/font&gt;&lt;/h2&gt;
+&lt;p&gt;The PGEToolbox is a Matlab-based software package for analysis of polymorphism and divergence data for population genetics and evolution. It estimates several basic statistics of DNA sequence variation and carries out statistical tests of selective neutrality under the infinite alleles model, such as Tajima's D test, Fu and Li's tests and Fay and Wu's H test. The significance of tests is determined from the distribution of the statistics obtained by coalescent simulation. The toolbox performs McDonald-Kreitman test (and several extensions). PGEToolbox also contains functions for handling SNP (Single Nucleotide Polymorphism) genotype data. PGEToolbox is open-sourced, can be easily extended or tailored for specific tasks, and scaled up for large data sets.&lt;/p&gt;
+   </description>
+   <demoitem>
+      <label>Neutrality Tests</label>
+      <callback>playshow pge_demo1</callback>
+   </demoitem>
+   <demoitem>
+      <label>SNP Analysis</label>
+      <callback>playshow pge_demo2</callback>
+   </demoitem>
+</demos>
