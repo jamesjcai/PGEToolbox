@@ -1,6 +1,6 @@
 # PGEToolbox
 Population Genetics & Evolution Toolbox
-(C) 2007-2017 James J. Cai
+(C) 2007-2017 James Cai
 
 1. Introduction
 ================
