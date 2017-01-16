@@ -1,0 +1,2 @@
+plink --ped input.ped --map input.map --blocks
+plink --file input --blocks

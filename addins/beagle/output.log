@@ -1,0 +1,72 @@
+Beagle version 3.2.1 (20 May 2010)
+Enter "java -jar beagle.jar" for summary of command line arguments.
+Start time: 04:32 PM CDT on 04 Oct 2010
+
+Command line: java -Xmx444m -jar beagle.jar
+  data=input.bgl
+  out=output
+
+Running time for building model: 0 seconds
+number of markers    =     209
+number of haplotypes =     180
+
+Graphical Model statistics:
+
+mean nodes/level =   1.04  max nodes/level =   2  nodes = 217
+mean edges/level =   1.81  max edges/level =   5  edges = 378
+mean edges/node  =   1.74  mean count/node = 173.36
+Beagle version 3.2.1 (20 May 2010) finished
+Beagle version 3.2.1 (20 May 2010)
+Enter "java -jar beagle.jar" for summary of command line arguments.
+Start time: 04:34 PM CDT on 04 Oct 2010
+
+Command line: java -Xmx444m -jar beagle.jar
+  data=input.bgl
+  out=output
+
+Running time for building model: 0 seconds
+number of markers    =     209
+number of haplotypes =     180
+
+Graphical Model statistics:
+
+mean nodes/level =   1.04  max nodes/level =   2  nodes = 217
+mean edges/level =   1.81  max edges/level =   5  edges = 378
+mean edges/node  =   1.74  mean count/node = 173.36
+Beagle version 3.2.1 (20 May 2010) finished
+Beagle version 3.2.1 (20 May 2010)
+Enter "java -jar beagle.jar" for summary of command line arguments.
+Start time: 05:00 PM CDT on 04 Oct 2010
+
+Command line: java -Xmx444m -jar beagle.jar
+  data=input.bgl
+  out=output
+
+Running time for building model: 0 seconds
+number of markers    =      61
+number of haplotypes =     180
+
+Graphical Model statistics:
+
+mean nodes/level =   1.13  max nodes/level =   2  nodes = 69
+mean edges/level =   2.33  max edges/level =   4  edges = 142
+mean edges/node  =   2.06  mean count/node = 159.13
+Beagle version 3.2.1 (20 May 2010) finished
+Beagle version 3.2.1 (20 May 2010)
+Enter "java -jar beagle.jar" for summary of command line arguments.
+Start time: 05:03 PM CDT on 04 Oct 2010
+
+Command line: java -Xmx444m -jar beagle.jar
+  data=input.bgl
+  out=output
+
+Running time for building model: 0 seconds
+number of markers    =      43
+number of haplotypes =     180
+
+Graphical Model statistics:
+
+mean nodes/level =   1.14  max nodes/level =   2  nodes = 49
+mean edges/level =   2.60  max edges/level =   4  edges = 112
+mean edges/node  =   2.29  mean count/node = 157.96
+Beagle version 3.2.1 (20 May 2010) finished

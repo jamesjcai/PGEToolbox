@@ -1,0 +1,184 @@
+60
+50
+P 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+#1
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A C A A A A A A A A C A A A C A C C A A 
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#2
+A C A A A A A C A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A C A C A A A A A A C A A C A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+#3
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A A A A A C A A C C A A A C A A A A C A 
+C A A A A C A A A A A C A A A A A A A A A C A A A A C C C A A A A A A C A A C C A C A A C A C C A A 
+#4
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+#5
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A C A A A A A A A A C A A A C A C C A A 
+A A A A A A A A A A C A A A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+#6
+A C A C A A A A A A C A A C A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+A A A A C A A A A A C A C A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+#7
+A A A A A A A A A A C A A A A A A C A A C A A C C C A A A A A A A C A A A A C A A A A A C A C C A C 
+A A A A A A A A A A C A A A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+#8
+A A A A A A A A A A A C A A A C A A A A A C A A A A C A A A A A C C A A A C C A A A A A C A C C A A 
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A C C A A A C A C A C C A C 
+#9
+A A A A A A A A A A C A A A A A A C A A C A C C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+A C A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+#10
+A A A A A A A A A A C A A A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+A C A A A A A A A A C A A A A A A C C A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#11
+A C A A A A A A A A C A A A A A A C C A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A C A C A A A A A A C A A C A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+#12
+A A A A A A A A A A C A A A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A A A A C A A A C A A A A A C A A A A C A A A A A C C A A A C C A A A A A C A C C A A 
+#13
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+A A A A A A A A A A C A A A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+#14
+A A A A A A A A A A C A A A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A A A A C A A A C A A A A A C A A A A C A A A A A C C A A A C C A A A A A C A C C A A 
+#15
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A A A A A C A A C C A A A C A A A A C A 
+#16
+A A A A C A A A A A A C A A C A A A A A A C A A A A C A A A A C A A A A A A A A C A A A C A C C A A 
+A A A A A A A A A A C A A A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+#17
+A A A A C A A A A A A C A A A A A A A A A C A A A A C A A C A C A A A A A A A A C A A A C A C C A A 
+A C A A A A A A A A C A A A A A A C C A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#18
+A A A A C A A A A A A C A A C A A A A A A C A A A A C A A A A C A A A A A A A A C A A A C A C C A A 
+A C A A A A A A A A C A A A A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+#19
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+#20
+A A A A A A A A A A A C A A A C A A A A A C A A A A C A A A A A C C A A A C C A A A A A C A C C A A 
+A A A A A A A A A A C A A A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+#21
+A A A A A A A A A A A C A A A C A A A A A C A A A A C A A A A A C C A A A C C A A A A A C A C C A A 
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#22
+A A A A A A C A A A A C A A A A A A A C A C A A A A C A A A A A C C A A A C C A A A A A C A C C A A 
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#23
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A A A A C A A A C A A A A A C A A A A C A A A A A C C A A A C C A A A A A C A C C A A 
+#24
+A A A A A A A A A A C A A A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+A C A A A A A A A A C A A A A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+#25
+A C A A A A A A A A C A A A A A A C A A C A A C A C A A A A A A A C A A A A C C A C A A C A C C A A 
+A C A C A A A A A A C A A C A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+#26
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#27
+A C A A A A A C A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A A A C A A A A A A C A A C A A C C C A A A A A A A C A A A A C A A A A A C A C C A C 
+#28
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A A A A A C A A C C A A A C A A A A C A 
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A C C A A A C A C A C C A C 
+#29
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A C C C A A A C A C A C C A C 
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A A A A A C A A C C A A A C A A A A C A 
+#30
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A A A A A C A A C C A A A C A A A A C A 
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A A A A A C A A C C A A A C A A A A C A 
+#31
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A A A A C A A A C A A A A A C A A A A C A A A A A C C A A A C C A A A A A C A C C A A 
+#32
+A C A A A A A A A A C A A A A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#33
+A A A A A A A A A A C A A A A A A C A A C A A C C C A A A A A A A C A A A A C A A A A A C A C C A C 
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#34
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A C A A A A A A A A C A A A C A C C A A 
+#35
+A A A A A A C A A A A C A A A A A A A A A C A A A A C A A A A A C C A A A C C A A A A A C A C C A A 
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#36
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A C A A A A A A A A C A A A C A C C A A 
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+#37
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+#38
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+#39
+A A A A A A A A A A C A A A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+A C A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+#40
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A C A A A A A A A A C A A A C A C C A A 
+A A A A A A A A A A C A A A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+#41
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+A A A A A A A A A A C A A A A A A C A A C A A C C C A A A A A A A C A A A A C A A A A A C A C C A C 
+#42
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A C C A A A C A C A C C A C 
+A C A C A A A A A A C A A C A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+#43
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+A C A A A A A A A A C A A A A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+#44
+A C A A A A A A A A C A A A A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+A A A A C A A A A A A C A A A A A A A A A C A A A A C A A C A C A A A A A A A A C A A A C A C C A A 
+#45
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A C A A A A A A A A C A A A C A C C A A 
+A C A C A A A A A A C A A C A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+#46
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A A A A A C A A C C A A A C A A A A C A 
+A C A A A A A A A A C A A A A A A C A A C A A C A C A A A A A A A C A A A A C C A C A A C A C C A A 
+#47
+A A A A C A A A A A C A C A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+A C A A A A A C A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#48
+A C A A A A A A A A C A A A A A A C C A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A C A A A A A A A A C A A A A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+#49
+A A A A A A A A A A C A A A A A A C A A C A A C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A C A A A A A A A A C A A A C A C C A A 
+#50
+A C A A A A A C A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C C C C A A 
+#51
+A C A A A A A A A A C A A A A A A C C A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+#52
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 
+C A A A A C A A A A A C A A A A A A A A A C A A A A C C C A A A A A A C A A C C A C A A C A C C A A 
+#53
+A A C A A A A A A A A C A A A A A A A A A C A A A A C C C A A A A C C A A A C A A A A A C A C C A A 
+A A A A A A A A A A A C A A A A C A A A A C A A A A C A A A A A A A A C A A C C A A A C A A A A C A 
+#54
+A A A A A A A A A A A C A A A A A A A A A C A A A A C A A A A A A A A C A A C C A A A A C A C C A A 
+A A A A C A A A A A A C A A C A A A A A A C A A A A C A A A A C A A A A A A A A C A A A C A C C A A 
+#55
+A C A A A A A A A A C A A A A A A C C A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#56
+A C A A A A A A A A C A A A A A A C C A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+A A A A A A A A A A C A A A A A A C A A C A C C A C A A A A C A C C A A A A C A A A A A C A C C A A 
+#57
+A A A A C A A A A A A C A A C A A A A A A C A A A A C A A A A C A A A A A A A A C A A A C A C C A A 
+A C A A A A A A A A C A A A A A A C C A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#58
+A C A C A A A A A A C A A C A A A C A A C A A C A C A A A A A A A C A A A A C A A A A A C A C C A C 
+A A C A A A A A A A A C A A A A A A A A A C A A A A C C C A A A A A A C A A C C A A A C A A A A C A 
+#59
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A C C A A A C A C A C C A C 
+A C A A A A A A A C C A A A A A A C A A C A A C A C A A A A A A C C A A A A C A A A A A C A C C A A 
+#60
+A A A A A A A A A A A C A A A A A A A A A C A A A A C C C A A A A A A C A A C C A A A C A A A A C A 
+A A A A A A A A C A A C A A A A A A A A A C A A A A C A A A A A C C A A A A C C A C A A C A C C A A 

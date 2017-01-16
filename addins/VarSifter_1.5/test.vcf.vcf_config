@@ -1,0 +1,6 @@
+AF	MultiAllele=true	Sub-delimiter=	Gene_Name_Field=false	Type_Field=false
+AFR_R2	MultiAllele=false	Sub-delimiter=	Gene_Name_Field=false	Type_Field=false
+ASN_R2	MultiAllele=false	Sub-delimiter=	Gene_Name_Field=false	Type_Field=false
+CB	MultiAllele=false	Sub-delimiter=	Gene_Name_Field=false	Type_Field=false
+DP	MultiAllele=false	Sub-delimiter=	Gene_Name_Field=false	Type_Field=false
+EUR_R2	MultiAllele=false	Sub-delimiter=	Gene_Name_Field=false	Type_Field=false

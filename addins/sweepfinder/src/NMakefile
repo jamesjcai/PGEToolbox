@@ -1,0 +1,22 @@
+COPTS = /Ox
+
+SweepFinder: SweepFinder.obj freq.obj factorials.obj bfgs.obj sort.obj my_rand.obj
+	cl SweepFinder.obj $(COPTS) freq.obj factorials.obj bfgs.obj sort.obj my_rand.obj
+
+SweepFinder.obj: SweepFinder.c SweepFinder.h
+	cl -c SweepFinder.c $(COPTS)
+
+freq.obj: freq.c freq.h
+	cl -c freq.c $(COPTS)
+
+factorials.obj: factorials.c factorials.h
+	cl -c factorials.c $(COPTS)
+
+bfgs.obj: bfgs.c bfgs.h
+	cl -c bfgs.c $(COPTS)
+
+sort.obj: sort.c sort.h
+	cl -c sort.c $(COPTS)
+
+my_rand.obj: my_rand.c my_rand.h
+	cl -c my_rand.c $(COPTS)

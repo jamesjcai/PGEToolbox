@@ -1,0 +1,98 @@
+***************************************************************
+*				 			     		        *
+*                     PL-EM version 1.0 		      	  *
+*		            User's Manual			        *
+*							      	        *
+*************************************************************** 
+
+This software uses Partition Ligation strategy together with the EM 
+algorithm to reconstruct individual haplotypes based on unphased 
+genotype data. At the mean time, it also provides estimates on the 
+overall haplotype frequencies as well as their standard deviations. 
+Missing genotype data is allowed. The program is 
+currently available on Sun Solaris, SunOS, Linux, SGI IRIX and Windows 
+platforms.
+
+1. Installation
+
+Use winZip to unzip the file, a new subdirectory from current directory will 
+be generated, it contains 3 files: q executables: plem.exe; a 
+sample input file input.txt; and readme file plemreadme.txt.   
+
+2. Input File Format
+
+The user need to prepare an input file for the genotype data according to 
+the following schemes: 
+
+One line for each subject; in each line, each single nucleotide
+polymorphism (SNP) occupies one space, no white space
+is allowed between the neighboring loci.
+
+For each SNP, by denoting "A" as the wild-type allele, and "a" as the
+mutant allele. "?" denotes missing. The input formats for different genotype 
+configurations are
+illustrated below: 
+
+	Heterozygous:				Aa --> 0
+	Homozygous wild type:			AA --> 1
+	Homozygous mutant:			aa --> 2
+	total missing: 				?/? --> 3
+      wild type plus missing:			A/? --> 4
+      mutant plus missing			a/? --> 5
+
+3. Command-line Arguments
+
+The command for invoking the program is:
+
+% plem input output top parsize buffer round 
+
+input  : the name of the file that contains the genotype information. 
+	 Any name that is less than 20 characters in length would be
+	 acceptable. 
+output : the name of the file that contains the haplotying result. 
+	 Any name that is less than 20 characters in length would be
+	 acceptable. 
+top    : number of haplotype pairs compatible with the genotype of each 
+         individual, if exist, to be displayed int he result. 0 means 
+ 	   flexible, any pair with probability of appearance greater than 
+      	 0.1 will be displayed. 
+parsize: size of atomistic segment: 
+	 1: 3-4 loci in each segment
+	 2: 5-8 loci in each segment
+	 3: 9-16 loci in each segment
+buffer : number of most frequent partial haplotypes to be kept and passed 
+         on to the next ligation step.     
+round  : the number of independent runs in each of the EM algorithm 
+         implementation.
+ 
+4. Specification of Parameters
+
+top: 0,1,2,3... (0 is recommended)
+parsize: 1,2,3, 2 is recommended, use 1 if lots of haplotype diversity or 
+         missing genotype data present, use 3 if otherwise
+buffer : integer, no limit, (50 or number of population size is recommended)
+No. of rounds : integer, no limit (20 is recommended)
+
+5. Program Output 
+
+The output file is in plain text format that consists of two parts.
+
+In the first part, for each subject, the haplotype pairs predicted by the
+software is listed, plus the ID number of each haplotype in the haplotype
+pool of this population. 
+
+The second part is the summary of the overall haplotype frequency and 
+standard deviation for this population. All haplotypes that appeared in at 
+least one of the subjects are listed. 
+
+6. Credits
+
+Whenever the user generates a publication using PLEM, please cite:
+Z.S. Qin, T. Niu and J.S. Liu (2002) "Partition-Ligation EM Algorithm for 
+Haplotype Inference with Single Nucleotide Polymorphisms". Submitted
+
+7. User Supports
+
+All questions and comments should be directed to Steve Qin at the 
+Department of Statistics, Harvard University, Cambridge, MA 02138.
+E-mail: qin@stat.harvard.edu

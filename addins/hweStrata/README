@@ -1,0 +1,60 @@
+#$Author: sinnwell $
+#$Date: 2010/06/29 21:06:04 $
+#$Header: /people/biostat3/sinnwell/Projects/HWEStrat/Build/RCS/README.hweStrata,v 1.3 2010/06/29 21:06:04 sinnwell Exp $
+#$Locker:  $
+#$Log: README.hweStrata,v $
+#Revision 1.3  2010/06/29 21:06:04  sinnwell
+#*** empty log message ***
+#
+#Revision 1.2  2010/06/29 21:01:58  sinnwell
+#remove version numbers, include linux binary
+#
+#Revision 1.1  2007/03/27 22:02:38  sinnwell
+#Initial revision
+#
+
+INSTALLATION PROCEDURES FOR hweStrata
+
+hweStrata is written in the C programming language, and tested on
+Sun workstations with Solaris operating system (Sun Ultra-80; sparc, 
+SunOS Releases 5.9 and 5.10), CentOS 4.3 Linux x86-64, and on 
+Microsoft Windows XP. The source code is bundled for distribution, and
+the bundle contains executables for Solaris, Linux, and Windows.
+
+  UNIX/LINUX SYSTEMS:
+
+  To unpackage the software for unix systems, follow the series of commands:
+
+  1) gunzip hweStrata_x.y.tar.gz
+  2) tar -xvf hweStrata_x.y.tar
+  3) cd hweStrata
+
+  The pre-compiled executables are in the bin directory. To compile an 
+  executable on Solaris or Linux, do "cd src", then type "make".
+
+
+  WINDOWS SYSTEMS:
+
+  Uncompress hweStrata_x.y.tar.gz (using WinZip, for example) to a known
+  location.
+
+  The executable is in the bin directory.  If you move the executable,
+  CC2370.DLL must either be moved with it, or contained in the PATH 
+  environment variable. This included .dll file must be named exactly
+  as it appears in this paragraph (all caps).
+
+  The program can be run using the command prompt.  
+
+
+DOCUMENTATION
+
+User documentation is in the doc directory, and an example input and
+output file are in the example directory.
+
+
+CONTACT
+
+Please send questions and commments to:
+       Dan Schaid, schaid@mayo.edu
+       Jason Sinnwell, sinnwell@mayo.edu
+

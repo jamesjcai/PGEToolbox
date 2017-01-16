@@ -1,0 +1,7 @@
+java -jar Haploview.jar -n -pedfile IGF2.ped -info IGF2.map -skipcheck -blockoutput GAB -dprime
+
+ruby ld_plus.rb -r -d -l IGF2.ped.LD -i IGF2.map -b IGF2.ped.GABRIELblocks -a IGF2.stats -s
+IGF2.snpinfo
+
+
+java -jar Haploview.jar -n -pedfile input.ped -blockoutput GAB -dprime

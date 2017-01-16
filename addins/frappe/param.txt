@@ -1,0 +1,7 @@
+GenotypeFile  ="input.ped" ## Mandatory genotype file name
+MaxIter=  10000    ## maximum number of EM iterations
+K      = 4  ## Number of ancestral individuals
+M      = 50  ## Number of markers
+I      = 25  ## Number of individuals;
+step   =  200 ### Define either step or Nout
+Nout   =  0

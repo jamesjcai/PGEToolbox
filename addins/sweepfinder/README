@@ -1,0 +1,113 @@
+SweepFinder program: 		Melissa Hubisz and Rasmus Nielsen
+Refererence: Nielsen et al, Genome Research 2005 Nov; 15(11):1566-75
+questions regarding the program send to hubisz at uchicago.edu
+Last updated: 8/14/06
+
+linux instructions:
+unzip: tar -zxf SF.tar.gz
+to compile, cd to SF directory and type make
+
+This program reads in SNP data with locations along a chromosome.  It creates
+a grid of locations over this region, and at each location, calculates
+the maximum composite likelihood ratio (CLR) statistic comparing the 
+hypothesis of a complete selective sweep at the location to the null 
+hypothesis of no sweep.  The likelihiood function is the "parameteric approach"
+described in the reference (eq 6).  It outputs the CLR statistic as well as 
+the parameter alpha (the strength of the sweep) to an outfile.  Small values
+of alpha correspond to strong sweeps.
+
+The size of the grid is controlled by the user.  The CLR statistic can
+fluctuate quite a bit along the length of the chromosome, so care should
+be taken that the grid is sufficiently dense that no large peaks appear 
+when the gridsize is increased.  
+
+The significance of the maximum CLR in a region should be determined by
+analyzing data from neutral simulations which have the same sample size
+and SNP density.  When analyzing the neutral simulations, the same gridsize
+should be used as when the real data is analyzed.
+
+Main usage
+---------------------------------------------------------------
+The main way to use the program is with the command:
+./SweepFinder -s GRIDSIZE snp_filename out_filename
+Then, the program will read in the snps, optimize the frequency spectrum,
+and then analyze the likelihood function along a grid of size GRIDSIZE.
+The output file will have GRIDSIZE lines with the columns:
+1. location	
+2. maximum CLR at location
+3. alpha corresponding to maximum CLR
+
+
+
+Input format
+----------------------------------------------------------------
+The snp file should be a tab-delimited file with column headers, and
+one row per SNP.  One column header should be "x" (the frequency of the
+SNP), another should be "n" (the sample size, must be greater than x), and
+another should be "position" (the chromosomal location of the SNP).  
+Optionally, a fourth column named "folded" can be added.  If it is present,
+than a value of one indicates that the SNP is folded (there is no distinction
+between ancestral/derived states), and 0 means unfolded.  If the folded
+column is not present, all SNPs are assumed to be unfolded.
+Column names do not actually contain quotes.  A sample input file might look
+something like:
+
+position        x       n	folded
+37.000000       10      46	0
+145.000000      3       47	0
+277.000000      1       47	1
+385.000000      37      43	1
+469.000000      2       45	0
+585.000000      1       44	0
+733.000000      10      45	0
+
+
+
+Running on simulated data from ms
+-----------------------------------------------------------------
+(http://home.uchicago.edu/~rhudson1/source/mksamples.html)
+
+use the command
+./SweepFinder -m GRIDSIZE ms_filename out_filename 
+
+This will sequentially read in each sample, optimize the frequency
+spectrum for that sample, and then analyze the CLR function at GRIDSIZE
+points.  Rather than outputting the value of the CLR function at every
+point for each sample, it only outputs the maximum CLR for each sample.
+The output file will have the columns:
+1. Sample number
+2. maximum CLR in sample
+3. location of maximum CLR in sample
+4. alpha corresponding to max CLR
+
+If you'd rather use the same frequency spectrum to analyze each of the
+ms runs, use the command:
+./Sweepfinder -M GRIDSIZE ms_filename freq_filename out_filename
+
+
+
+Using a different frequency spectrum
+------------------------------------------------------------------
+The default behavior of the program is to use the maximum likelihood
+estimate of the frequency spectrum for each dataset.  In some cicumstances,
+it might be desirable to calculate the frequency spectrum on a different
+dataset.  For example, if you want to analyze many autosomal regions 
+separately, you might want to first combine all the data, obtain the 
+frequency spectrum, and use the same spectrum for each analysis.  This could
+result in a gain in power.
+To calculate the frequency spectrum, use the command:
+./SweepFinder -f snp_filename freq_filename
+
+The freq_file will be over-written with the frequency spectrum.
+
+You can also provide your own frequency spectrum at your own risk.  The 
+format of the frequency spectrum file is two columns, an integer (the 
+frequency), and a floating-point number (the proportion of SNPs with that 
+frequency).  The integer values should range from 1 to n-1, where n is the
+maximum sample size in your dataset.
+
+To run the program using a precomputed frequency spectrum, use the command
+./SweepFinder -l GRIDSIZE snp_filename freq_filename out_filename
+
+The snp_file and out_file should have the same format as described in the
+main usage section.

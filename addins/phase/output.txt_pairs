@@ -1,0 +1,890 @@
+IND: #1
+TA , TA , 1.000
+IND: #2
+TG , CA , 0.997
+IND: #3
+TG , CA , 0.997
+IND: #4
+TA , TG , 1.000
+IND: #5
+TA , TG , 1.000
+IND: #6
+TG , CA , 0.997
+IND: #7
+TG , TG , 1.000
+IND: #8
+CA , CA , 1.000
+IND: #9
+TG , TG , 1.000
+IND: #10
+TG , CA , 0.997
+IND: #11
+TA , CA , 1.000
+IND: #12
+TG , CA , 0.997
+IND: #13
+TA , TG , 1.000
+IND: #14
+TG , CA , 0.997
+IND: #15
+TG , CA , 0.997
+IND: #16
+TA , CA , 1.000
+IND: #17
+TA , TG , 1.000
+IND: #18
+TA , CA , 1.000
+IND: #19
+TG , CA , 0.997
+IND: #20
+CA , CA , 1.000
+IND: #21
+TA , TG , 1.000
+IND: #22
+TA , TG , 1.000
+IND: #23
+TA , TG , 1.000
+IND: #24
+TG , CA , 0.997
+IND: #25
+TA , TA , 1.000
+IND: #26
+CA , CA , 1.000
+IND: #27
+TG , CA , 0.997
+IND: #28
+TG , TG , 1.000
+IND: #29
+TA , CA , 1.000
+IND: #30
+TA , CA , 1.000
+IND: #31
+TA , CA , 1.000
+IND: #32
+TA , CA , 1.000
+IND: #33
+TA , CA , 1.000
+IND: #34
+TG , CA , 0.997
+IND: #35
+TG , CA , 0.997
+IND: #36
+TA , TG , 1.000
+IND: #37
+TA , CA , 1.000
+IND: #38
+TA , CA , 1.000
+IND: #39
+TA , CA , 1.000
+IND: #40
+TA , TA , 1.000
+IND: #41
+TA , CA , 1.000
+IND: #42
+TA , CA , 1.000
+IND: #43
+TA , TG , 1.000
+IND: #44
+TA , CA , 1.000
+IND: #45
+TA , CA , 1.000
+IND: #46
+TA , TA , 1.000
+IND: #47
+TG , CA , 0.997
+IND: #48
+TA , TG , 1.000
+IND: #49
+TG , CA , 0.997
+IND: #50
+TG , CA , 0.997
+IND: #51
+TA , TA , 1.000
+IND: #52
+TA , TA , 1.000
+IND: #53
+TA , TA , 1.000
+IND: #54
+TG , CA , 0.997
+IND: #55
+TA , CA , 1.000
+IND: #56
+TA , TA , 1.000
+IND: #57
+TG , TG , 1.000
+IND: #58
+TG , TG , 1.000
+IND: #59
+TG , CA , 0.997
+IND: #60
+TG , CA , 0.997
+IND: #61
+TG , CA , 0.997
+IND: #62
+TG , CA , 0.997
+IND: #63
+TA , TG , 1.000
+IND: #64
+TG , CA , 0.997
+IND: #65
+TA , TG , 1.000
+IND: #66
+TG , CA , 0.997
+IND: #67
+TA , CA , 1.000
+IND: #68
+TA , CA , 1.000
+IND: #69
+CA , CA , 1.000
+IND: #70
+TA , TG , 1.000
+IND: #71
+TA , TG , 1.000
+IND: #72
+TG , CA , 0.997
+IND: #73
+TA , CA , 1.000
+IND: #74
+TA , TG , 1.000
+IND: #75
+CA , CA , 1.000
+IND: #76
+TA , CA , 1.000
+IND: #77
+TG , CA , 0.997
+IND: #78
+TA , TA , 1.000
+IND: #79
+TA , TA , 1.000
+IND: #80
+TA , TA , 1.000
+IND: #81
+CA , CA , 1.000
+IND: #82
+TA , TG , 1.000
+IND: #83
+TA , CA , 1.000
+IND: #84
+CA , CA , 1.000
+IND: #85
+TG , CA , 0.997
+IND: #86
+TG , CA , 0.997
+IND: #87
+TG , CA , 0.997
+IND: #88
+TA , TG , 1.000
+IND: #89
+TG , CA , 0.998
+IND: #90
+TA , TA , 1.000
+IND: #91
+TA , TA , 1.000
+IND: #92
+TA , TG , 1.000
+IND: #93
+CA , CA , 1.000
+IND: #94
+TA , TG , 1.000
+IND: #95
+TA , TA , 1.000
+IND: #96
+TG , TG , 1.000
+IND: #97
+TA , TG , 1.000
+IND: #98
+TA , TG , 1.000
+IND: #99
+TG , CA , 0.997
+IND: #100
+TA , TA , 1.000
+IND: #101
+CA , CA , 1.000
+IND: #102
+TA , TA , 1.000
+IND: #103
+TA , CA , 1.000
+IND: #104
+CA , CA , 1.000
+IND: #105
+TA , TG , 1.000
+IND: #106
+TG , CA , 0.997
+IND: #107
+TA , TG , 1.000
+IND: #108
+TA , TG , 1.000
+IND: #109
+TA , CA , 1.000
+IND: #110
+TG , CA , 0.997
+IND: #111
+TA , CA , 1.000
+IND: #112
+TA , TA , 1.000
+IND: #113
+TA , TA , 1.000
+IND: #114
+TA , TG , 1.000
+IND: #115
+TA , CA , 1.000
+IND: #116
+CA , CA , 1.000
+IND: #117
+TA , CA , 1.000
+IND: #118
+TA , TG , 1.000
+IND: #119
+CA , CA , 1.000
+IND: #120
+TA , TG , 1.000
+IND: #121
+TA , CA , 1.000
+IND: #122
+TA , CA , 1.000
+IND: #123
+TA , TA , 1.000
+IND: #124
+TA , CA , 1.000
+IND: #125
+TA , CA , 1.000
+IND: #126
+TA , TG , 1.000
+IND: #127
+TA , TG , 1.000
+IND: #128
+TA , TA , 1.000
+IND: #129
+TG , CA , 0.997
+IND: #130
+TA , CA , 1.000
+IND: #131
+TA , TG , 1.000
+IND: #132
+TG , CA , 0.997
+IND: #133
+TA , TG , 1.000
+IND: #134
+TA , TA , 1.000
+IND: #135
+TA , CA , 1.000
+IND: #136
+TA , CA , 1.000
+IND: #137
+TG , CA , 0.997
+IND: #138
+TA , TA , 1.000
+IND: #139
+TA , CA , 1.000
+IND: #140
+TA , CA , 1.000
+IND: #141
+CA , CA , 1.000
+IND: #142
+TG , TG , 1.000
+IND: #143
+TA , CA , 1.000
+IND: #144
+TA , CA , 1.000
+IND: #145
+TA , TG , 1.000
+IND: #146
+TG , TG , 1.000
+IND: #147
+TA , TA , 1.000
+IND: #148
+TA , CA , 1.000
+IND: #149
+TA , TA , 1.000
+IND: #150
+TG , CA , 0.997
+IND: #151
+TG , CA , 0.997
+IND: #152
+TA , TA , 1.000
+IND: #153
+TA , CA , 1.000
+IND: #154
+TA , TA , 1.000
+IND: #155
+TA , CA , 1.000
+IND: #156
+TA , CA , 1.000
+IND: #157
+TG , CA , 0.997
+IND: #158
+CA , CA , 1.000
+IND: #159
+TA , TG , 1.000
+IND: #160
+TA , CA , 1.000
+IND: #161
+TA , TG , 1.000
+IND: #162
+TA , CA , 1.000
+IND: #163
+TG , CA , 0.997
+IND: #164
+TA , TA , 1.000
+IND: #165
+TG , TG , 1.000
+IND: #166
+TA , TA , 1.000
+IND: #167
+TA , CA , 1.000
+IND: #168
+TA , CA , 1.000
+IND: #169
+TG , CA , 0.997
+IND: #170
+CA , CA , 1.000
+IND: #171
+TG , TG , 1.000
+IND: #172
+CA , CA , 1.000
+IND: #173
+TA , TA , 1.000
+IND: #174
+TA , TG , 1.000
+IND: #175
+CA , CA , 1.000
+IND: #176
+TA , TG , 1.000
+IND: #177
+TA , TG , 1.000
+IND: #178
+TG , TG , 1.000
+IND: #179
+TA , TG , 1.000
+IND: #180
+TG , CA , 0.997
+IND: #181
+TA , TG , 1.000
+IND: #182
+TG , CA , 0.997
+IND: #183
+TG , CA , 0.997
+IND: #184
+TA , TG , 1.000
+IND: #185
+CA , CA , 1.000
+IND: #186
+CA , CA , 1.000
+IND: #187
+TG , CA , 0.997
+IND: #188
+TA , TA , 1.000
+IND: #189
+TA , CA , 1.000
+IND: #190
+CA , CA , 1.000
+IND: #191
+TA , CA , 1.000
+IND: #192
+TA , CA , 1.000
+IND: #193
+TA , TG , 1.000
+IND: #194
+TA , CA , 1.000
+IND: #195
+TA , TA , 1.000
+IND: #196
+TG , CA , 0.997
+IND: #197
+CA , CA , 1.000
+IND: #198
+TA , TG , 1.000
+IND: #199
+TA , CA , 1.000
+IND: #200
+TA , TG , 1.000
+IND: #201
+TG , CA , 0.997
+IND: #202
+TA , TA , 1.000
+IND: #203
+CA , CA , 1.000
+IND: #204
+CA , CA , 1.000
+IND: #205
+TA , CA , 1.000
+IND: #206
+CA , CA , 1.000
+IND: #207
+TA , TA , 1.000
+IND: #208
+TG , TG , 1.000
+IND: #209
+TA , CA , 1.000
+IND: #210
+CA , CA , 1.000
+IND: #211
+TG , CA , 0.997
+IND: #212
+TA , TA , 1.000
+IND: #213
+TA , TG , 1.000
+IND: #214
+TA , TG , 1.000
+IND: #215
+TA , TA , 1.000
+IND: #216
+TA , CA , 1.000
+IND: #217
+TA , TA , 1.000
+IND: #218
+TA , TG , 1.000
+IND: #219
+TA , TG , 1.000
+IND: #220
+TG , TG , 1.000
+IND: #221
+TG , CA , 0.997
+IND: #222
+TA , TA , 1.000
+IND: #223
+TA , TG , 1.000
+IND: #224
+TG , CA , 0.997
+IND: #225
+TG , CA , 0.997
+IND: #226
+TG , CA , 0.997
+IND: #227
+TA , CA , 1.000
+IND: #228
+TA , CA , 1.000
+IND: #229
+TG , CA , 0.997
+IND: #230
+TA , TG , 1.000
+IND: #231
+CA , CA , 1.000
+IND: #232
+CA , CA , 1.000
+IND: #233
+TA , TG , 1.000
+IND: #234
+TA , TA , 1.000
+IND: #235
+TG , CA , 0.997
+IND: #236
+TA , CA , 1.000
+IND: #237
+TA , CA , 1.000
+IND: #238
+TA , CA , 1.000
+IND: #239
+TA , TA , 1.000
+IND: #240
+CA , CA , 1.000
+IND: #241
+TA , TG , 1.000
+IND: #242
+TA , TG , 1.000
+IND: #243
+TA , CA , 1.000
+IND: #244
+TA , TG , 1.000
+IND: #245
+TA , TG , 1.000
+IND: #246
+TA , TG , 1.000
+IND: #247
+TA , TG , 1.000
+IND: #248
+TG , CA , 0.997
+IND: #249
+TA , CA , 1.000
+IND: #250
+TG , CA , 0.997
+IND: #251
+TG , TG , 1.000
+IND: #252
+TA , CA , 1.000
+IND: #253
+TA , TG , 1.000
+IND: #254
+TA , TA , 1.000
+IND: #255
+TA , CA , 1.000
+IND: #256
+TA , TG , 1.000
+IND: #257
+TA , TG , 1.000
+IND: #258
+CA , CA , 1.000
+IND: #259
+CA , CA , 1.000
+IND: #260
+TA , TA , 1.000
+IND: #261
+TA , CA , 1.000
+IND: #262
+TA , CA , 1.000
+IND: #263
+TA , CA , 1.000
+IND: #264
+TG , CA , 0.997
+IND: #265
+TA , TG , 1.000
+IND: #266
+TA , CA , 1.000
+IND: #267
+TA , TG , 1.000
+IND: #268
+TA , CA , 1.000
+IND: #269
+TA , TA , 1.000
+IND: #270
+TA , TA , 1.000
+IND: #271
+TA , TA , 1.000
+IND: #272
+TA , TA , 1.000
+IND: #273
+TA , CA , 1.000
+IND: #274
+TA , TG , 1.000
+IND: #275
+TA , CA , 1.000
+IND: #276
+TG , CA , 0.997
+IND: #277
+TA , TA , 1.000
+IND: #278
+TA , TA , 1.000
+IND: #279
+TA , TA , 1.000
+IND: #280
+TA , TA , 1.000
+IND: #281
+TA , CA , 1.000
+IND: #282
+TA , TA , 1.000
+IND: #283
+TA , TG , 1.000
+IND: #284
+TA , TA , 1.000
+IND: #285
+TA , TG , 1.000
+IND: #286
+TA , TG , 1.000
+IND: #287
+TA , TG , 1.000
+IND: #288
+TA , TA , 1.000
+IND: #289
+TA , TA , 1.000
+IND: #290
+TA , TA , 1.000
+IND: #291
+TG , TG , 1.000
+IND: #292
+TA , TA , 1.000
+IND: #293
+TA , TG , 1.000
+IND: #294
+TA , TA , 1.000
+IND: #295
+TA , TG , 1.000
+IND: #296
+TA , TA , 1.000
+IND: #297
+TA , TA , 1.000
+IND: #298
+TA , TA , 1.000
+IND: #299
+TA , TG , 1.000
+IND: #300
+TA , TG , 1.000
+IND: #301
+TA , TA , 1.000
+IND: #302
+TA , CA , 1.000
+IND: #303
+TA , TA , 1.000
+IND: #304
+TA , TG , 1.000
+IND: #305
+TA , TA , 1.000
+IND: #306
+TA , TA , 1.000
+IND: #307
+TA , TG , 1.000
+IND: #308
+TA , TG , 1.000
+IND: #309
+TA , TA , 1.000
+IND: #310
+TA , TG , 1.000
+IND: #311
+TA , TA , 1.000
+IND: #312
+TA , TA , 1.000
+IND: #313
+TA , TG , 1.000
+IND: #314
+TA , TA , 1.000
+IND: #315
+TA , TA , 1.000
+IND: #316
+TA , TA , 1.000
+IND: #317
+TA , CA , 1.000
+IND: #318
+TA , CA , 1.000
+IND: #319
+TA , TA , 1.000
+IND: #320
+TA , TA , 1.000
+IND: #321
+TA , TA , 1.000
+IND: #322
+TA , TA , 1.000
+IND: #323
+TA , TA , 1.000
+IND: #324
+TA , TA , 1.000
+IND: #325
+TA , TA , 1.000
+IND: #326
+TA , TG , 1.000
+IND: #327
+TA , TG , 1.000
+IND: #328
+TA , CA , 1.000
+IND: #329
+TG , CA , 0.997
+IND: #330
+TA , TG , 1.000
+IND: #331
+TA , TA , 1.000
+IND: #332
+TA , TA , 1.000
+IND: #333
+TA , TA , 1.000
+IND: #334
+TA , TA , 1.000
+IND: #335
+TA , TA , 1.000
+IND: #336
+TA , CA , 1.000
+IND: #337
+TA , TG , 1.000
+IND: #338
+TA , TA , 1.000
+IND: #339
+TA , TA , 1.000
+IND: #340
+TA , CA , 1.000
+IND: #341
+TA , TA , 1.000
+IND: #342
+TA , TA , 1.000
+IND: #343
+TA , TA , 1.000
+IND: #344
+TA , TA , 1.000
+IND: #345
+TA , TA , 1.000
+IND: #346
+TA , TG , 1.000
+IND: #347
+TA , TA , 1.000
+IND: #348
+TA , TA , 1.000
+IND: #349
+TA , TA , 1.000
+IND: #350
+TG , TG , 1.000
+IND: #351
+TA , TA , 1.000
+IND: #352
+TA , TA , 1.000
+IND: #353
+TA , TA , 1.000
+IND: #354
+TA , TG , 1.000
+IND: #355
+TA , TG , 1.000
+IND: #356
+TA , TG , 1.000
+IND: #357
+TA , TG , 1.000
+IND: #358
+TA , TA , 1.000
+IND: #359
+TA , CA , 1.000
+IND: #360
+TA , TG , 1.000
+IND: #361
+TA , TG , 1.000
+IND: #362
+CA , CA , 1.000
+IND: #363
+TA , CA , 1.000
+IND: #364
+CA , CA , 1.000
+IND: #365
+CA , CA , 1.000
+IND: #366
+TA , TG , 1.000
+IND: #367
+TA , CA , 1.000
+IND: #368
+TA , CA , 1.000
+IND: #369
+TA , TA , 1.000
+IND: #370
+TA , CA , 1.000
+IND: #371
+TG , CA , 0.997
+IND: #372
+TG , CA , 0.997
+IND: #373
+TG , CA , 0.997
+IND: #374
+TA , CA , 1.000
+IND: #375
+TA , TA , 1.000
+IND: #376
+TA , CA , 1.000
+IND: #377
+TG , TG , 1.000
+IND: #378
+TG , CA , 0.997
+IND: #379
+CA , CA , 1.000
+IND: #380
+TA , TG , 1.000
+IND: #381
+TA , TG , 1.000
+IND: #382
+TA , TG , 1.000
+IND: #383
+TG , CA , 0.997
+IND: #384
+TA , CA , 1.000
+IND: #385
+TA , TG , 1.000
+IND: #386
+CA , CA , 1.000
+IND: #387
+TG , CA , 0.997
+IND: #388
+TA , TA , 1.000
+IND: #389
+TG , CA , 0.997
+IND: #390
+TA , TA , 1.000
+IND: #391
+TA , CA , 1.000
+IND: #392
+TG , CA , 0.997
+IND: #393
+TG , CA , 0.997
+IND: #394
+TG , CA , 0.997
+IND: #395
+TA , CA , 1.000
+IND: #396
+TG , TG , 1.000
+IND: #397
+TA , TA , 1.000
+IND: #398
+TA , TG , 1.000
+IND: #399
+TG , CA , 0.997
+IND: #400
+TG , TG , 1.000
+IND: #401
+TA , CA , 1.000
+IND: #402
+TG , TG , 1.000
+IND: #403
+TA , CA , 1.000
+IND: #404
+TG , CA , 0.997
+IND: #405
+TA , CA , 1.000
+IND: #406
+CA , CA , 1.000
+IND: #407
+CA , CA , 1.000
+IND: #408
+TA , CA , 1.000
+IND: #409
+TA , CA , 1.000
+IND: #410
+TA , TG , 1.000
+IND: #411
+TA , TA , 1.000
+IND: #412
+TG , TG , 1.000
+IND: #413
+TA , CA , 1.000
+IND: #414
+TA , TG , 1.000
+IND: #415
+CA , CA , 1.000
+IND: #416
+TG , CA , 0.997
+IND: #417
+TG , CA , 0.997
+IND: #418
+TG , CA , 0.997
+IND: #419
+TA , CA , 1.000
+IND: #420
+CA , CA , 1.000
+IND: #421
+CA , CA , 1.000
+IND: #422
+TA , TA , 1.000
+IND: #423
+TG , TG , 1.000
+IND: #424
+TG , CA , 0.997
+IND: #425
+TG , CA , 0.997
+IND: #426
+TG , CA , 0.997
+IND: #427
+TA , TA , 1.000
+IND: #428
+TA , TA , 1.000
+IND: #429
+TA , CA , 1.000
+IND: #430
+CA , CA , 1.000
+IND: #431
+TG , CA , 0.997
+IND: #432
+TG , CA , 0.997
+IND: #433
+TA , CA , 1.000
+IND: #434
+TG , CA , 0.997
+IND: #435
+CA , CA , 1.000
+IND: #436
+TA , CA , 1.000
+IND: #437
+TA , TG , 1.000
+IND: #438
+TA , TG , 1.000
+IND: #439
+CA , CA , 1.000
+IND: #440
+TG , CA , 0.997
+IND: #441
+CA , CA , 1.000
+IND: #442
+TA , CA , 1.000
+IND: #443
+CA , CA , 1.000
+IND: #444
+TG , CA , 0.997
+IND: #445
+TA , CA , 1.000
