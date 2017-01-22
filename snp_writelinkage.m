@@ -19,7 +19,7 @@ if nargin<2
 end
 %if (isempty(mark)), status=0; return; end
 
-if (nargin < 3),
+if nargin < 3
     [filename, pathname,filterindex] = uiputfile( ...
         {'*.pedigree;*.ped', 'Linkage Format Files (*.pedigree, *.ped)';
         '*.*',  'All Files (*.*)'}, ...
@@ -35,20 +35,19 @@ if (nargin < 3),
             filenameped=filename;
             filenamemap=[filename,'.map'];
         end
-    end
-        
+    end           
 else
-        if isempty(find(filename=='.', 1))
+       if isempty(find(filename=='.', 1))
 			filenameped=[filename,'.ped'];
             filenamemap=[filename,'.map'];
-        else
+       else
             filenameped=filename;
             filenamemap=[filename,'.map'];
-        end
+       end
 end
 
 fid = fopen(filenameped,'wt');
-if (fid == -1),
+if fid == -1
    status=0;
    warning('Unable to open file.');
    return;
