@@ -19,7 +19,7 @@ cd(fileparts(which('pge_demo2')))
 % First, let's just load an example HapMap genotype data from human BRCA2
 % locus
 
-filename=fullfile('seq_examples','brca2.hmp');
+filename=fullfile('example_data','brca2.hmp');
 [genodata,markinfo] = snp_readhapmap(filename);
 
 
@@ -56,27 +56,20 @@ h'
 
 snp_tajima89d(genodata);
 
-%%
-% SNPWEBLINK produces website links for given SNP markers.
-
-snp_weblink(markinfo)
 
 %%
 % SNP_FREQPIE produces a pie chart of allele and genotype frequencies among
 % populations for a given SNP
 
-snp_freqpie
+% snp_freqpie
 
 %%
 % Extended Haplotype Homozygosity of phased haplotype data
 % Here core is 28-30. Position of first core marker is 28,
 % position of last core marker is 30.
 
-figure;
 load('example_data/phasedhaplotype','haplodata');
-haplodata=haplodata;
-snp_ehh(haplodata,128,128);
-
+snp_ehh(haplodata,1:size(haplodata,2),128);
 
 %%
 % iHS (Integrated Haplotype Score) is a statistic that has
@@ -87,7 +80,6 @@ snp_ehh(haplodata,128,128);
 
 figure;
 load('example_data/ihs_result_example', 'ihs', 'markinfo');
-ihs=ihs;
 plot(markinfo.pos,ihs,'.');
 ylabel('|iHS|')
 xlabel('Genomic Postion')

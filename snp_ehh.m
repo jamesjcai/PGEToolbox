@@ -127,7 +127,7 @@ if (showit), close(wbar); end
 
 
 if (nargout<1 || showit)
-    figure;    
+    figure;
     hold on
     posv=posv./1000000;
     for k=1:n-1
@@ -138,7 +138,7 @@ if (nargout<1 || showit)
     plot(posv,h(end,:),'-m')
         corehaplotxt{n}=sprintf('Allele: %s; Freq.: %.3f',...
                 int2nt(coresets(n,:)),core_p(n));    
-    vline(posv(coreidx+floor((n2-coreidx)/2)))
+%    vline(posv(coreidx+floor((n2-coreidx)/2)))
     
     hline(0.05);
     hold off    
