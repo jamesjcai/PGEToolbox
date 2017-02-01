@@ -1,5 +1,11 @@
 function [region,popcode]=selectHapMapRegion(defaulttxt)
 
+warning('Example inputs are used.');
+region='BRCA2'
+popcode='CEU'
+
+
+%{
 if nargin<1
     defaulttxt='';
 end
@@ -29,3 +35,4 @@ else
     region='';
     popcode='';
 end
+%}

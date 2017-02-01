@@ -1,5 +1,10 @@
 function [region,chrid]=select1000GenomesRegion
 
+warning('Example inputs are used: CEU - Chr9:660000..760000');
+region='Chr9:660000-760000'
+chrid='9'
+
+%{
 chrset=textscan(num2str(1:22),'%s');
 chrset=chrset{1};
 chrset{23}='X';
@@ -44,3 +49,4 @@ else
     region='';
     chrid='';
 end
+%}
