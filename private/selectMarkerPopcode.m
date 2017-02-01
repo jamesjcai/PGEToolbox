@@ -1,5 +1,10 @@
 function [marker,popcode]=selectMarkerPopcode(defaulttxt)
 
+warning('Example inputs are used: CEU - Chr9:660000..760000');
+marker='Chr9:660000..760000';
+popcode='CEU';
+
+%{
 if nargin<1
     defaulttxt='';
 end
@@ -29,3 +34,4 @@ else
     marker='';
     popcode='';
 end
+%}

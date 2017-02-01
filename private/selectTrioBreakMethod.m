@@ -1,5 +1,10 @@
 function [methodtype]=selectTrioBreakMethod
 
+prompt = sprintf('SELECT TRIO TYPE:\n1 = HapMap Panel: Yoruba-30-trios\n2 = HapMap Panel: CEPH-30-trios\n3 = Every 3rd Individual\n');
+methodtype = input(prompt);
+
+
+%{
 items(1).name = 'TRIO TYPE:';
 items(1).default = 1;
 items(1).linked = [2 3 4];
@@ -41,3 +46,4 @@ if ~(isempty(out)),
 else
     methodtype=[];
 end
+%}

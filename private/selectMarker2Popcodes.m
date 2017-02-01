@@ -1,5 +1,12 @@
 function [marker,popcode1,popcode2]=selectMarker2Popcodes(defaulttxt,idx1,idx2)
 
+warning('Example inputs are used.');
+marker='BRCA2';
+popcode1='CEU';
+popcode2='YRI';
+
+
+%{
 if nargin<3
     idx2=4;
 end
@@ -46,3 +53,4 @@ else
     popcode1='';
     popcode2='';    
 end
+%}
