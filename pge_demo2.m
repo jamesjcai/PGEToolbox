@@ -1,4 +1,4 @@
-%%PGEToolbox DEMO - SNP Analysis
+%%PGEToolbox DEMO - SNP Analysis   
 % Welcome to PGEToolbox.  This is a demonstration of
 % PGEToolbox's functions for SNP analysis.
 %
