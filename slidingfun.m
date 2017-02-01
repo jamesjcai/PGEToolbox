@@ -30,12 +30,13 @@ v=zeros(1,nwin);
 
 
 %h = waitbar(0,'Please wait...');
-for (k=1:nwin),
+for k=1:nwin
+    seq(:,sp(k):ep(k))
       v(k)=feval(funfcn,seq(:,sp(k):ep(k)),varargin{:});
       % waitbar(k/nwin)
 end
 % close(h)
-if (nargout<1),
+if nargout<1
 	plot(v);
 	res=v;
 	resavg=mean(res);
