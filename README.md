@@ -45,4 +45,4 @@ http://bioinformatics.org/pgetoolbox
 
 
 If you have any comments or suggestions then, please, send me an email at
-jcai@tamu.edu
+jamescai[at]genomezoo.net
