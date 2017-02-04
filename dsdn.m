@@ -60,12 +60,6 @@ for k=1:cm1
 end
 
 
-
-
-%%%%%%%%%%%%%
-%%% SUBS  %%%
-%%%%%%%%%%%%%
-
 function [cps,cpn] = i_codonsynnonsyn2(csite1,csite2,ns,na)
 	[n1] = size(csite1,1);
 	[n2] = size(csite2,1);
