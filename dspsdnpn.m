@@ -19,7 +19,7 @@ else
         'Sequences from species 1:','SelectString','Sequences from species 2:',...
         'ListString',aln.seqnames);
         if (v~=1),	return; else
-            [n,m]=size(aln.seq);
+            [n]=size(aln.seq,1);
             taxset1=s;
             taxset2=setdiff(1:n,s);
         end
@@ -34,6 +34,6 @@ Pn=Pn1+Pn2;
 [Ds,Dn]=dsdn(seq1,seq2);
 
 
-if (nargout>4)
+if nargout>4
 [Ls,Ln] = lsln(aln);
 end

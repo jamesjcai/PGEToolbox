@@ -14,13 +14,13 @@ function [bp,LMap] = chrlen_hg18(id)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if (ischar(id)),
+if ischar(id)
 	id=upper(id);
 	if (strcmp(id,'23')), id='X'; end
 	if (strcmp(id,'24')), id='Y'; end
-elseif(id==23),
+elseif id==23
 	id='X';
-elseif(id==24),
+elseif id==24
 	id='Y';
 else
 	id=int2str(id);
@@ -35,14 +35,14 @@ clen=[247249719, 135374737, 134452384, 132349534, 114142980, 106368585,...
 
 
 [x,y]=ismember(upper(id),cnam);
-if (y>0)
+if x
     bp=clen(y);
 else
-    error(sprintf('%s is not a valid chromosome name.',id));
+    error('%s is not a valid chromosome name.',id);
 end
 
 
-if (nargout>1),
+if nargout>1
 	LMap={
 '1',247249719;
 '10',135374737;

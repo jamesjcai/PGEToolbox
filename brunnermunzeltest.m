@@ -8,7 +8,7 @@ function [p]=brunnermunzeltest(x,y,alpha)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if nargin<3,
+if nargin<3
     alpha=0.05;
 end
 n1=length(x);
