@@ -23,9 +23,9 @@ function cuffgtf2bed(gtf_file, fpkm_file, bed_file, color_value, trackname, desc
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if isempty(color_value) color_value='0,0,0'; end
-if isempty(trackname) trackname='usertrackname'; end
-if isempty(description) description='user track description'; end
+if isempty(color_value), color_value='0,0,0'; end
+if isempty(trackname), trackname='usertrackname'; end
+if isempty(description), description='user track description'; end
 
 fid=fopen(fpkm_file);
 content=textscan(fid,'%s%s%s%s%s%s%s%s%s%f%f%f%s','delimiter','\t','HeaderLines',1);
@@ -59,18 +59,18 @@ IDs=uunique(ID);
 for i=1:length(IDs)
     tag_ID=IDs{i};
     % -------------------------------------
-    list=find(strcmp(tag_ID,ID));
-    %list=find(ismember(ID,tag_ID));
+    listx=strcmp(tag_ID,ID);
+    %listx=find(ismember(ID,tag_ID));
     % -------------------------------------    
     for j=1:8
         eval(sprintf('c%d=content{%d}(list);',j,j));
     end
-    tag_name=unique(Name(list));
+    tag_name=unique(Name(listx));
     tag_name=tag_name{1};
     
     if length(unique(c1))~=1
         c1
-        error(sprintf('multiple chromosome ID in one transcription %s.', tag_ID));
+        error('multiple chromosome ID in one transcription %s.', tag_ID);
     else
         c1=unique(c1);
         c1=c1{1};
@@ -94,10 +94,10 @@ for i=1:length(IDs)
     temp5=c5(sublist);
     exon=[];
     for j=1:length(temp4)
-        exon=[exon; str2num(temp4{j}) str2num(temp5{j})];
+        exon=[exon; str2double(temp4{j}) str2double(temp5{j})];
     end
     if isempty(exon)
-        error(sprintf('empty exon in transcription %s.', tag_ID));
+        error('empty exon in transcription %s.', tag_ID);
     end
     exon=sort(exon,1);
     exon=sort(exon,2);
@@ -118,12 +118,12 @@ end
 
 
 
-function [unsorteduniques ia ib] = uunique(vec) 
+function [unsorteduniques, ia, ib] = uunique(vec) 
     vec = vec(:)'; 
-    [v a b] = unique(vec, 'first'); 
+    [~, a, b] = unique(vec, 'first'); 
     if nargout > 2 
-        [ia v] = sort(a); 
-        [v ib] = ismember(b, v); 
+        [ia, v] = sort(a); 
+        [~, ib] = ismember(b, v); 
     else 
        ia = sort(a); 
     end 

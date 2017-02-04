@@ -12,16 +12,16 @@ function [bp,LMap] = chrlen_hg19(id)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if (ischar(id)),
+if ischar(id)
 	id=upper(id);
 	if (strcmp(id,'23')), id='X'; end
 	if (strcmp(id,'24')), id='Y'; end
     if (strcmp(id,'25')), id='MT'; end
-elseif(id==23),
+elseif id==23
 	id='X';
-elseif(id==24),
+elseif id==24
 	id='Y';
-elseif(id==24),
+elseif id==24
 	id='MT';
 else
 	id=int2str(id);

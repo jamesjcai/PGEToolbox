@@ -45,12 +45,14 @@ degtable=[0 0 2; 0 0 2; 0 0 2; 0 0 2; 0 0 4; 0 0 4; 0 0 4; 0 0 4; 2 0 2; 0 0 2;
 2 0 2; 0 0 2; 2 0 2; 0 0 2; 0 0 0];
 
 
-for (p=1:n),
-for (q=1:m/3)
+for p=1:n
+for q=1:m/3
 	deg = degtable(S2(p,q),:);
-	a=q;
+	% a=q;
 	q=(q-1)*3+1;	% jump index p every next three bases.
-	marker(p,q)=deg(1,1); marker(p,q+1)=deg(1,2); marker(p,q+2)=deg(1,3);
+	marker(p,q)=deg(1,1); 
+    marker(p,q+1)=deg(1,2); 
+    marker(p,q+2)=deg(1,3);
 end
 end
 

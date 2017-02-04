@@ -40,7 +40,7 @@ catch exception
 end
 
 disp('Reading EMLD output...')
-[i,j,dv,dpv,r2v]=textread('LD.xt','%d%d%f%f%f','headerlines',1);
+[~,~,dv,dpv,r2v]=textread('LD.xt','%d%d%f%f%f','headerlines',1);
 ldinfo=struct;
 ldinfo.d = triu(squareform(dv'));
 ldinfo.dprime = triu(squareform(dpv'));
@@ -51,7 +51,7 @@ cd(oldpath);
 function i_writelinkage(geno,filename)
 
 fid = fopen(filename,'wt');
-if (fid == -1),
+if fid == -1
    warning('Unable to open file.');
    return;
 end

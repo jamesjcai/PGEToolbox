@@ -34,10 +34,10 @@ mutvec=[];
 
 for j=1:m
 	thissite=seq(:,j);
-	if (min(thissite)>0 && max(thissite) < 5),
+	if min(thissite)>0 && max(thissite)<5
 		x=length(unique(thissite))-1;
-		if (x>0),
-			if (x==1 && i_issingleton(thissite)),
+		if x>0
+			if x==1 && i_issingleton(thissite)
 				sn_num=sn_num+1;
 			end
 			sm_num=sm_num+i_singleton_mut(thissite);
@@ -51,7 +51,7 @@ for j=1:m
 end
 v_site = m-v_site;
 
-if (nargout>5),
+if nargout>5
 	sm_numv=sum(mutvec,2);
 	if (sum(sm_numv)~=sm_num), error('Bug!'); end
 end
@@ -62,8 +62,8 @@ end
 function [y] = i_issingleton(site)
   y=0;
   [a,~,c]=unique(site);
-  if (size(a,1)==2),
-    if (sum(c==1)==1||sum(c==2)==1),
+  if size(a,1)==2
+    if sum(c==1)==1||sum(c==2)==1
 	y=1;
     end
   end

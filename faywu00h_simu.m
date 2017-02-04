@@ -20,7 +20,7 @@ nn=nchoosek(nsam,2);
 H=zeros(1,nrep);
 
 [G] = msrun(nsam,nrep,theta,segs,rho,nsites);
-for (k=1:nrep),
+for k=1:nrep
         io=G{k};
 	[segs]=size(io,2);
 
@@ -39,7 +39,7 @@ H(k)=-sum(p2.*(p2-1)*(nsam/(nsam-1)));
 
 end
 
-if (nargout<1),
+if nargout<1
 	i_dispheader('Result of Fay and Wu''s H')
 		%fprintf (['Average value: %f\n'],mean(H));
 	cireport(H)

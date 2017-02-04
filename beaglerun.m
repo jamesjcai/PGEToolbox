@@ -31,7 +31,7 @@ try
     disp('Running java EMLD...')
     system(sprintf('java -Xmx500m -jar beagle.jar data=%s out=output',filename));
     % java -Xmx500m -jar beagle.jar unphased=zzz.bgl missing=? out=examplex
-catch exception    
+catch    
     out=[];
     return;
 end

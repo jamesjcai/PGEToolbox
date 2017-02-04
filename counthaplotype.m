@@ -59,11 +59,11 @@ switch methodid
             end
             sizHap(numHap)=sizHap(numHap)+1;
         end
-        if (nargout>1),
+        if nargout>1
           sizHap(numHap+1:end)=[];
           [sizHap,idx]=sort(sizHap,'descend');
         end
-        if (nargout>2)
+        if nargout>2
            seqHap=seqHap(idx,:);
         end
 end

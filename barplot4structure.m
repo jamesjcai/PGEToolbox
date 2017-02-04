@@ -141,7 +141,7 @@ C=[0.002 0.000 0.002 0.001 0.994 0.000 0.001
 end
 %%
 
-if isstr(C)
+if ischar(C)
 filename=C;   % 'structure_result.txt';
 
 %[C]=readstructureoutput(filename);
@@ -159,7 +159,7 @@ sumout.LnP=str2double(LnPtxt);
 
 txt=txt(idx1+2:idx2-3);
 C=[];
-for k=1:length(txt);
+for k=1:length(txt)
     linetxt=txt{k};
     linefrc=strread(linetxt(strfind(linetxt,':')+2:end),'%f')';
     [itemp,iname]=strread(linetxt(1:strfind(linetxt,'(')-1),'%d%s');
@@ -209,13 +209,13 @@ if ~sortbyq
 else
 
     if ~isempty(classin)
-        [x,idx]=max(C,[],2);  % y is the idx of the max per row
-        [x,idx]=sort(idx);
+        [~,idx]=max(C,[],2);  % y is the idx of the max per row
+        [~,idx]=sort(idx);
         C=C(idx,:);
         classin=classin(idx);
         
         [iclass,iclassname]=grp2idx(classin);        
-        [x,y]=max(C,[],2);
+        [x,~]=max(C,[],2);
         
     else
         [x,iclass]=max(C,[],2);  % y is the idx of the max per row
@@ -223,7 +223,7 @@ else
         
     end
     
-    [a,idx]=sortrows([iclass,x],[1 -2]);
+    [~,idx]=sortrows([iclass,x],[1 -2]);
     sumout.orderidx=idx;
     
     C=C(idx,:);
@@ -264,10 +264,8 @@ else
     %iclassname
     if ~isempty(classin)
         set(gca,'XTick',sprt-0.5,'XTickLabel',iclassname)
+    end    
     end
-    
-    end
-
 end
 
 

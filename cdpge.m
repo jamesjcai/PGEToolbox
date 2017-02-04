@@ -15,7 +15,7 @@ end
 pw0=pwd;
 pw1=fileparts(which(mfilename));
 if ~strcmp(pw0,pw1) && ~isconfirmed
-    [selectedButton,dlgShown]=uigetpref('PGEToolbox',... % Group
+    [selectedButton]=uigetpref('PGEToolbox',... % Group
            'cdpge_ask',...                               % Preference
            'Changing Working Directory',...              % Window title
            {'Do you want to change current working directory to PGEToolbox directory?'},...

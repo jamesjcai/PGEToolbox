@@ -24,15 +24,15 @@ if (isstruct(aln2)),
 else
       seq2=aln2;
 end
-[n1,m1] = size(seq1);
-[n2,m2] = size(seq2);
+[~,m1] = size(seq1);
+[~,m2] = size(seq2);
 
 if (m1~=m2), error('m1~=m2'); end
 
 [cseq1]=codonise64(seq1);
 [cseq2]=codonise64(seq2);
-[cn1,cm1] = size(cseq1);
-[cn2,cm2] = size(cseq2);
+[~,cm1] = size(cseq1);
+[~,cm2] = size(cseq2);
 
 
 [ns,na] = getsynnonsyndiff(icode);
@@ -42,8 +42,8 @@ for k=1:cm1
       csite1=cseq1(:,k);
       csite2=cseq2(:,k);
       if (isempty(intersect(csite1,csite2)))
-          [numHap1,sizHap1,seqHap1] = counthaplotype(csite1);
-          [numHap2,sizHap2,seqHap2] = counthaplotype(csite2);
+          [~,~,seqHap1] = counthaplotype(csite1);
+          [~,~,seqHap2] = counthaplotype(csite2);
           [cds,cdn] = i_codonsynnonsyn2(seqHap1,seqHap2,ns,na);
           %seqHap=[seqHap1;seqHap2];
           [m_num]=i_mutnum2(decodonise64(seqHap1),decodonise64(seqHap2));
@@ -67,12 +67,12 @@ end
 %%%%%%%%%%%%%
 
 function [cps,cpn] = i_codonsynnonsyn2(csite1,csite2,ns,na)
-	[n1,m1] = size(csite1);
-	[n2,m2] = size(csite2);
+	[n1] = size(csite1,1);
+	[n2] = size(csite2,1);
 	cps=0; cpn=0;
 
-	for i=1:n1,
-	for j=1:n2,
+	for i=1:n1
+	for j=1:n2
 		x=csite1(i); y=csite2(j);
 		xx=ns(x,y); yy=na(x,y);
 		if (xx>0), cps=cps+xx; end
@@ -82,10 +82,10 @@ function [cps,cpn] = i_codonsynnonsyn2(csite1,csite2,ns,na)
 
 function [m_num] = i_mutnum2(seq1,seq2)
 	m_num=0;
-	for (k=1:3),
+	for k=1:3
 		thissite1=seq1(:,k);
 		thissite2=seq2(:,k);
-		if (isempty(intersect(thissite1,thissite2))),
+		if isempty(intersect(thissite1,thissite2))
 		      m_num=m_num+1;
 		end
 	end

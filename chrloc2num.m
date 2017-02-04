@@ -13,9 +13,9 @@ function [chrid,startn,endn]=chrloc2num(loctxt)
 loctxt=strrep(loctxt, ',', '');
 loctxt=lower(loctxt);
 idx=strfind(loctxt,':');
-chrid=str2num(loctxt(4:idx-1));
+chrid=str2double(loctxt(4:idx-1));
 
 loctxt=loctxt(idx+1:end);
 idx=strfind(loctxt,'-');
-startn=str2num(loctxt(1:idx-1));
-endn=str2num(loctxt(idx+1:end));
+startn=str2double(loctxt(1:idx-1));
+endn=str2double(loctxt(idx+1:end));
