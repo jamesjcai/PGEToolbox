@@ -7,10 +7,7 @@ function [B,Q] = wall99bq(aln)
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
-% $LastChangedDate: 2014-03-26 09:30:26 -0500 (Wed, 26 Mar 2014) $
-% $LastChangedRevision: 758 $
-% $LastChangedBy: jcai $
+
 
 [aln]=extractsegregatingsites(aln,1);
 if (isempty(aln)), B=0; Q=realmax; return; end
@@ -24,18 +21,18 @@ switch (nargout)
 case (1)
 	for k=1:m-1
 	      Bprime=Bprime+i_iscongruent(seq(:,k),seq(:,k+1));
-    end
+    end    
 	B=Bprime/(m-1);
 
 case (2)
 
     A={};                  % The set of all distinct partitions induced
                            % by congruent pairs of segregating sites.
-    S=0;    
+    S=0;
 	for k=1:m-1
-        [yes,S,A] = i_iscongruent2(seq(:,k),seq(:,k+1),S,A);
+        [yes,S,A]=i_iscongruent2(seq(:,k),seq(:,k+1),S,A);
         Bprime=Bprime+yes;
-    end
+    end    
            
 	B=Bprime/(m-1);
 	Q=(Bprime+S)/m;       % there is a typo in the original paper
@@ -69,7 +66,7 @@ function [yes] = i_iscongruent(a,b)
     [~,~,z1]=unique(a);
 	[~,~,z2]=unique(b);
     z=[z1,z2];
-    [numHap] = counthaplotype(z);
+    [numHap]=counthaplotype(z);
     if (numHap==2)
         yes=1;
     else
@@ -81,7 +78,7 @@ function [yes,S,A] = i_iscongruent2(a,b,S,A)
     [~,~,z2]=unique(b);
     z=[z1,z2];
     [numHap]=counthaplotype(z);
-    if (numHap==2)
+    if numHap==2
         yes=1;
         z1a=num2str(z1'); z1b=num2str(3-z1');
         z2a=num2str(z2'); z2b=num2str(3-z2');
