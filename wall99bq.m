@@ -18,24 +18,23 @@ if (m<2), B=realmax; Q=realmax; return; end
 
 Bprime=0;
 switch (nargout)
-case (1)
+case 1
 	for k=1:m-1
 	      Bprime=Bprime+i_iscongruent(seq(:,k),seq(:,k+1));
     end    
 	B=Bprime/(m-1);
 
-case (2)
-
-    A={};                  % The set of all distinct partitions induced
+case 2
+    SetA={};               % The set of all distinct partitions induced
                            % by congruent pairs of segregating sites.
-    S=0;
+    A=0;
 	for k=1:m-1
-        [yes,S,A]=i_iscongruent2(seq(:,k),seq(:,k+1),S,A);
+        [yes,A,SetA]=i_iscongruent2(seq(:,k),seq(:,k+1),A,SetA);
         Bprime=Bprime+yes;
-    end    
+    end
            
 	B=Bprime/(m-1);
-	Q=(Bprime+S)/m;       % there is a typo in the original paper
+	Q=(Bprime+A)/m;       % there is a typo in the original paper
 
 otherwise
 	[B,Q]=wall99bq(aln);
@@ -44,8 +43,7 @@ otherwise
 	fprintf('   Q : %f\n',Q);
 	i_dispfooter
 end
-
-
+end
 
 
 function [yes] = i_iscongruent(a,b)
@@ -72,27 +70,28 @@ function [yes] = i_iscongruent(a,b)
     else
         yes=0;
     end
+end
 
-function [yes,S,A] = i_iscongruent2(a,b,S,A)
-    [~,~,z1]=unique(a);
-    [~,~,z2]=unique(b);
+function [yes,A,SetA] = i_iscongruent2(s1,s2,A,SetA)
+    [~,~,z1]=unique(s1);
+    [~,~,z2]=unique(s2);
     z=[z1,z2];
     [numHap]=counthaplotype(z);
     if numHap==2
         yes=1;
         z1a=num2str(z1'); z1b=num2str(3-z1');
         z2a=num2str(z2'); z2b=num2str(3-z2');
-        if ~ismember(z1a,A)
-                A{length(A)+1}=z1a;
-                if ~ismember(z1b,A)
-                    A{length(A)+1}=z1a;
-                    S=S+1;        % S only count once for a pair of cogruent sites
+        if ~ismember(z1a,SetA)
+                SetA{length(SetA)+1}=z1a;
+                if ~ismember(z1b,SetA)
+                    SetA{length(SetA)+1}=z1a;
+                    A=A+1;        % S only count once for a pair of cogruent sites
                 end
         end
-        if ~ismember(z2a,A), A{length(A)+1}=z2a; end
-        if ~ismember(z2b,A), A{length(A)+1}=z2b; end        
+        if ~ismember(z2a,SetA), SetA{length(SetA)+1}=z2a; end
+        if ~ismember(z2b,SetA), SetA{length(SetA)+1}=z2b; end
     else
         yes=0;
     end
-    
+end
     
