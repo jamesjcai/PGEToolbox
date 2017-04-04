@@ -13,13 +13,13 @@ function [genodata,markinfo] = snp_readlinkage(filename,varargin)
 % $LastChangedBy: jcai $
 
 if nargin < 1 || isempty(filename)
-    if ispref('PGEToolbox','lastworkingdir')
-	try
-        cd(getpref('PGEToolbox','lastworkingdir',pwd));
-	catch ME
-	rmpref('PGEToolbox','lastworkingdir');	
-	end
-    end
+%     if ispref('PGEToolbox','lastworkingdir')
+% 	try
+%         cd(getpref('PGEToolbox','lastworkingdir',pwd));
+% 	catch ME
+% 	rmpref('PGEToolbox','lastworkingdir');	
+% 	end
+%     end
     [fname, pathname] = uigetfile( ...
        {'*.ped;*.pedigree', 'Linkage Format Files (*.ped, *.pedigree)';
         '*.*',  'All Files (*.*)'}, ...
