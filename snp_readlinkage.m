@@ -27,17 +27,19 @@ if nargin < 1 || isempty(filename)
 	if ~(fname), genodata=[]; markinfo=[]; return; end
 	%filename=[pathname,filename];
     filename=fullfile(pathname,fname);
+end
 
-    
-    dflts  = {'\t'         '0'               'true'       'true'};
+pnames = {'Delimiter','MissingGenotype','UseACGT','Noise'};
+dflts  = {'\t','0','true','true'};
+
+if nargin==1 || nargin<1    
     answer=i_getParamters(dflts);
     answer{3}=strcmpi('true',answer{3});
     answer{4}=strcmpi('true',answer{4});
-    dflts=answer;
-    pnames = {'Delimiter' 'MissingGenotype' 'UseACGT','Noise'};
+    dflts=answer;   
     %dflts  = {' '         '0'               true       true};
-    [delimiter,missinggenotype,useacgt,noise] = parseArgs(pnames,dflts,varargin{:});
 end
+[delimiter,missinggenotype,useacgt,noise] = parseArgs(pnames,dflts,varargin{:});
 
 %if nargin<2, noise=true; end
 if ~exist(filename,'file')
@@ -109,7 +111,7 @@ while ischar(tline)
    c=regexp(tline,delimiter,'split');
    y=y+1;
    
-   if useacgt, 
+   if useacgt
        g=[c{7:end}];
        geno=i_nt2int(g); 
    else
