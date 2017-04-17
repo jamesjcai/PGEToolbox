@@ -34,7 +34,7 @@ e2=c2/(a1^2+a2);
 
 d=(sumk-Sn/a1)/sqrt(e1*Sn+e2*Sn*(Sn-1));
 
-if (nargout>1),
+if nargout>1
     theta=Sn/a1;
     % P-value for a double sided test assuming a normal distribution for D
     pval = 2*normcdf(-abs(d));

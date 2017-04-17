@@ -26,7 +26,7 @@ thepi=x*y;
 %thepi2 = sum(smpln^2 .* p .* q) / (smpln*(smpln-1)/2);   % just the same
 % as above
 
-if (persite),
+if persite
    [L]=snp_markbplen(mark);
    thepi=thepi/L;
 end

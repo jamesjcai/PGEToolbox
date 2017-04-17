@@ -24,7 +24,7 @@ function [d,thetw,pval] = snp_tajima89d(geno)
 [d,thetw,pval] = tajima89d(smpln, Sn, thepi);
 % thanks for Jinchuan Xing for bug report
 
-if (nargout<1),
+if nargout<1
 i_dispheader('Tajima''s Neutrality Test')
 	disp('Mode: SNP');
 	fprintf('\n');
