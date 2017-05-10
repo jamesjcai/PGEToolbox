@@ -20,7 +20,7 @@ if nargin<2
 end
 
 ddg=snp_ddgeno(geno);
-ddg(ddg==55)=4;      	                 % Undetermined
+ddg(ddg==55|ddg==0)=4;      	         % Undetermined
 ddg(~ismember(ddg,[11 22 33 44 4]))=3;   % Heterozygote
 
 G=[];
