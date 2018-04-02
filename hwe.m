@@ -10,25 +10,35 @@ function [P] = hwe(nhom1,nhet,nhom2)
 % $LastChangedBy: jcai $
 
 
-if (nargin~=3)
+if (nargin<1)
    prompt={'Numbers of AA:','Numbers of Aa:','Numbers of aa:'};
    def={'1467','381','23'};
    dlgTitle='Enter the observed numbers of phenotypes';
    lineNo=1;
    answer=inputdlg(prompt,dlgTitle,lineNo,def);
-if (isempty(answer))
-      return;
-else
-	nhom1=str2num(char(answer{1}));
-	nhet=str2num(char(answer{2}));
-	nhom2=str2num(char(answer{3}));
-end
+    if (isempty(answer)), return; else
+        nhom1=str2num(char(answer{1}));
+        nhet=str2num(char(answer{2}));
+        nhom2=str2num(char(answer{3}));
+    end
+elseif (nargin==1)
+   inputd=nhom1;
+   [n,m]=size(inputd);
+   if (n==1&&m==3)||(n==3&&m==1)
+       nhom1=inputd(1);
+       nhet=inputd(2);
+       nhom2=inputd(3);
+   else
+       return;
+   end
 end
 
+
+
 P=snphwe_mex(nhom1,nhet,nhom2);
-%if nargout==1
-%    return;
-%end
+if nargout==1
+    return;
+end
 
 % The Hardy-Weinberg law states that the frequencies of the genotypes AA, Aa,
 % and aa will be equal to p2, 2pq, and q2 after a single generation, regardless
