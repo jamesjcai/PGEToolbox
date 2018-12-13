@@ -1,4 +1,4 @@
-function [bp,LMap] = chrlen_hg19(id)
+function [bp,clen] = chrlen_hg19(id)
 %CHRLEN - returns human chromosome length
 %USAGE: [bp] = chrlen(id)
 %
