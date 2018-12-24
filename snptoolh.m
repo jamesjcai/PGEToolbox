@@ -72,15 +72,15 @@ yr=scrsz(4)-pos_act(4);
 yp=round(yr/2);
 set(gcf,'position',[xp yp pos_act(3) pos_act(4)]);
 
-if ~ispref('PGEToolbox','lastworkingdir')
-   addpref('PGEToolbox','lastworkingdir',pwd)
-else
-   try
-    cd(getpref('PGEToolbox','lastworkingdir',pwd));
-   catch ME
-    rmpref('PGEToolbox','lastworkingdir');
-   end
-end
+% if ~ispref('PGEToolbox','lastworkingdir')
+%    addpref('PGEToolbox','lastworkingdir',pwd)
+% else
+%    try
+%     cd(getpref('PGEToolbox','lastworkingdir',pwd));
+%    catch ME
+%     rmpref('PGEToolbox','lastworkingdir');
+%    end
+% end
 
 % Update handles structure
 guidata(hObject, handles);
