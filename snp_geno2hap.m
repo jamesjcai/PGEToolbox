@@ -17,10 +17,10 @@ function [haplodata] = snp_geno2hap(genodata)
 %haplodata=[genodata(:,[1:2:n]); genodata(:,[2:2:n])];
 
 
-[n,m2]=size(genodata);
-n2=n*2;
-m=m2/2;
-haplodata=zeros(n2,m);
+[n, m2] = size(genodata);
+n2 = n * 2;
+m = m2 / 2;
+haplodata = zeros(n2, m);
 
-haplodata([1:2:n2],:)=genodata(:,[1:2:m2]);
-haplodata([2:2:n2],:)=genodata(:,[2:2:m2]);
+haplodata([1:2:n2], :) = genodata(:, [1:2:m2]);
+haplodata([2:2:n2], :) = genodata(:, [2:2:m2]);

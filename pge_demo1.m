@@ -5,7 +5,7 @@
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-01-06 13:39:38 -0600 (Sun, 06 Jan 2013) $
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
@@ -19,29 +19,28 @@ cd(fileparts(which('pge_demo1')))
 % into a MATLAB structure, ALN, representing the alignment.
 % Click OK to assign ALN as coding sequences.
 
-filename=fullfile('example_data','mktest.fas');
-formatid=1; % 1 - FASTA format; 2 - Phylip format
-[aln] = pge_openfile(filename,formatid)
-
+filename = fullfile('example_data', 'mktest.fas');
+formatid = 1; % 1 - FASTA format; 2 - Phylip format
+[aln] = pge_openfile(filename, formatid)
 
 %%
 % Now let's view the sequences information in this alignment.
 % Information includes name, locus, population, count and sequence.
 
-aln.population(1:6)=ones(1,6);
-aln.population(7:11)=ones(1,5)*2;
+aln.population(1:6) = ones(1, 6);
+aln.population(7:11) = ones(1, 5) * 2;
 
 pge_viewdata(aln)
 
 %%
 % Extract sequences for one of populations.
 
-alnHsa=aln;
-alnHsa.seq=aln.seq(1:6,:);
-alnHsa.seqnames=aln.seqnames(1:6);
-alnHsa.locus=aln.locus(1:6);
-alnHsa.population=aln.population(1:6);
-alnHsa.count=aln.count(1:6);
+alnHsa = aln;
+alnHsa.seq = aln.seq(1:6, :);
+alnHsa.seqnames = aln.seqnames(1:6);
+alnHsa.locus = aln.locus(1:6);
+alnHsa.population = aln.population(1:6);
+alnHsa.count = aln.count(1:6);
 
 %%
 % REPORTPOLYSITES reports polymorphic sites of sequences

@@ -1,4 +1,4 @@
-function [Ds,Fs] = fuli93dsfs_test(aln,switchoutput)
+function [Ds, Fs] = fuli93dsfs_test(aln, switchoutput)
 %FULI93DSFS_TEST - Fu and Li's D* and F* tests of neutrality
 % D* test statistic
 % The D* test statistic is based on the differences between hs, the number
@@ -36,26 +36,27 @@ function [Ds,Fs] = fuli93dsfs_test(aln,switchoutput)
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-01-06 13:39:38 -0600 (Sun, 06 Jan 2013) $
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if (nargin<2), switchoutput=0; end
+if (nargin < 2), switchoutput = 0; end
 
-if (isstruct(aln)), seq=aln.seq; else seq=aln; end
+if (isstruct(aln)), seq = aln.seq;
+else seq = aln;
+end
 
-[n,m]=size(seq);
-if n<4
-    error('Four or more sequences are need to compute and Fu and Li''s statistics'); 
+[n, m] = size(seq);
+if n < 4
+    error('Four or more sequences are need to compute and Fu and Li''s statistics');
 end
 
 [k] = thetapi(aln);
-[S,~,m_num,~,sm_num] = countsegregatingsites(aln);
+[S, ~, m_num, ~, sm_num] = countsegregatingsites(aln);
 
 
-
-[Ds,Fs]=fuli93dsfs(n,m_num,k,sm_num);
+[Ds, Fs] = fuli93dsfs(n, m_num, k, sm_num);
 %[Ds,Fs]=fuli93dsfs(n,S,k,sn_num);
 
 % double SequenceStatistics::fuliD(const PolymorphismSequenceContainer & ingroup, const PolymorphismSequenceContainer & outgroup) {
@@ -86,36 +87,37 @@ end
 % F=stat_numF/stat_denF;
 
 
+if (nargout < 1),
+    i_dispheader('Fu and Li''s D* and F* Neutrality Test')
+    disp('Mode : Nucleotides');
+    disp('Gaps/Missing data : Complete Deletion');
 
-if (nargout<1),
-i_dispheader('Fu and Li''s D* and F* Neutrality Test')
-	disp('Mode : Nucleotides');
-	disp('Gaps/Missing data : Complete Deletion');
+    fprintf('No. of Sequences (n) : %d\n', n);
+    fprintf('No. of Sites (m) : %d\n', m);
+    fprintf('\n');
+    fprintf('No. of Segregating sites (S) : %d\n', S);
+    fprintf('Total number of mutations, (Eta) : %d\n', m_num);
+    fprintf('\n');
+    fprintf('Average number of nucleotide differences : %f\n', k); % scaled mutation rate theta (k)
+    fprintf('Nucleotide diversity (per site), Pi : %f\n', nucdiv(aln));
+    fprintf('\n');
+    %fprintf (['Diff = %f, s.e. = %f\n'], Diff, DiffSE);
 
-	fprintf('No. of Sequences (n) : %d\n', n);
-	fprintf('No. of Sites (m) : %d\n', m);
-	fprintf('\n');
-	fprintf('No. of Segregating sites (S) : %d\n', S);
-	fprintf('Total number of mutations, (Eta) : %d\n', m_num);
-	fprintf('\n');
-	fprintf('Average number of nucleotide differences : %f\n', k); % scaled mutation rate theta (k)
-	fprintf('Nucleotide diversity (per site), Pi : %f\n', nucdiv(aln));
-	fprintf('\n');
-	%fprintf (['Diff = %f, s.e. = %f\n'], Diff, DiffSE);
+    fprintf('Fu and Li''s D* = %f\n', Ds);
 
-	fprintf ('Fu and Li''s D* = %f\n', Ds);
+    [theta] = thetaw(aln);
+    [Ds_rep, Fs_rep] = fuli93dsfs_simu(n, 1000, theta, 0);
 
-	[theta] = thetaw(aln);
-	[Ds_rep,Fs_rep] = fuli93dsfs_simu(n,1000,theta,0);
-
-    p=2.*sum(Ds_rep>abs(Ds))./1000;
-	fprintf ('Statistical significance:\n P = %f%s\n',p,sigtag(p));
-	p=max(sum(Fs>Fs_rep),sum(Fs<Fs_rep))./1000;
-	fprintf ('Fu and Li''s F* = %f\n', Fs);
-	fprintf ('Statistical significance:\n P = %f%s\n',p,sigtag(p));
-i_dispfooter
+    p = 2 .* sum(Ds_rep > abs(Ds)) ./ 1000;
+    fprintf('Statistical significance:\n P = %f%s\n', p, sigtag(p));
+    p = max(sum(Fs > Fs_rep), sum(Fs < Fs_rep)) ./ 1000;
+    fprintf('Fu and Li''s F* = %f\n', Fs);
+    fprintf('Statistical significance:\n P = %f%s\n', p, sigtag(p));
+    i_dispfooter
 end
 
 if (switchoutput),
-    temp=Ds; Ds=Fs; Fs=temp;
+    temp = Ds;
+    Ds = Fs;
+    Fs = temp;
 end

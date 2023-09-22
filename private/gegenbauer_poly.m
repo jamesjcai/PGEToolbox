@@ -1,4 +1,4 @@
-function cx = gegenbauer_poly(n,alpha,x)
+function cx = gegenbauer_poly(n, alpha, x)
 % GEGENBAUER_POLY computes the Gegenbauer polynomials C(I,ALPHA)(X).
 %
 %  Discussion:
@@ -16,7 +16,7 @@ function cx = gegenbauer_poly(n,alpha,x)
 %
 %    C(0,ALPHA,X) = 1,
 %    C(1,ALPHA,X) = 2*ALPHA*X
-%    C(N,ALPHA,X) = (  ( 2*N-2+2*ALPHA) * X * C(N-1,ALPHA,X) 
+%    C(N,ALPHA,X) = (  ( 2*N-2+2*ALPHA) * X * C(N-1,ALPHA,X)
 %                    + (  -N+2-2*ALPHA)   *   C(N-2,ALPHA,X) ) / N
 %
 %  Restrictions:
@@ -30,10 +30,10 @@ function cx = gegenbauer_poly(n,alpha,x)
 %
 %  Norm:
 %
-%    Integral ( -1 <= X <= 1 ) 
+%    Integral ( -1 <= X <= 1 )
 %      ( 1 - X**2 )**( ALPHA - 0.5 ) * C(N,ALPHA,X)**2 dX
 %
-%    = PI * 2**( 1 - 2 * ALPHA ) * Gamma ( N + 2 * ALPHA ) 
+%    = PI * 2**( 1 - 2 * ALPHA ) * Gamma ( N + 2 * ALPHA )
 %      / ( N! * ( N + ALPHA ) * ( Gamma ( ALPHA ) )**2 )
 %
 %  Modified:
@@ -62,32 +62,31 @@ function cx = gegenbauer_poly(n,alpha,x)
 %    Input, real X, the point at which the polynomials are to be evaluated.
 %
 %    Output, real CX(1:N+1), the values of the first N+1 Gegenbauer
-%    polynomials at the point X.  
+%    polynomials at the point X.
 %
-  if ( alpha <= -0.5 )
-    fprintf ( 1, '\n' );
-    fprintf ( 1, 'GEGENBAUER_POLY - Fatal error!\n' );
-    fprintf ( 1, '  Illegal value of ALPHA = %f\n', alpha );
-    fprintf ( 1, '  but ALPHA must be greater than -0.5.\n' );
-    error ( 'GEGENBAUER_POLY - Fatal error!' );
-  end
+if (alpha <= -0.5)
+    fprintf(1, '\n');
+    fprintf(1, 'GEGENBAUER_POLY - Fatal error!\n');
+    fprintf(1, '  Illegal value of ALPHA = %f\n', alpha);
+    fprintf(1, '  but ALPHA must be greater than -0.5.\n');
+    error('GEGENBAUER_POLY - Fatal error!');
+end
 
-  if ( n < 0 )
+if (n < 0)
     cx = [];
     return
-  end
+end
 
-  cx(1) = 1.0;
+cx(1) = 1.0;
 
-  if ( n == 0 )
+if (n == 0)
     return
-  end
+end
 
-  cx(2) = 2.0E+00 * alpha * x;
+cx(2) = 2.0E+00 * alpha * x;
 
-  for i = 2 : n
-    cx(i+1) = (  (     2 * i - 2  + 2.0 * alpha ) * x * cx(i)     ...
-             +   (       - i + 2  - 2.0 * alpha ) *     cx(i-1) ) ...
-             /             i ;
-  end
-  
+for i = 2:n
+    cx(i+1) = ((2 * i - 2 + 2.0 * alpha) * x * cx(i) ...
+        +(-i + 2 - 2.0 * alpha) * cx(i-1)) ...
+        / i;
+end

@@ -1,8 +1,8 @@
-function [region,chrid]=select1000GenomesRegion
+function [region, chrid] = select1000GenomesRegion
 
 warning('Example inputs are used: CEU - Chr9:660000..760000');
-region='Chr9:660000-760000'
-chrid='9'
+region = 'Chr9:660000-760000'
+chrid = '9'
 
 %{
 chrset=textscan(num2str(1:22),'%s');
@@ -17,15 +17,14 @@ items(1).help = sprintf('Population descriptors:\nCEU: CEPH (Utah residents with
 
 
 items(2).name = 'START POSITION:   ';
-items(2).default = 0;        
+items(2).default = 0;
 items(2).values = {'1'};
 items(2).help = 'Search using a sequence name, gene name, locus, or other landmark.';
 
 items(3).name = 'END POSITION:     ';
-items(3).default = 0;        
+items(3).default = 0;
 items(3).values = {'50000'};
 items(3).help = '(max 10K region)';
-
 
 
 %title = 'Download from WWW.HAPMAP.ORG';
@@ -34,7 +33,7 @@ msg = sprintf('The Data Slicer provides an interface which allows users to get s
 out = CSEFlagDialog(items, title, msg);
 
 if ~(isempty(out)),
-	chrid=chrset{out(1).answer};
+    chrid=chrset{out(1).answer};
     startpos=str2double(out(2).answer);
     endpos=str2double(out(3).answer);
     %if endpos-startpos+1>10000
@@ -44,7 +43,7 @@ if ~(isempty(out)),
     %    return;
     %end
     region=sprintf('%s:%s-%s',chrid,...
-        deblank(out(2).answer),deblank(out(3).answer));	
+        deblank(out(2).answer),deblank(out(3).answer));
 else
     region='';
     chrid='';

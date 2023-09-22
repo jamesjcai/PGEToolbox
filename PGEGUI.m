@@ -9,14 +9,14 @@ function PGEGUI
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-   ButtonName = questdlg('What is your data type?', ...
-                         'Population Genetics & Evolution Toolbox', ...
-                         'Genotype', 'Haplotype','Sequence','Genotype');
-   switch ButtonName
-       case 'Genotype'
-           snptoolg
-       case 'Haplotype'
-           snptoolh
-       case 'Sequence'
-           seqtool
-   end
+ButtonName = questdlg('What is your data type?', ...
+    'Population Genetics & Evolution Toolbox', ...
+    'Genotype', 'Haplotype', 'Sequence', 'Genotype');
+switch ButtonName
+    case 'Genotype'
+        snptoolg
+    case 'Haplotype'
+        snptoolh
+    case 'Sequence'
+        seqtool
+end

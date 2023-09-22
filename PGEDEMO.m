@@ -26,7 +26,7 @@ pickI = input('Please select: ');
 
 switch (pickI)
     case (1)
-         playshow pge_demo1;
+        playshow pge_demo1;
     case (2)
-         playshow pge_demo2;
+        playshow pge_demo2;
 end

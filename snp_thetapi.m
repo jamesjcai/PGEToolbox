@@ -1,4 +1,4 @@
-function [thepi]=snp_thetapi(geno,mark,persite)
+function [thepi] = snp_thetapi(geno, mark, persite)
 %SNP_THETAPI - theta-pi from SNPs
 % Syntax: [thepi]=snp_thetapi(geno,mark,persite)
 
@@ -10,23 +10,23 @@ function [thepi]=snp_thetapi(geno,mark,persite)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if nargin<3, persite=0; end
-if nargin<2, mark=[]; end
+if nargin < 3, persite = 0; end
+if nargin < 2, mark = []; end
 
-[smpln]=snp_samplen(geno);
+[smpln] = snp_samplen(geno);
 
 [p] = snp_maf(geno);
 %p=p(p>0);   % maybe should get rid of MAF=0
-q=1-p;
+q = 1 - p;
 
-x=nansum(2.*p.*q);
-y=smpln/(smpln-1);
+x = nansum(2.*p.*q);
+y = smpln / (smpln - 1);
 
-thepi=x*y;
+thepi = x * y;
 %thepi2 = sum(smpln^2 .* p .* q) / (smpln*(smpln-1)/2);   % just the same
 % as above
 
 if persite
-   [L]=snp_markbplen(mark);
-   thepi=thepi/L;
+    [L] = snp_markbplen(mark);
+    thepi = thepi / L;
 end

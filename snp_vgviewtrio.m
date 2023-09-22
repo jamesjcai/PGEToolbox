@@ -18,7 +18,7 @@ function snp_vgviewtrio(geno)
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-04-23 23:03:55 -0500 (Tue, 23 Apr 2013) $
 % $LastChangedRevision: 530 $
 % $LastChangedBy: jcai $
@@ -32,7 +32,7 @@ function snp_vgviewtrio(geno)
 
 %[idx,geno]=snp_triosort(popid,geno);
 
-G=snp_hhgeno(geno);
+G = snp_hhgeno(geno);
 
 %G(find(G==1))=1; % blue = Homozygote-Common allele
 %G(find(G==2))=40; % yellow = Homozygote-Rare allele   3
@@ -40,48 +40,41 @@ G=snp_hhgeno(geno);
 %G(find(G==4))=24; % cyan = missing  2
 
 
-
-
-
-
-
-
 %G=sortrows(G);
-[n,m]=size(G);
+[n, m] = size(G);
 
-Z=nan(n,m*2);
+Z = nan(n, m*2);
 
 
-for k=1:2:m*2
-Z(1:3:n,k)=G(1:3:n,(k+1)/2);
-Z(2:3:n,k)=G(2:3:n,(k+1)/2);
-Z(3:3:n,k+1)=G(3:3:n,(k+1)/2);
+for k = 1:2:m * 2
+    Z(1:3:n, k) = G(1:3:n, (k + 1)/2);
+    Z(2:3:n, k) = G(2:3:n, (k + 1)/2);
+    Z(3:3:n, k+1) = G(3:3:n, (k + 1)/2);
 end
 
 
-
-G=Z;
+G = Z;
 %add extra row and column for pcolor
 %don't have to do this for imagesc
-G=cat(2,G,ones(n,1)*4);
-G=cat(1,G,ones(1,2*m+1)*4);
+G = cat(2, G, ones(n, 1)*4);
+G = cat(1, G, ones(1, 2*m+1)*4);
 
 
 pcolor(double(G))
 colormap('default');
-colorindx=jet;
+colorindx = jet;
 %colormap(colorindx([1,40,64,24],:));    %[40 yellow, 64 red, 24 cyan]
 %colormap([0 0 0; 1  1  0;...
 %          0.50196 0.50196 0.50196; 0 1 1]);    %[40 yellow, 64 red, 24 cyan]
 
-colormap([0 0 0.5625; 1 1 0; 0.5 0 0; 0.50196 0.50196 0.50196]);
+colormap([0, 0, 0.5625; 1, 1, 0; 0.5, 0, 0; 0.50196, 0.50196, 0.50196]);
 %colormap([blue; yellow; red; gray]);
 
 axis ij
-x=axis;
-t=max(x(2),x(4));
-x(2)=t;
-x(4)=t;
+x = axis;
+t = max(x(2), x(4));
+x(2) = t;
+x(4) = t;
 axis(x);
 axis equal
 %axis off

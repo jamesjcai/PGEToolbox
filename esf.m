@@ -1,9 +1,9 @@
-function p=esf(nj)
+function p = esf(nj)
 
 % Ewens?sampling formula, the probability distribution of a configuration
 % of alleles in a sample of genes under the infinitely-many-alleles model
 % of mutation, is proved by a direct combinatorial argument.
-    
+
 % [8] W.J. Ewens, The sampling theory of selectively neutral alleles,
 % Theoret. Popul. Biol. 3 (1972), pp. 87?12. Article | PDF (1165 K) | View
 % Record in Scopus | Cited By in Scopus (613)
@@ -26,13 +26,13 @@ function p=esf(nj)
 
 %if nargin<2, theta=1; end
 
-n=sum(nj);
-k=length(nj);
-x=stirling1(n,n);
-Stir=abs(x(n,:));
+n = sum(nj);
+k = length(nj);
+x = stirling1(n, n);
+Stir = abs(x(n, :));
 
 %p=factorial(n)./(Stir(k)*factorial(k)*prod(nj));
-p=prod(k+1:n)./(Stir(k)*prod(nj));
+p = prod(k+1:n) ./ (Stir(k) * prod(nj));
 
 %{
 i=n:-1:k+1;
@@ -40,7 +40,7 @@ if length(i)>=length(nj)
     p1=prod(i(length(nj)+1:length(i))).*prod(i(1:length(nj))./nj)./Stir(k);
 else
     p1=prod(i./nj(1:length(i)))*prod(nj(length(i)+1:length(nj)))./Stir(k);
-end    
+end
 %}
 
 

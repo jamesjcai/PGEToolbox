@@ -17,11 +17,10 @@ function [G] = snp_012geno(geno)
 %disp('4   : Undetermined ')
 
 
-
 %0 - AA   major allele
 %1 - Aa
 %2 - aa   minor allele
-G=ones(size(preG));
-G(preG==1)=0;   %disp('1   : Homozygote-Common allele ')
-G(preG==2)=2;   %disp('2   : Homozygote-Rare allele')
-G(preG==4)=nan;
+G = ones(size(preG));
+G(preG == 1) = 0; %disp('1   : Homozygote-Common allele ')
+G(preG == 2) = 2; %disp('2   : Homozygote-Rare allele')
+G(preG == 4) = nan;

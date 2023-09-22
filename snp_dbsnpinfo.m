@@ -1,4 +1,4 @@
-function [D,txt]=snp_dbsnpinfo(rsid,datasrc)
+function [D, txt] = snp_dbsnpinfo(rsid, datasrc)
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
@@ -8,48 +8,46 @@ function [D,txt]=snp_dbsnpinfo(rsid,datasrc)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if nargin<2
-    datasrc='FLT';
+if nargin < 2
+    datasrc = 'FLT';
 end
 %datasrc='DocSet';
 
-rsidx=sprintf('%d,',rsid);
+rsidx = sprintf('%d,', rsid);
 switch datasrc
     case 'FLT'
-urlFetch=sprintf('http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=snp&retmode=text&report=FLT&id=%s',...
-    rsidx);
+        urlFetch = sprintf('http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=snp&retmode=text&report=FLT&id=%s', ...
+            rsidx);
     case 'DocSet'
-urlFetch=sprintf('http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=snp&retmode=text&report=DocSet&id=%s,',...
-    rsidx);
+        urlFetch = sprintf('http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=snp&retmode=text&report=DocSet&id=%s,', ...
+            rsidx);
 end
 
 try
-    pagecontent=urlread(urlFetch);
+    pagecontent = urlread(urlFetch);
 catch
     %errordlg(lasterr)
     disp(urlFetch)
     error(lasterror)
 end
-    
-txt = char(strread(pagecontent,'%s','delimiter','\n','whitespace',''));
+
+txt = char(strread(pagecontent, '%s', 'delimiter', '\n', 'whitespace', ''));
 txt = cellstr(txt);
-mt = find(cellfun('isempty',txt));
-txt(mt)=[];
-idx=find(cellfun('isempty',strfind(txt,'SNP | alleles'))==0);
+mt = find(cellfun('isempty', txt));
+txt(mt) = [];
+idx = find(cellfun('isempty', strfind(txt, 'SNP | alleles')) == 0);
 
 
-    
-if size(idx,1)~=length(rsid)
+if size(idx, 1) ~= length(rsid)
     urlFetch
     rsid
     txt(idx)
     error('SNP_DBSNPINFO cannot parse retrieved information.')
 end
-txt=txt(idx);
+txt = txt(idx);
 
 
-
-for k=1:length(txt)
-    allele{k}=txt{k}(:,16:18);
-end    
-D.allele=allele;
+for k = 1:length(txt)
+    allele{k} = txt{k}(:, 16:18);
+end
+D.allele = allele;

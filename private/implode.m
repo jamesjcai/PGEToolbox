@@ -1,4 +1,4 @@
-function string=implode(pieces,delimiter)
+function string = implode(pieces, delimiter)
 %IMPLODE    Joins strings with delimiter in between.
 %   IMPLODE(PIECES,DELIMITER) returns a string containing all the
 %   strings in PIECES joined with the DELIMITER string in between.
@@ -25,16 +25,16 @@ function string=implode(pieces,delimiter)
 %         (and providing the solution!)
 
 if isempty(pieces) % no pieces to join, return empty string
-   string='';
-   
+    string = '';
+
 else % no need for delimiters yet, so far there's only one piece
-   string=pieces{1};   
+    string = pieces{1};
 end
 
-l=length(pieces);
-p=1;
-while p<l % more than one piece to join with the delimiter, the interesting case
-   p=p+1;
-	%string=strcat(string,delimiter,pieces{p});
-    string=[string delimiter pieces{p}];
+l = length(pieces);
+p = 1;
+while p < l % more than one piece to join with the delimiter, the interesting case
+    p = p + 1;
+    %string=strcat(string,delimiter,pieces{p});
+    string = [string, delimiter, pieces{p}];
 end

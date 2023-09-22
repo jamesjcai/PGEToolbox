@@ -1,4 +1,4 @@
-function [chrid,startn,endn]=chrloc2num(loctxt)
+function [chrid, startn, endn] = chrloc2num(loctxt)
 %chrloc2num - converts 'chr11:79399570-79399751' to 11,79399570,79399751
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
@@ -10,12 +10,12 @@ function [chrid,startn,endn]=chrloc2num(loctxt)
 % $LastChangedBy: jcai $
 
 %loctxt='chr11:79399570-79399751';
-loctxt=strrep(loctxt, ',', '');
-loctxt=lower(loctxt);
-idx=strfind(loctxt,':');
-chrid=str2double(loctxt(4:idx-1));
+loctxt = strrep(loctxt, ',', '');
+loctxt = lower(loctxt);
+idx = strfind(loctxt, ':');
+chrid = str2double(loctxt(4:idx-1));
 
-loctxt=loctxt(idx+1:end);
-idx=strfind(loctxt,'-');
-startn=str2double(loctxt(1:idx-1));
-endn=str2double(loctxt(idx+1:end));
+loctxt = loctxt(idx+1:end);
+idx = strfind(loctxt, '-');
+startn = str2double(loctxt(1:idx-1));
+endn = str2double(loctxt(idx+1:end));

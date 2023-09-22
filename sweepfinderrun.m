@@ -1,4 +1,4 @@
-function [stats]=sweepfinderrun(geno,mark,gridsize,linestyle)
+function [stats] = sweepfinderrun(geno, mark, gridsize, linestyle)
 %SWEEPFINDERRUN - executes SWEEPFINDER
 %
 %sweepfinderrun(geno,mark)
@@ -26,47 +26,46 @@ function [stats]=sweepfinderrun(geno,mark,gridsize,linestyle)
 % $LastChangedRevision: 529 $
 % $LastChangedBy: jcai $
 
-if nargin<4
-    linestyle='-';
+if nargin < 4
+    linestyle = '-';
 end
-if nargin<3
-    gridsize=50;
+if nargin < 3
+    gridsize = 50;
 end
 
 %[exedir,dlgshown]=pge_getprgmdir(sprintf('%s_prgmdir',mfilename));
 %if isempty(exedir)||dlgshown, return; end
 
-oldpath=pwd;
+oldpath = pwd;
 
 cdpge;
 cd('addins/sweepfinder');
 %cd(exedir);
-[status]=snp_writesweepfinder(geno,mark,'input.tab');
-if status~=1
+[status] = snp_writesweepfinder(geno, mark, 'input.tab');
+if status ~= 1
     cd(oldpath);
     error('Error writing SweepFinder input file.');
 end
 
-cmd=sprintf('SweepFinder -s %d input.tab output.tab',gridsize);
+cmd = sprintf('SweepFinder -s %d input.tab output.tab', gridsize);
 %fprintf('Running: %s\n\n',cmd);
 system(cmd);
 
-[vpos,vclr,valpha]=textread('output.tab','%f%f%f','headerlines',1);
-if nargout<1
-    vpos=vpos./1000000;
+[vpos, vclr, valpha] = textread('output.tab', '%f%f%f', 'headerlines', 1);
+if nargout < 1
+    vpos = vpos ./ 1000000;
     %figure;
     %subplot(2,1,1)
-            %plot(vpos,vclr,'LineSmoothing','on');
-    plot(vpos,vclr,linestyle);
-    xlim([min(vpos(:)),max(vpos(:))]);
+    %plot(vpos,vclr,'LineSmoothing','on');
+    plot(vpos, vclr, linestyle);
+    xlim([min(vpos(:)), max(vpos(:))]);
     %ylabel('CLR (Composite Likelihood Ratio)')
     ylabel('CLR')
     xlabel('Position (Mb)')
 else
-    stats=struct;
-    stats.position=vpos;
-    stats.CLR=vclr;
-    stats.alpha=valpha;
+    stats = struct;
+    stats.position = vpos;
+    stats.CLR = vclr;
+    stats.alpha = valpha;
 end
 cd(oldpath);
-

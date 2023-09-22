@@ -1,4 +1,4 @@
-function [Fs,StrobeckS] = fu97fs_largen(aln)
+function [Fs, StrobeckS] = fu97fs_largen(aln)
 %FU97FS - Compute Fu's Fs statistic
 %  Syntax: [Fs,StrobeckS] = fu97fs(aln)
 %
@@ -12,62 +12,63 @@ function [Fs,StrobeckS] = fu97fs_largen(aln)
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-01-06 13:39:38 -0600 (Sun, 06 Jan 2013) $
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
 
-if (isstruct(aln)), seq=aln.seq; else seq=aln; end
+if (isstruct(aln)), seq = aln.seq;
+else seq = aln;
+end
 
-Fs=nan; StrobeckS=nan;
-theta=thetapi(seq);
-if (theta~=0)
-    n=size(seq,1);
-	k0=counthaplotype(seq);
+Fs = nan;
+StrobeckS = nan;
+theta = thetapi(seq);
+if (theta ~= 0)
+    n = size(seq, 1);
+    k0 = counthaplotype(seq);
 
-	% There is an error in original Fu (97) paper
-	
-   
-	% S_k is the coefficient of theta_k in S_n (Ewens 1972; Karlin and Mcgregor 1972)
-	%
-	%S(n,k) is the coefficient of theata^k in theata(n), itahat is, is the abaolute
-	%value of a Stirling number of the first kind.
+    % There is an error in original Fu (97) paper
+
+
+    % S_k is the coefficient of theta_k in S_n (Ewens 1972; Karlin and Mcgregor 1972)
+    %
+    %S(n,k) is the coefficient of theata^k in theata(n), itahat is, is the abaolute
+    %value of a Stirling number of the first kind.
 
     %theta,n,k
-    
-    
-	X=stirling1(n,n); Stir=X(n,:);
-	%Stir=mstirling(n-1); Stir=fliplr(Stir);
-	Sn=theta+(0:n-1);
-    k=k0:n;
-	Sk=abs(Stir(k));
-    Sktheta=[Sk,theta*ones(1,k0-1)];
-    
-    
+
+
+    X = stirling1(n, n);
+    Stir = X(n, :);
+    %Stir=mstirling(n-1); Stir=fliplr(Stir);
+    Sn = theta + (0:n - 1);
+    k = k0:n;
+    Sk = abs(Stir(k));
+    Sktheta = [Sk, theta * ones(1, k0-1)];
+
+
     %Sn1=Sktheta./Sn;
-    
-    
-    Sp=sum(Sk.*theta.^k./Sn);
-	Fs=log(Sp/(1-Sp));
-    
-    if nargout~=1
-        k=1:k0;
-        Sk=abs(Stir(k));
-        StrobeckS=sum(Sk.*theta.^k./Sn);
+
+
+    Sp = sum(Sk.*theta.^k./Sn);
+    Fs = log(Sp/(1 - Sp));
+
+    if nargout ~= 1
+        k = 1:k0;
+        Sk = abs(Stir(k));
+        StrobeckS = sum(Sk.*theta.^k./Sn);
     end
 end
 
-if nargout<1
-i_dispheader('Fu''s Fs Test and Strobeck''s S Test');
-	fprintf ('Fu''s Fs statistic : %f\n',Fs);
-	fprintf ('Strobeck''s S statistic : %f\n',StrobeckS);
-i_dispfooter;
+if nargout < 1
+    i_dispheader('Fu''s Fs Test and Strobeck''s S Test');
+    fprintf('Fu''s Fs statistic : %f\n', Fs);
+    fprintf('Strobeck''s S statistic : %f\n', StrobeckS);
+    i_dispfooter;
 end
-   
-%Fu's Fs was negative (Fs = ?92.81; P < 0.0001) which occurs when an excess
-%of rare haplotypes is present and suggests that either population expansion 
-%or genetic hitchhiking has taken place (Fu 1997).
 
-    
-    
+%Fu's Fs was negative (Fs = ?92.81; P < 0.0001) which occurs when an excess
+%of rare haplotypes is present and suggests that either population expansion
+%or genetic hitchhiking has taken place (Fu 1997).

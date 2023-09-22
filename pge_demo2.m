@@ -1,4 +1,4 @@
-%%PGEToolbox DEMO - SNP Analysis   
+%%PGEToolbox DEMO - SNP Analysis
 % Welcome to PGEToolbox.  This is a demonstration of
 % PGEToolbox's functions for SNP analysis.
 %
@@ -11,7 +11,6 @@
 % $LastChangedBy: jcai $
 
 
-
 cd(fileparts(which('pge_demo2')))
 % Current working directory has been changed.
 
@@ -19,9 +18,8 @@ cd(fileparts(which('pge_demo2')))
 % First, let's just load an example HapMap genotype data from human BRCA2
 % locus
 
-filename=fullfile('example_data','brca2.hmp');
-[genodata,markinfo] = snp_readhapmap(filename);
-
+filename = fullfile('example_data', 'brca2.hmp');
+[genodata, markinfo] = snp_readhapmap(filename);
 
 %%
 % Now let's view the marker information in this collection of SNPs
@@ -34,7 +32,7 @@ snp_viewmark(markinfo)
 % Now we plot relative position of SNPs on chromosome, the height of bars
 % indicates MAF of SNPs.
 
-markinfo.maf=snp_maf(genodata);
+markinfo.maf = snp_maf(genodata);
 snp_plotmarkpos(markinfo)
 
 %%
@@ -48,14 +46,13 @@ snp_vgview(genodata)
 %%
 % SNP_PREDHET computes predicted percentage of heterozygosity individuals.
 
-h=snp_predhet(genodata);
+h = snp_predhet(genodata);
 h'
 
 %%
 % Tajima's D test for SNPs.
 
 snp_tajima89d(genodata);
-
 
 %%
 % SNP_FREQPIE produces a pie chart of allele and genotype frequencies among
@@ -68,8 +65,8 @@ snp_tajima89d(genodata);
 % Here core is 28-30. Position of first core marker is 28,
 % position of last core marker is 30.
 
-load('example_data/phasedhaplotype','haplodata');
-snp_ehh(haplodata,1:size(haplodata,2),128);
+load('example_data/phasedhaplotype', 'haplodata');
+snp_ehh(haplodata, 1:size(haplodata, 2), 128);
 
 %%
 % iHS (Integrated Haplotype Score) is a statistic that has
@@ -80,7 +77,7 @@ snp_ehh(haplodata,1:size(haplodata,2),128);
 
 figure;
 load('example_data/ihs_result_example', 'ihs', 'markinfo');
-plot(markinfo.pos,ihs,'.');
+plot(markinfo.pos, ihs, '.');
 ylabel('|iHS|')
 xlabel('Genomic Postion')
 title('iHS Scatter Plot')
@@ -88,4 +85,3 @@ hline(2.0)
 
 %%
 % Thank you for viewing this introduction to PGEToolbox SNP funcations.
-

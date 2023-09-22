@@ -1,4 +1,4 @@
-function [y]=stnpdf(x,s,Ne)
+function [y] = stnpdf(x, s, Ne)
 % STNPDF - stationary distribution of the frequency P of a newly arisen
 % mutation under selection
 % [y]=stnpdf(x,s,Ne)
@@ -6,7 +6,7 @@ function [y]=stnpdf(x,s,Ne)
 
 %[Fisher 1930, Wright, 1969]
 %
-% Wright 1937 - 
+% Wright 1937 -
 % http://www.pnas.org/cgi/reprint/23/6/307
 %
 %
@@ -27,15 +27,13 @@ function [y]=stnpdf(x,s,Ne)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if nargin==3, Sx=2*Ne*s; end
-if nargin==2, Sx=s; end
+if nargin == 3, Sx = 2 * Ne * s; end
+if nargin == 2, Sx = s; end
 
-Q1=1-exp(-2*Sx.*(1-x));
-Q2=1-exp(-2*Sx);
-Q3=2./(x.*(1-x));
+Q1 = 1 - exp(-2*Sx.*(1 - x));
+Q2 = 1 - exp(-2*Sx);
+Q3 = 2 ./ (x .* (1 - x));
 
-y=Q3.*(Q1./Q2);
+y = Q3 .* (Q1 ./ Q2);
 
 %2*(1-exp(-a.*(1-p)))./((1-exp(-a)).*(p.*(1-p)))
-
-

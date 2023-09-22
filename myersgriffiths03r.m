@@ -1,4 +1,4 @@
-function [rh,rs]=myersgriffiths03r
+function [rh, rs] = myersgriffiths03r
 %see also hudsonkaplan85rm
 %http://www.genetics.org/cgi/reprint/163/1/375
 

@@ -1,15 +1,15 @@
-function [marker,popcode]=selectMarkerPopcode(defaulttxt)
+function [marker, popcode] = selectMarkerPopcode(defaulttxt)
 
 warning('Example inputs are used: CEU - Chr9:660000..760000');
-marker='Chr9:660000..760000';
-popcode='CEU';
+marker = 'Chr9:660000..760000';
+popcode = 'CEU';
 
 %{
 if nargin<1
     defaulttxt='';
 end
 items(1).name = 'MARKER or REGION:   ';
-items(1).default = 0;        
+items(1).default = 0;
 items(1).values = {defaulttxt};
 items(1).help = 'Search using a sequence name, gene name, locus, or other landmark.';
 
@@ -28,8 +28,8 @@ msg = sprintf(['The wildcard character * is allowed. \n\nExamples: Chr9:660000..
 out = CSEFlagDialog(items, title, msg);
 
 if ~(isempty(out)),
-	marker=deblank(out(1).answer);
-	popcode=popset{out(2).answer};
+    marker=deblank(out(1).answer);
+    popcode=popset{out(2).answer};
 else
     marker='';
     popcode='';

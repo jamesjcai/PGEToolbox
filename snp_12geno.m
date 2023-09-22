@@ -1,5 +1,5 @@
 function [geno] = snp_12geno(geno)
-%SNP_12GENO - Simplify GENO coding convention into 1 and 2. 
+%SNP_12GENO - Simplify GENO coding convention into 1 and 2.
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
@@ -9,32 +9,31 @@ function [geno] = snp_12geno(geno)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-n=snp_marklen(geno);
-for k=1:n
-    gen=geno(:,2*k-1:2*k);
-    genx=gen(:);
-    genx(genx>4)=[];
-    geny=gen;
+n = snp_marklen(geno);
+for k = 1:n
+    gen = geno(:, 2*k-1:2*k);
+    genx = gen(:);
+    genx(genx > 4) = [];
+    geny = gen;
 
-   
-    if max(genx)==min(genx)
-        geny(:)=1;
+
+    if max(genx) == min(genx)
+        geny(:) = 1;
     else
-    [a]=unique(genx);
-    if length(a)==2
-        if(sum(genx==a(1))>=sum(genx==a(2)))  
-            geny(gen==a(1))=1;
-            geny(gen==a(2))=2;
+        [a] = unique(genx);
+        if length(a) == 2
+            if (sum(genx == a(1)) >= sum(genx == a(2)))
+                geny(gen == a(1)) = 1;
+                geny(gen == a(2)) = 2;
+            else
+                geny(gen == a(1)) = 2;
+                geny(gen == a(2)) = 1;
+            end
         else
-            geny(gen==a(1))=2;
-            geny(gen==a(2))=1;
+            error('Not all SNPs are biallelic!')
         end
-    else
-        error('Not all SNPs are biallelic!')
     end
-    end
-    geny(gen>4)=0;
+    geny(gen > 4) = 0;
     %geno2=[geno2,geny];
-    geno(:,2*k-1:2*k)=geny;
+    geno(:, 2*k-1:2*k) = geny;
 end
-

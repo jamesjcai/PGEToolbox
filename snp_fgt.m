@@ -1,4 +1,4 @@
-function [rmin,D]=snp_fgt(haplodata,showit)
+function [rmin, D] = snp_fgt(haplodata, showit)
 %SNP_FGT - Four-gamete test for SNP haplotypes
 % REF: (Hudson and Kaplan, 1985)
 
@@ -10,11 +10,10 @@ function [rmin,D]=snp_fgt(haplodata,showit)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if nargin<2, showit=0; end
+if nargin < 2, showit = 0; end
 
-if nargout<1
-    hudsonkaplan85rm(haplodata,showit);
+if nargout < 1
+    hudsonkaplan85rm(haplodata, showit);
 else
-    [rmin,D]=hudsonkaplan85rm(haplodata,showit);
+    [rmin, D] = hudsonkaplan85rm(haplodata, showit);
 end
-

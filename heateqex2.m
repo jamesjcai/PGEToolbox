@@ -13,21 +13,21 @@ function heateqex2
 
 %this time with variable conductivity, 21 mesh points
 
-m = 0;  %This simply means geometry is linear.
+m = 0; %This simply means geometry is linear.
 
-x = linspace(-5,5,21);
+x = linspace(-5, 5, 21);
 
-t = linspace(0,4,81);
+t = linspace(0, 4, 81);
 
-sol = pdepe(m,@pdex,@pdexic,@pdexbc,x,t);
+sol = pdepe(m, @pdex, @pdexic, @pdexbc, x, t);
 
 % Extract the first solution component as u.
 
-u = sol(:,:,1);
+u = sol(:, :, 1);
 
 % A surface plot is often a good way to study a solution.
 
-surf(x,t,u)   
+surf(x, t, u)
 
 title('Numerical solution computed with 21 mesh points in x.')
 
@@ -37,7 +37,7 @@ xlabel('x'), ylabel('t'), zlabel('u')
 
 figure
 
-plot(x,u(end,:))
+plot(x, u(end, :))
 
 title('Solution at t = 4')
 
@@ -45,28 +45,28 @@ xlabel('x'), ylabel('u(x,4)')
 
 % --------------------------------------------------------------
 
-function [c,f,s] = pdex(x,t,u,DuDx)
+    function [c, f, s] = pdex(x, t, u, DuDx)
 
-c = 1;
+        c = 1;
 
-f = (1 + (x/5).^2)*DuDx;% flux is variable conductivity times u_x
+        f = (1 + (x / 5).^2) * DuDx; % flux is variable conductivity times u_x
 
-s = 0;
+        s = 0;
 
-% --------------------------------------------------------------
+        % --------------------------------------------------------------
 
-function u0 = pdexic(x)
+            function u0 = pdexic(x)
 
-% initial condition at t = 0
+                % initial condition at t = 0
 
-u0 = 20+5*sign(x);
+                u0 = 20 + 5 * sign(x);
 
-% --------------------------------------------------------------
+                % --------------------------------------------------------------
 
-function [pl,ql,pr,qr] = pdexbc(xl,ul,xr,ur,t)
-% q's are zero since we have Dirichlet conditions
-% pl = 0 at the left, pr = 0 at the right endpoint
-pl = ul-15;
-ql = 0;
-pr = ur-25;
-qr = 0;
+                    function [pl, ql, pr, qr] = pdexbc(xl, ul, xr, ur, t)
+                        % q's are zero since we have Dirichlet conditions
+                        % pl = 0 at the left, pr = 0 at the right endpoint
+                        pl = ul - 15;
+                        ql = 0;
+                        pr = ur - 25;
+                        qr = 0;

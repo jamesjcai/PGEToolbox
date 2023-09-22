@@ -1,4 +1,4 @@
-function [c]=gegenbauerc(n,m,x)
+function [c] = gegenbauerc(n, m, x)
 %GegenbauerC[n, m, x] gives the n-th Gegenbauer polynomial in x for parameter m.
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
@@ -9,5 +9,5 @@ function [c]=gegenbauerc(n,m,x)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-cx = gegenbauer_poly(n,m,x);
-c=cx(end);
+cx = gegenbauer_poly(n, m, x);
+c = cx(end);

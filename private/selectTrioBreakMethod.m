@@ -1,4 +1,4 @@
-function [methodtype]=selectTrioBreakMethod
+function [methodtype] = selectTrioBreakMethod
 
 prompt = sprintf('SELECT TRIO TYPE:\n1 = HapMap Panel: Yoruba-30-trios\n2 = HapMap Panel: CEPH-30-trios\n3 = Every 3rd Individual\n');
 methodtype = input(prompt);
@@ -30,20 +30,19 @@ title = 'Trio Breaking Method';
 out = CSEFlagDialog(items, title);
 
 
-
 if ~(isempty(out)),
     if out(1).answer
-    if(out(2).answer==1)
+        if(out(2).answer==1)
         methodtype=1;
-    elseif(out(3).answer==1)
+        elseif(out(3).answer==1)
         methodtype=2;
-    elseif(out(4).answer==1)
+        elseif(out(4).answer==1)
         methodtype=3;
-    end
-    else
-        methodtype=[];
     end
 else
     methodtype=[];
+end
+else
+methodtype=[];
 end
 %}

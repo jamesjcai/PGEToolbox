@@ -1,4 +1,4 @@
-function haploviewrun(genodata,gmarkinfo,method)
+function haploviewrun(genodata, gmarkinfo, method)
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
@@ -8,41 +8,41 @@ function haploviewrun(genodata,gmarkinfo,method)
 % $LastChangedRevision: 529 $
 % $LastChangedBy: jcai $
 
-if nargin<3
-    method='GAB';
+if nargin < 3
+    method = 'GAB';
 end
-    % validmethods={'GAB','GAM','SPI'};
-    % for details, see the "Block Output Options" section of the Haploview
-    % Manual.
-    switch upper(method)
-        case 'GAB'   % (Gabriel et al)
-            outfile='input.ped.GABRIELblocks';
-        case 'GAM'   % (4 gamete blocks)
-            outfile='input.ped.4GAMblocks';
-        case 'SPI'   % (solid spine blocks)
-            outfile='input.ped.SPINEblocks';
-        otherwise
-            error('Invalid METHOD option.');
-    end
+% validmethods={'GAB','GAM','SPI'};
+% for details, see the "Block Output Options" section of the Haploview
+% Manual.
+switch upper(method)
+    case 'GAB' % (Gabriel et al)
+        outfile = 'input.ped.GABRIELblocks';
+    case 'GAM' % (4 gamete blocks)
+        outfile = 'input.ped.4GAMblocks';
+    case 'SPI' % (solid spine blocks)
+        outfile = 'input.ped.SPINEblocks';
+    otherwise
+        error('Invalid METHOD option.');
+end
 
 
-oldpath=pwd;
-cdpge; cd('addins/Haploview');
+oldpath = pwd;
+cdpge;
+cd('addins/Haploview');
 
 %[exedir,dlgshown]=pge_getprgmdir(sprintf('%s_prgmdir',mfilename));
 %if isempty(exedir)||dlgshown, return; end
 %cd(exedir);
 
-snp_writelinkage(genodata,gmarkinfo,'input.ped');
-fid=fopen('input.map','w');
-for k=1:length(gmarkinfo.pos)
-    fprintf(fid,'%s\t%d\n',gmarkinfo.rsid{k},gmarkinfo.pos(k));
+snp_writelinkage(genodata, gmarkinfo, 'input.ped');
+fid = fopen('input.map', 'w');
+for k = 1:length(gmarkinfo.pos)
+    fprintf(fid, '%s\t%d\n', gmarkinfo.rsid{k}, gmarkinfo.pos(k));
 end
 fclose(fid);
-cmdline=sprintf('java -jar Haploview.jar -n -pedfile input.ped -info input.map -skipcheck -blockoutput %s',method);
+cmdline = sprintf('java -jar Haploview.jar -n -pedfile input.ped -info input.map -skipcheck -blockoutput %s', method);
 system(cmdline);
 
 %[data]=i_parseblockfile(outfile);
 
 cd(oldpath);
-

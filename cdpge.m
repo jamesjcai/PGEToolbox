@@ -1,4 +1,4 @@
-function [pw1,pw0]=cdpge(isconfirmed)
+function [pw1, pw0] = cdpge(isconfirmed)
 %CDPGE - Changes to PGEToolbox directory
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
@@ -10,22 +10,22 @@ function [pw1,pw0]=cdpge(isconfirmed)
 % $LastChangedBy: jcai $
 
 if nargin < 1
-    isconfirmed=true;
+    isconfirmed = true;
 end
-pw0=pwd;
-pw1=fileparts(which(mfilename));
-if ~strcmp(pw0,pw1) && ~isconfirmed
-    [selectedButton]=uigetpref('PGEToolbox',... % Group
-           'cdpge_ask',...                               % Preference
-           'Changing Working Directory',...              % Window title
-           {'Do you want to change current working directory to PGEToolbox directory?'},...
-           {'always','never';'Yes','No'},...       % Values and button strings
-           'ExtraOptions','Cancel',...             % Additional button
-           'DefaultButton','Yes');
+pw0 = pwd;
+pw1 = fileparts(which(mfilename));
+if ~strcmp(pw0, pw1) && ~isconfirmed
+    [selectedButton] = uigetpref('PGEToolbox', ... % Group
+    'cdpge_ask', ... % Preference
+    'Changing Working Directory', ... % Window title
+    {'Do you want to change current working directory to PGEToolbox directory?'}, ...
+        {'always', 'never'; 'Yes', 'No'}, ... % Values and button strings
+    'ExtraOptions', 'Cancel', ... % Additional button
+    'DefaultButton', 'Yes');
     switch selectedButton
-        case {'always','Yes'}
+        case {'always', 'Yes'}
             cd(pw1);
-        case {'never','No','Cancel'}
+        case {'never', 'No', 'Cancel'}
             % do nothing
     end
 else

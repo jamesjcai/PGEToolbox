@@ -1,4 +1,4 @@
-function [t,tvar] = thetapi(aln,persite,fromsfs)
+function [t, tvar] = thetapi(aln, persite, fromsfs)
 %THETAPI - Theta from nucleotide diversity
 %i.e., Average number of nucleotide differences
 %
@@ -20,62 +20,61 @@ function [t,tvar] = thetapi(aln,persite,fromsfs)
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-01-06 13:39:38 -0600 (Sun, 06 Jan 2013) $
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if(nargin<3)
-    fromsfs=0;
+if (nargin < 3)
+    fromsfs = 0;
 end
-if(nargin<2)
-    persite=0;
+if (nargin < 2)
+    persite = 0;
 end
-if (isstruct(aln)), seq=aln.seq; else seq=aln; end
+if (isstruct(aln)), seq = aln.seq;
+else seq = aln;
+end
 
 if (fromsfs)
-    [t,tvar] = i_thetapi_sfs(seq);
+    [t, tvar] = i_thetapi_sfs(seq);
 else
-    [t,tvar] = i_thetapi_meannucdiff(seq);
+    [t, tvar] = i_thetapi_meannucdiff(seq);
 end
 
 if (persite),
-    m=size(seq,2);
-    t=t/m;
+    m = size(seq, 2);
+    t = t / m;
 end
 
 
-
-function [k,kvar] = i_thetapi_sfs(seq)
-%calculate theta_pi from SFS
-    [freqall,n] = sfs(seq);
-    %freqall looks like [3 2 1 1 1 0 0 0 0];
-    nx=1:(n-1);
-    k=2*sum((nx.*(n-nx)).*freqall)./(n*(n-1));
-    if (nargout>1),
-    	kvar=((n+1)*k)/(3*(n-1))+(2*(n^2+n+3)*k^2)/(9*n*(n-1));    % Tajima (1983) eq.
-    end
-
+    function [k, kvar] = i_thetapi_sfs(seq)
+        %calculate theta_pi from SFS
+        [freqall, n] = sfs(seq);
+        %freqall looks like [3 2 1 1 1 0 0 0 0];
+        nx = 1:(n - 1);
+        k = 2 * sum((nx .* (n - nx)).*freqall) ./ (n * (n - 1));
+        if (nargout > 1),
+            kvar = ((n + 1) * k) / (3 * (n - 1)) + (2 * (n^2 + n + 3) * k^2) / (9 * n * (n - 1)); % Tajima (1983) eq.
+        end
 
 
-function [k,kvar] = i_thetapi_meannucdiff(seq)
-%calculate theta_pi from average number of nucleotide differences
-% k (Tajima 1983, equation A3).
+            function [k, kvar] = i_thetapi_meannucdiff(seq)
+                %calculate theta_pi from average number of nucleotide differences
+                % k (Tajima 1983, equation A3).
 
-    n=size(seq,1);
-    % given n DNA seq, we can estimate the scaled mutation rate theta by
-    % k = (n!/2!*(n-2)!)^-1 * groupdiffs
-    D=0;
-    for i=1:n-1
-    for j=i+1:n
-    	p=sum(seq(i,:)~=seq(j,:));
-        D=D+p;
-    end
-    end
-    k=D/(n*(n-1)/2);
-    if (nargout>1),
-    	kvar=((n+1)*k)/(3*(n-1))+(2*(n^2+n+3)*k^2)/(9*n*(n-1));    % Tajima (1983) eq.
-    	%kvar_stochatic=(1/3)*k+(2/9)*k*k;
-    	%kvar_sampling = kvar - kvar_stochatic;
-    end
-
+                n = size(seq, 1);
+                % given n DNA seq, we can estimate the scaled mutation rate theta by
+                % k = (n!/2!*(n-2)!)^-1 * groupdiffs
+                D = 0;
+                for i = 1:n - 1
+                    for j = i + 1:n
+                        p = sum(seq(i, :) ~= seq(j, :));
+                        D = D + p;
+                    end
+                end
+                k = D / (n * (n - 1) / 2);
+                if (nargout > 1),
+                    kvar = ((n + 1) * k) / (3 * (n - 1)) + (2 * (n^2 + n + 3) * k^2) / (9 * n * (n - 1)); % Tajima (1983) eq.
+                    %kvar_stochatic=(1/3)*k+(2/9)*k*k;
+                    %kvar_sampling = kvar - kvar_stochatic;
+                end

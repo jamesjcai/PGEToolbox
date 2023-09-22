@@ -1,5 +1,5 @@
-function [t]=time1st2prob(p,p0,N)
-%TIME1ST2PROB - Time to reache frequency p for the first time 
+function [t] = time1st2prob(p, p0, N)
+%TIME1ST2PROB - Time to reache frequency p for the first time
 %
 % [t]=time1st2prob(p,p0,N)
 % i.e. the mean "first arrival time"
@@ -17,13 +17,12 @@ function [t]=time1st2prob(p,p0,N)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if nargin<3, N=10000; end
-if nargin<2, p0=0; end
+if nargin < 3, N = 10000; end
+if nargin < 2, p0 = 0; end
 
-if p0==0
-    t=4.*N.*((1-p).*log(1-p)./p+1);
+if p0 == 0
+    t = 4 .* N .* ((1 - p) .* log(1-p) ./ p + 1);
     %fprintf('4nex=%f\n',2.*N.*p);
 else
-    t=4.*N.*((1-p).*log(1-p)./p-(1-p0).*log(1-p0)./p0);
+    t = 4 .* N .* ((1 - p) .* log(1-p) ./ p - (1 - p0) .* log(1-p0) ./ p0);
 end
-

@@ -1,4 +1,4 @@
-function [status]=snp_writestructure(geno,mark,filename)
+function [status] = snp_writestructure(geno, mark, filename)
 %SNP_WRITESTRUCTURE - saves as STRUCTURE input file format
 %
 % snp_writestructure(geno,mark)
@@ -12,35 +12,38 @@ function [status]=snp_writestructure(geno,mark,filename)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if (isempty(geno)), status=0; return; end
+if (isempty(geno)), status = 0;
+    return;
+end
 if (nargin < 3),
-    [filename, pathname,filterindex] = uiputfile( ...
-       {'*.structure;*.txt', 'STRUCTURE Input Files (*.structure, *.txt)';
-        '*.*',  'All Files (*.*)'}, ...
+    [filename, pathname, filterindex] = uiputfile( ...
+        {'*.structure;*.txt', 'STRUCTURE Input Files (*.structure, *.txt)'; ...
+        '*.*', 'All Files (*.*)'}, ...
         'Save as');
-	if ~(filename), status=0; return; end
-	filename=[pathname,filename];
-	if (filterindex==1)
-		if (isempty(find(filename=='.')))
-			filename=[filename,'.txt'];
-		end
-	end
+    if ~(filename), status = 0;
+        return;
+    end
+    filename = [pathname, filename];
+    if (filterindex == 1)
+        if (isempty(find(filename == '.')))
+            filename = [filename, '.txt'];
+        end
+    end
 end
-fid = fopen(filename,'wt');
+fid = fopen(filename, 'wt');
 if (fid == -1),
-   status=0;
-   warning('Unable to open file.');
-   return;
+    status = 0;
+    warning('Unable to open file.');
+    return;
 end
 
 
+[samplen, marklen] = snp_samplen(geno);
+indvlen = samplen / 2;
 
-[samplen,marklen]=snp_samplen(geno);
-indvlen=samplen/2;
-
-if (nargin < 2 || ~isfield(mark,'idvname')),
-    for k=1:indvlen
-      mark.idvname{k}=sprintf('Idv%d',k);
+if (nargin < 2 || ~isfield(mark, 'idvname')),
+    for k = 1:indvlen
+        mark.idvname{k} = sprintf('Idv%d', k);
     end
 end
 
@@ -74,21 +77,21 @@ end
 %}
 
 
-ACGT=[1 2 3 4 -9];
+ACGT = [1, 2, 3, 4, -9];
 % -9 is undetermined
-for (k=1:indvlen),
-      fprintf(fid,'%s ', mark.idvname{k});
-      for (j=1:2:marklen*2),
-	      fprintf(fid,'%d ',ACGT(geno(k,j)));
-      end
-      fprintf(fid,'\n');
+for (k = 1:indvlen),
+    fprintf(fid, '%s ', mark.idvname{k});
+    for (j = 1:2:marklen * 2),
+        fprintf(fid, '%d ', ACGT(geno(k, j)));
+    end
+    fprintf(fid, '\n');
 
-      fprintf(fid,'%s ', mark.idvname{k});
-      for (j=2:2:marklen*2),
-	      fprintf(fid,'%d ',ACGT(geno(k,j)));
-      end
-      fprintf(fid,'\n');
+    fprintf(fid, '%s ', mark.idvname{k});
+    for (j = 2:2:marklen * 2),
+        fprintf(fid, '%d ', ACGT(geno(k, j)));
+    end
+    fprintf(fid, '\n');
 end
 
 fclose(fid);
-status=1;
+status = 1;

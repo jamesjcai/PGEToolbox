@@ -1,4 +1,4 @@
-function [M,X,L] = largefactorial(N,fmt)
+function [M, X, L] = largefactorial(N, fmt)
 % LARGEFACTORIAL computes the factorial.
 %
 % USAGE:
@@ -55,54 +55,54 @@ function [M,X,L] = largefactorial(N,fmt)
 %
 % See also: FACTORIAL, LOGFACTORIAL (MathCentral file id 14920)
 
-    % --- check validity of argument
+% --- check validity of argument
 
-    Nsort = N(:);   % This is not sorted yet, but will be sorted later. The
-                    % same variable name is used to save memory.
+Nsort = N(:); % This is not sorted yet, but will be sorted later. The
+% same variable name is used to save memory.
 
-    if any(fix(Nsort) ~= Nsort) || any(Nsort < 0) || ...
-            ~isa(Nsort,'double') || ~isreal(Nsort)
-        error('N must be a matrix of non-negative integers.')
+if any(fix(Nsort) ~= Nsort) || any(Nsort < 0) || ...
+        ~isa(Nsort, 'double') || ~isreal(Nsort)
+    error('N must be a matrix of non-negative integers.')
+end
+
+% --- perform computation
+
+% We compute the smallest factorial first, and then compute only the
+% increments.
+[Nsort, map] = sort(N(:));
+Nsort = [0; Nsort];
+L = arrayfun(@sumlogIncrement, 1:numel(N));
+L = cumsum(L); % aggregate increments
+L(map) = L; % put results back into original ordering ("un-sort")
+
+% 10^L is the result we are after, so ...
+X = fix(L); % ... X is the exponential of the factorial ...
+    M = 10.^(L - X); % ... and M is the mantissa.
+
+% --- package output
+
+if nargout == 0
+    % give user a string if no output is requested
+    if nargin < 2
+        fmt = '%g'; % default format
     end
+    S = arrayfun(@(j) ...
+        cellstr(strcat(num2str(M(j), fmt), 'e+', int2str(X(j)))), ...
+        1:numel(N)); % create strings of the form 'Me+X'
+    M = reshape(S, size(N));
+    clear X L
+else
+    % put output into the right shape
+    X = reshape(X, size(N));
+    M = reshape(M, size(N));
+    L = reshape(L, size(N));
+end
 
-    % --- perform computation
-
-    % We compute the smallest factorial first, and then compute only the
-    % increments.
-    [Nsort,map] = sort(N(:));
-    Nsort = [0;Nsort];
-    L = arrayfun(@sumlogIncrement, 1:numel(N));
-    L = cumsum(L);  % aggregate increments
-    L(map) = L;     % put results back into original ordering ("un-sort")
-
-    % 10^L is the result we are after, so ...
-    X = fix(L);      % ... X is the exponential of the factorial ...
-    M = 10.^(L-X);   % ... and M is the mantissa.
-
-    % --- package output
-
-    if nargout == 0
-        % give user a string if no output is requested
-        if nargin < 2
-            fmt = '%g';     % default format
-        end
-        S = arrayfun(@(j) ...
-            cellstr(strcat(num2str(M(j),fmt), 'e+', int2str(X(j)))), ...
-            1:numel(N));        % create strings of the form 'Me+X'
-        M = reshape(S,size(N));
-        clear X L
-    else
-        % put output into the right shape
-        X = reshape(X,size(N));
-        M = reshape(M,size(N));
-        L = reshape(L,size(N));
-    end
-
-    % --- nested function -------------------------------------------------
+% --- nested function -------------------------------------------------
     function s = sumlogIncrement(j)
         % sumlogIncrement(j) computes sum(log10(i)) for i =
         % Nsort(j)+1 ... Nsort(j+1).
-        lengthInterval = Nsort(j+1)-Nsort(j);
+        lengthInterval = Nsort(j+1) - Nsort(j);
         a = Nsort(j);
         if lengthInterval <= 1E7
             s = sum(log10(a+(1:lengthInterval)));
@@ -126,15 +126,15 @@ function [M,X,L] = largefactorial(N,fmt)
             %    sum(log10([1:1E9])).
             % Maybe a reviewer at MathCentral knows a better way of
             % avoiding these problems?
-            seq = 1:1E7;                        % "short" sequence
-            rounds = floor(lengthInterval/1E7);	% # of rounds
-            partialSum = zeros(1,rounds);
+            seq = 1:1E7; % "short" sequence
+            rounds = floor(lengthInterval/1E7); % # of rounds
+            partialSum = zeros(1, rounds);
             for r = 1:rounds
-                partialSum(r) = sum(log10(seq+(r-1)*1E7+a));
+                partialSum(r) = sum(log10(seq+(r - 1)*1E7+a));
             end
             s = sum(partialSum) + ...
-                sum(log10(((rounds*1E7+1):lengthInterval)+a));
+                sum(log10(((rounds * 1E7 + 1):lengthInterval)+a));
         end
-    end
+end
 
 end

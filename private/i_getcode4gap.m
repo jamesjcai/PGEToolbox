@@ -9,14 +9,13 @@ function [n] = i_getcode4gap(seqtype)
 
 switch (upper(seqtype))
     case {'PROTEIN'}
-         [NT,AA] = seqcode;
-	 n=find(AA=='-');
-         % n=22;
+        [NT, AA] = seqcode;
+        n = find(AA == '-');
+        % n=22;
     case {'DNA'}
-         [NT] = seqcode;
-	 n=find(NT=='-');
-         % n=5;
+        [NT] = seqcode;
+        n = find(NT == '-');
+        % n=5;
     otherwise
-	error('Wrong seqtype.')
+        error('Wrong seqtype.')
 end
-

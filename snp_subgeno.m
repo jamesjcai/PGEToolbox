@@ -1,4 +1,4 @@
-function [geno2]=snp_subgeno(idx,geno,dim)
+function [geno2] = snp_subgeno(idx, geno, dim)
 %[geno2]=snp_subgeno(idx,geno)
 %
 %See also: SNP_PICKMARKER
@@ -11,21 +11,21 @@ function [geno2]=snp_subgeno(idx,geno,dim)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if (nargin<3)
-	dim=1;        % 1- choose markers; 2 - pick individuals
+if (nargin < 3)
+    dim = 1; % 1- choose markers; 2 - pick individuals
 end
 
-if (dim==1)
-    s=idx;
-    s2=s*2-1;
-    sx=zeros(1,length(s)*2);
-    for (k=1:length(s));
-        sx(k*2-1)=s2(k);
-        sx(k*2)=s2(k)+1;
+if (dim == 1)
+    s = idx;
+    s2 = s * 2 - 1;
+    sx = zeros(1, length(s)*2);
+    for (k = 1:length(s));
+        sx(k*2-1) = s2(k);
+        sx(k*2) = s2(k) + 1;
     end
-    geno2 = geno(:,sx);
+    geno2 = geno(:, sx);
 else
-    geno2 = geno(idx,:);
+    geno2 = geno(idx, :);
 end
 %    mark2.rsid=mark.rsid(s);
 %    mark2.allele=mark.allele(s);

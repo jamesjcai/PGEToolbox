@@ -17,24 +17,24 @@ function M = dunzip(Z)
 %        (5) Michael Kleder, Nov 2005
 
 import com.mathworks.mlwidgets.io.InterruptibleStreamCopier
-a=java.io.ByteArrayInputStream(Z);
-b=java.util.zip.InflaterInputStream(a);
+a = java.io.ByteArrayInputStream(Z);
+b = java.util.zip.InflaterInputStream(a);
 isc = InterruptibleStreamCopier.getInterruptibleStreamCopier;
 c = java.io.ByteArrayOutputStream;
-isc.copyStream(b,c);
-Q=typecast(c.toByteArray,'uint8');
+isc.copyStream(b, c);
+Q = typecast(c.toByteArray, 'uint8');
 cn = double(Q(1)); % class
 nd = double(Q(2)); % # dims
-s = typecast(Q(3:8*nd+2),'double')'; % size
-Q=Q(8*nd+3:end);
+s = typecast(Q(3:8*nd+2), 'double')'; % size
+Q = Q(8*nd+3:end);
 if cn == 3
-    M  = logical(Q);
+    M = logical(Q);
 elseif cn == 4
     M = char(Q);
 else
-    ct = {'double','single','logical','char','int8','uint8',...
-        'int16','uint16','int32','uint32','int64','uint64'};
-    M = typecast(Q,ct{cn});
+    ct = {'double', 'single', 'logical', 'char', 'int8', 'uint8', ...
+        'int16', 'uint16', 'int32', 'uint32', 'int64', 'uint64'};
+    M = typecast(Q, ct{cn});
 end
-M=reshape(M,s);
+M = reshape(M, s);
 return

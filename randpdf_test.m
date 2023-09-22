@@ -6,20 +6,20 @@
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-x=linspace(0,1,50);
-t=[.1 .2 .3 .4 .5];
-x0=[0.4 0.5 0.6];
-j=2;
+x = linspace(0, 1, 50);
+t = [.1, .2, .3, .4, .5];
+x0 = [0.4, 0.5, 0.6];
+j = 2;
 
-y=zeros(5,length(x));
+y = zeros(5, length(x));
 
-for i=1:length(t)
-for k=1:length(x)
-    y(i,k)=randpdf(x(k),t(i),x0(j));
-end
+for i = 1:length(t)
+    for k = 1:length(x)
+        y(i, k) = randpdf(x(k), t(i), x0(j));
+    end
 end
 
 figure;
-plot(x,y,'-o')
-legend({'t=.1','t=.2','t=.3','t=.4','t=.5'})
-%vline(x0(j)) 
+plot(x, y, '-o')
+legend({'t=.1', 't=.2', 't=.3', 't=.4', 't=.5'})
+%vline(x0(j))

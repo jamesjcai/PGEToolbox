@@ -1,4 +1,4 @@
-function [u]=detectingprob(p,n)
+function [u] = detectingprob(p, n)
 %DETECTINGPROB - Probability of detecting both alleles in SNPs discovery.
 %
 %[u]=detectingprob(p,n)
@@ -7,8 +7,8 @@ function [u]=detectingprob(p,n)
 % sequences  [http://www.genetics.org/cgi/content/full/162/4/2017]
 %
 %
-%For any given SNP with known allele frequency P, 
-%the probability of detecting both alleles in an original sample 
+%For any given SNP with known allele frequency P,
+%the probability of detecting both alleles in an original sample
 %of N chromosomes is u=1-p.^n-(1-p).^n.
 %
 %Example:
@@ -34,8 +34,4 @@ function [u]=detectingprob(p,n)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-u=1-p.^n-(1-p).^n;
-
-
-
-
+u = 1 - p.^n - (1 - p).^n;

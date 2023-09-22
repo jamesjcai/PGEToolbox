@@ -1,4 +1,4 @@
-function [NT,AA] = seqcode()
+function [NT, AA] = seqcode()
 %SEQCODE - Return vector for mapping sequence letters to integers
 %
 % Syntax: [NT,AA] = seqcode
@@ -12,8 +12,8 @@ function [NT,AA] = seqcode()
 % Last revision: 5/18/2007
 
 NT = 'ACGT-';
-if (nargout>1)
-AA = 'ARNDCQEGHILKMFPSTWYV*-';
+if (nargout > 1)
+    AA = 'ARNDCQEGHILKMFPSTWYV*-';
 end
 
 % AANames = {'ala' 'arg' 'asn' 'asp' 'cys' 'gln' 'glu' 'gly' 'his' 'ile' 'leu' 'lys' 'met' ...

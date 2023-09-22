@@ -1,49 +1,49 @@
-function [p,dprs] = mktestcmd(aln)
+function [p, dprs] = mktestcmd(aln)
 %MKTESTCMD - McDonald-Kreitman test
 %USAGE: [p,dprs] = mktestcmd(aln)
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-01-06 13:39:38 -0600 (Sun, 06 Jan 2013) $
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-[Ds,Ps,Dn,Pn] = dspsdnpn(aln);
-[p]=fisherextest(round(Ds),round(Ps),round(Dn),round(Pn));
-if (nargout>1),
-	dprs=[Ds,Ps;Dn,Pn];
+[Ds, Ps, Dn, Pn] = dspsdnpn(aln);
+[p] = fisherextest(round(Ds), round(Ps), round(Dn), round(Pn));
+if (nargout > 1),
+    dprs = [Ds, Ps; Dn, Pn];
 end
 
-if (nargout<1),
-i_dispheader('McDonald-Kreitman''s Test')
-%fprintf ([' Syn. Subs.: \n']);
-%fprintf (['     Fixed differences between species:    %2.1f   Polymorphic sites:    %2.1f\n'],Ds,Ps);
-%fprintf ([' NSyn. Subs.:  \n']);
-%fprintf (['     Fixed differences between species:    %2.1f   Polymorphic sites:   %2.1f\n'],Dn,Pn);
+if (nargout < 1),
+    i_dispheader('McDonald-Kreitman''s Test')
+    %fprintf ([' Syn. Subs.: \n']);
+    %fprintf (['     Fixed differences between species:    %2.1f   Polymorphic sites:    %2.1f\n'],Ds,Ps);
+    %fprintf ([' NSyn. Subs.:  \n']);
+    %fprintf (['     Fixed differences between species:    %2.1f   Polymorphic sites:   %2.1f\n'],Dn,Pn);
 
-fprintf ('Ds: %5.1f\t\tPs:%5.1f\n',Ds,Ps);
-fprintf ('Dn: %5.1f\t\tPn:%5.1f\n\n',Dn,Pn);
-fprintf ('Ds - Syn. Divergences; Ps - Syn. Polymorphisms\n');
-fprintf ('Dn - Nonsyn. Divergences; Pn - Nonsyn. Polymorphisms\n');
-fprintf ('\n');
-fprintf ('Fisher''s exact test\n P-value (two tailed): %f%s\n',p, sigtag(p));
-[P,G]=gtest(Ds,Ps,Dn,Pn);
-fprintf(['G Test, G value: %10.3f\n'], G);
-fprintf(['   P-value: %10.5f %s\n\n'], P, sigtag(P));
+    fprintf('Ds: %5.1f\t\tPs:%5.1f\n', Ds, Ps);
+    fprintf('Dn: %5.1f\t\tPn:%5.1f\n\n', Dn, Pn);
+    fprintf('Ds - Syn. Divergences; Ps - Syn. Polymorphisms\n');
+    fprintf('Dn - Nonsyn. Divergences; Pn - Nonsyn. Polymorphisms\n');
+    fprintf('\n');
+    fprintf('Fisher''s exact test\n P-value (two tailed): %f%s\n', p, sigtag(p));
+    [P, G] = gtest(Ds, Ps, Dn, Pn);
+    fprintf(['G Test, G value: %10.3f\n'], G);
+    fprintf(['   P-value: %10.5f %s\n\n'], P, sigtag(P));
 
-	if (all([Ps, Dn, Ds])),
-		%NI = (Ds/Ps)/(Dn/Pn);
-        NI = (Pn/Dn)/(Ps/Ds);
-        alphax = 1-(Pn*Ds)/(Ps*Dn);
-	else
-	    NI=0;
+    if (all([Ps, Dn, Ds])),
+        %NI = (Ds/Ps)/(Dn/Pn);
+        NI = (Pn / Dn) / (Ps / Ds);
+        alphax = 1 - (Pn * Ds) / (Ps * Dn);
+    else
+        NI = 0;
         alphax = NaN;
-	end
-	fprintf ('Neutrality Index (NI), [(Pn/Dn)/(Ps/Ds)]: %f\n',NI);
-	fprintf ('Alpha [1-(Pn*Ds)/(Ps*Dn)]: %f\n',alphax);
-i_dispfooter
+    end
+    fprintf('Neutrality Index (NI), [(Pn/Dn)/(Ps/Ds)]: %f\n', NI);
+    fprintf('Alpha [1-(Pn*Ds)/(Ps*Dn)]: %f\n', alphax);
+    i_dispfooter
 end
 
 % NI = (Pn/Dn)/(Ps/Ds); in original paper (NI; Rand and Kann 1996, 1998)
@@ -58,8 +58,6 @@ end
 % approximately Chi-square distribution with one degree of freedom. So
 % if the value of X2 is larger that 3.841, the null hypothesis can be
 % rejected at 5%
-
-
 
 
 %Input Data File: C:\...\seq_examples\mktest.fas

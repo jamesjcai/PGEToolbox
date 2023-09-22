@@ -1,4 +1,4 @@
-function s1 = stirling1 ( n, m )
+function s1 = stirling1(n, m)
 
 %% STIRLING1 computes the Stirling numbers of the first kind.
 %
@@ -71,25 +71,25 @@ function s1 = stirling1 ( n, m )
 %
 %    Output, integer S1(N,M), the Stirling numbers of the first kind.
 %
-  if ( n <= 0 )
+if (n <= 0)
     s1 = [];
     return
-  end
+end
 
-  if ( m <= 0 )
+if (m <= 0)
     s1 = [];
     return
-  end
+end
 
-  s1(1,1) = 1;
-  s1(1,2:m) = 0;
+s1(1, 1) = 1;
+s1(1, 2:m) = 0;
 
-  for i = 2 : n
+for i = 2:n
 
-    s1(i,1) = - ( i - 1 ) * s1(i-1,1);
+    s1(i, 1) = -(i - 1) * s1(i-1, 1);
 
-    for j = 2 : m
-      s1(i,j) = s1(i-1,j-1) - ( i - 1 ) * s1(i-1,j);
+    for j = 2:m
+        s1(i, j) = s1(i-1, j-1) - (i - 1) * s1(i-1, j);
     end
 
-  end
+end

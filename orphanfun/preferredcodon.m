@@ -1,4 +1,4 @@
-function []=preferredcodon(spid)
+function [] = preferredcodon(spid)
 
 %spid - species id 'Drosophila','Cryptococcus','Saccharomyces'
 

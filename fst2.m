@@ -1,4 +1,4 @@
-function [f]=fst2(n1,n2,p1,p2)
+function [f] = fst2(n1, n2, p1, p2)
 %FST2 - Weir's F statistic (Fst) for 2 populations
 %
 % [f]=fst2(n1,n2,p1,p2)
@@ -29,41 +29,42 @@ function [f]=fst2(n1,n2,p1,p2)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if length(p1)==1
+if length(p1) == 1
     %if any(size(p1)>1) || any(size(p2)>1) || any(size(n1)>1) || any(size(n2)>1)
     %    error('This funciton for single genotype only')
     %end
-    if p1==0 && p2==0
-        f=0; return;
+    if p1 == 0 && p2 == 0
+        f = 0;
+        return;
     end
-    if n1<2 || n2<2
-        f=nan; return;
+    if n1 < 2 || n2 < 2
+        f = nan;
+        return;
     end
 end
 
-s=2;                 % num of subpoulations, s=2
-n=n1+n2;
+s = 2; % num of subpoulations, s=2
+n = n1 + n2;
 
 % NC - variance-corrected average sample size
-nc = (1/(s-1))*((n1+n2)-(n1.^2+n2.^2)./(n1+n2));
-% 
-% Weighted frequency 
+nc = (1 / (s - 1)) * ((n1 + n2) - (n1.^2 + n2.^2) ./ (n1 + n2));
+%
+% Weighted frequency
 % weighted average of PA across subpopulations
-p_hat=(n1./n).*p1+(n2./n).*p2;
-
+p_hat = (n1 ./ n) .* p1 + (n2 ./ n) .* p2;
 
 
 % MSG - mean square error within populations
 % MSP - mean square error between populations
 
-MSP=(1/(s-1))*((n1.*(p1-p_hat).^2 + n2.*(p2-p_hat).^2));
+MSP = (1 / (s - 1)) * ((n1 .* (p1 - p_hat).^2 + n2 .* (p2 - p_hat).^2));
 
 %sum([n1-1, n2-1])
 
-MSG=(1./sum([n1-1, n2-1],2)).*(n1.*p1.*(1-p1)+n2.*p2.*(1-p2));
+MSG = (1 ./ sum([n1 - 1, n2 - 1], 2)) .* (n1 .* p1 .* (1 - p1) + n2 .* p2 .* (1 - p2));
 
 %if (MSP+(nc-1).*MSG)>0
-    f = (MSP-MSG)./(MSP+(nc-1).*MSG);
+f = (MSP - MSG) ./ (MSP + (nc - 1) .* MSG);
 %else
 %    f=nan;
 %end

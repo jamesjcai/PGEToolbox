@@ -1,4 +1,4 @@
-function [d,thetw,pval] = snp_tajima89d(geno)
+function [d, thetw, pval] = snp_tajima89d(geno)
 %SNP_TAJIMA89D - Calculates Tajima's D based on SNP frequencies
 % Syntax: [d,theta,pval] = snp_tajima89d(geno)
 
@@ -15,26 +15,26 @@ function [d,thetw,pval] = snp_tajima89d(geno)
 % $LastChangedBy: jcai $
 
 
-[smpln]=snp_samplen(geno);
+[smpln] = snp_samplen(geno);
 
-[thepi]=snp_thetapi(geno);
-[Sn]=snp_segsites(geno);
+[thepi] = snp_thetapi(geno);
+[Sn] = snp_segsites(geno);
 
 
-[d,thetw,pval] = tajima89d(smpln, Sn, thepi);
+[d, thetw, pval] = tajima89d(smpln, Sn, thepi);
 % thanks for Jinchuan Xing for bug report
 
-if nargout<1
-i_dispheader('Tajima''s Neutrality Test')
-	disp('Mode: SNP');
-	fprintf('\n');
-	fprintf('No. of Segregating sites (S): %d\n', Sn);
-	fprintf('Nucleotide diversity (per sequence), Pi: %f\n', thepi);
-	fprintf ('\n');
-	%fprintf (['Diff = %f, s.e. = %f\n'], Diff, DiffSE);
-	fprintf ('Tajima''s D: %f\n',d);
-	[D] = tajima89d_simu(smpln,1000,thetw,0);
-	p=sum(d<D)./1000;	
-    fprintf ('Statistical significance:\n P = %f%s\n',p,sigtag(p));
-i_dispfooter
+if nargout < 1
+    i_dispheader('Tajima''s Neutrality Test')
+    disp('Mode: SNP');
+    fprintf('\n');
+    fprintf('No. of Segregating sites (S): %d\n', Sn);
+    fprintf('Nucleotide diversity (per sequence), Pi: %f\n', thepi);
+    fprintf('\n');
+    %fprintf (['Diff = %f, s.e. = %f\n'], Diff, DiffSE);
+    fprintf('Tajima''s D: %f\n', d);
+    [D] = tajima89d_simu(smpln, 1000, thetw, 0);
+    p = sum(d < D) ./ 1000;
+    fprintf('Statistical significance:\n P = %f%s\n', p, sigtag(p));
+    i_dispfooter
 end

@@ -1,4 +1,4 @@
-function [pic]=snp_pic(geno)
+function [pic] = snp_pic(geno)
 %SNP_PIC - SNP Polymorphism Information Content
 %
 %  Syntax: [pic]=snp_pic(geno)
@@ -15,18 +15,17 @@ function [pic]=snp_pic(geno)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if any(size(geno)==1), 
-    p=geno; % input is the allele frequency
+if any(size(geno) == 1),
+    p = geno; % input is the allele frequency
 else
-    p=snp_maf(geno);
+    p = snp_maf(geno);
 end
-q=1-p;
+q = 1 - p;
 
-pic=1-(p.^2+q.^2)-2*(p.^2).*(q.^2);
+pic = 1 - (p.^2 + q.^2) - 2 * (p.^2) .* (q.^2);
 
-if (nargout<1)
-i_dispheader('SNP Polymorphism Information Content')
-	fprintf ('PIC = %g\n',pic);
-i_dispfooter
+if (nargout < 1)
+    i_dispheader('SNP Polymorphism Information Content')
+    fprintf('PIC = %g\n', pic);
+    i_dispfooter
 end
-

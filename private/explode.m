@@ -1,4 +1,4 @@
-function [split,numpieces]=explode(string,delimiters)
+function [split, numpieces] = explode(string, delimiters)
 %EXPLODE    Splits string into pieces.
 %   EXPLODE(STRING,DELIMITERS) returns a cell array with the pieces
 %   of STRING found between any of the characters in DELIMITERS.
@@ -25,23 +25,23 @@ function [split,numpieces]=explode(string,delimiters)
 %   Created: Sara Silva (sara@itqb.unl.pt) - 2002.04.30
 
 if isempty(string) % empty string, return empty and 0 pieces
-   split{1}='';
-   numpieces=0;
-   
+    split{1} = '';
+    numpieces = 0;
+
 elseif isempty(delimiters) % no delimiters, return whole string in 1 piece
-   split{1}=string;
-   numpieces=1;
-   
+    split{1} = string;
+    numpieces = 1;
+
 else % non-empty string and delimiters, the correct case
-   
-   remainder=string;
-   i=0;
-   
-	while ~isempty(remainder)
-   	[piece,remainder]=strtok(remainder,delimiters);
-   	i=i+1;
-   	split{i}=piece;
-	end
-   numpieces=i;
-   
+
+    remainder = string;
+    i = 0;
+
+    while ~isempty(remainder)
+        [piece, remainder] = strtok(remainder, delimiters);
+        i = i + 1;
+        split{i} = piece;
+    end
+    numpieces = i;
+
 end

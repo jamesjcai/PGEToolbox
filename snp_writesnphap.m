@@ -1,4 +1,4 @@
-function [status] =  snp_writesnphap(geno,filename)
+function [status] = snp_writesnphap(geno, filename)
 %SNP_WRITESNPHAP - saves as SNPHAP input file format
 %
 % snp_writesnphap(geno)
@@ -12,64 +12,67 @@ function [status] =  snp_writesnphap(geno,filename)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if (isempty(geno)), status=0; return; end
-if (nargin < 2),
-    [filename, pathname,filterindex] = uiputfile( ...
-       {'*.snphap;*.dat', 'SNPHAP Format Files (*.snphap, *.dat)';
-        '*.*',  'All Files (*.*)'}, ...
-        'Save as');
-	if ~(filename), status=0; return; end
-	filename=[pathname,filename];
-	if (filterindex==1)
-		if (isempty(find(filename=='.')))
-			filename=[filename,'.dat'];
-		end
-	end
+if (isempty(geno)), status = 0;
+    return;
 end
-fid = fopen(filename,'wt');
+if (nargin < 2),
+    [filename, pathname, filterindex] = uiputfile( ...
+        {'*.snphap;*.dat', 'SNPHAP Format Files (*.snphap, *.dat)'; ...
+        '*.*', 'All Files (*.*)'}, ...
+        'Save as');
+    if ~(filename), status = 0;
+        return;
+    end
+    filename = [pathname, filename];
+    if (filterindex == 1)
+        if (isempty(find(filename == '.')))
+            filename = [filename, '.dat'];
+        end
+    end
+end
+fid = fopen(filename, 'wt');
 if (fid == -1),
-   status=0;
-   warning('Unable to open file.');
-   return;
+    status = 0;
+    warning('Unable to open file.');
+    return;
 end
 
-[n,m]=size(geno);
+[n, m] = size(geno);
 %[geno] = i_simpgeno(geno);
 [geno] = snp_12geno(geno);
 
-for (k=1:n),
-      fprintf(fid,['%d\t'],k);
-      for (j=1:m-1),
-	fprintf(fid,['%d\t'],geno(k,j));
-      end
-	fprintf(fid,['%d\n'],geno(k,j+1));
+for (k = 1:n),
+    fprintf(fid, ['%d\t'], k);
+    for (j = 1:m - 1),
+        fprintf(fid, ['%d\t'], geno(k, j));
+    end
+    fprintf(fid, ['%d\n'], geno(k, j+1));
 end
 fclose(fid);
-status=1;
+status = 1;
 
 
+    function [geno2] = i_simpgeno(geno)
+        %SIMPGENO - Simplify GENO coding convention
 
-function [geno2] = i_simpgeno(geno)
-%SIMPGENO - Simplify GENO coding convention
+        geno2 = [];
+        n = snp_marklen(geno);
+        for k = 1:n
+            gen = geno(:, 2*k-1:2*k);
+            genx = gen(gen < 5);
+            [a] = unique(genx);
+            if length(a) == 1
+                gen(:) = 1;
+            elseif length(a) == 2
+                if (sum(genx == a(1)) >= sum(genx == a(2)))
+                    gen(gen == a(1)) = 1;
+                    gen(gen == a(2)) = 2;
+                else
+                    gen(gen == a(1)) = 2;
+                    gen(gen == a(2)) = 1;
+                end
 
-geno2=[];
-n=snp_marklen(geno);
-for k=1:n
-    gen=geno(:,2*k-1:2*k);
-    genx=gen(gen<5);
-    [a]=unique(genx);
-    if length(a)==1
-        gen(:)=1;
-    elseif length(a)==2
-        if(sum(genx==a(1))>=sum(genx==a(2)))
-            gen(gen==a(1))=1;
-            gen(gen==a(2))=2;
-        else
-            gen(gen==a(1))=2;
-            gen(gen==a(2))=1;
+            end
+            gen(gen > 4) = 0;
+            geno2 = [geno2, gen];
         end
-
-    end
-    gen(gen>4)=0;
-    geno2=[geno2,gen];
-end

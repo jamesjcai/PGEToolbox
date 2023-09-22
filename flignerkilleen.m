@@ -1,4 +1,4 @@
-function flignerkilleen(x,g)
+function flignerkilleen(x, g)
 % Fligner-Killeen Test of Homogeneity of Variances
 %Description
 %
@@ -38,7 +38,7 @@ function flignerkilleen(x,g)
 %data.name 	a character string giving the names of the data.
 %References
 %
-%William J. Conover & Mark E. Johnson & Myrle M. Johnson (1981). A comparative study of tests for homogeneity of variances, with applications to the outer continental shelf bidding data. Technometrics 23, 351–361.
+%William J. Conover & Mark E. Johnson & Myrle M. Johnson (1981). A comparative study of tests for homogeneity of variances, with applications to the outer continental shelf bidding data. Technometrics 23, 351â€“361.
 %See Also
 %
 %ansari.test and mood.test for rank-based two-sample test for a difference in scale parameters; var.test and bartlett.test for parametric tests for the homogeneity of variances.

@@ -1,4 +1,4 @@
-function [thew]=snp_thetaw(geno,mark,persite)
+function [thew] = snp_thetaw(geno, mark, persite)
 %SNP_THETAW - theta-W from SNPs
 % Syntax: [thew]=snp_thetaw(geno,mark,persite)
 
@@ -10,20 +10,20 @@ function [thew]=snp_thetaw(geno,mark,persite)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if nargin<3, persite=0; end
-if nargin<2, mark=[]; end
+if nargin < 3, persite = 0; end
+if nargin < 2, mark = []; end
 
-[smpln]=snp_samplen(geno);
+[smpln] = snp_samplen(geno);
 
-[Sn]=snp_segsites(geno);
+[Sn] = snp_segsites(geno);
 
-nx=1:(smpln-1);
+nx = 1:(smpln - 1);
 a1 = sum(1./nx);
-thew=Sn/a1;
+thew = Sn / a1;
 
 if (persite),
-   [L]=snp_markbplen(mark);
-   thew=thew/L;
+    [L] = snp_markbplen(mark);
+    thew = thew / L;
 end
 
 

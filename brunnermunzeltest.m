@@ -1,4 +1,4 @@
-function [p]=brunnermunzeltest(x,y,alpha)
+function [p] = brunnermunzeltest(x, y, alpha)
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
@@ -8,46 +8,46 @@ function [p]=brunnermunzeltest(x,y,alpha)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if nargin<3
-    alpha=0.05;
+if nargin < 3
+    alpha = 0.05;
 end
-n1=length(x);
-n2=length(y);
-r1=tiedrank(x);
-r2=tiedrank(y);
-r=tiedrank([x;y]);
+n1 = length(x);
+n2 = length(y);
+r1 = tiedrank(x);
+r2 = tiedrank(y);
+r = tiedrank([x; y]);
 
-m1=mean(r(1:n1));
-m2=mean(r((n1+1):end));
+m1 = mean(r(1:n1));
+m2 = mean(r((n1 + 1):end));
 
 % estimate P(X<Y)+.5*P(X=Y) from data
-pst=(m2-(n2+1)/2)/n1;
+pst = (m2 - (n2 + 1) / 2) / n1;
 
 
 % Calculate the Empirical Variance of the first and second sample ###
-v1=sum((r(1:n1)-r1-m1+(n1+1)./2).^2)./(n1-1);
-v2=sum((r(n1+1:end)-r2-m2+(n2+1)./2).^2)./(n2-1);
+v1 = sum((r(1:n1) - r1 - m1 + (n1 + 1) ./ 2).^2) ./ (n1 - 1);
+v2 = sum((r(n1+1:end) - r2 - m2 + (n2 + 1) ./ 2).^2) ./ (n2 - 1);
 
 % Calculate the T statistic and degree of freedom of the whole data set ###
-statistic=n1*n2*(m2-m1)/(n1+n2)/sqrt(n1*v1+n2*v2);
-dfbm=((n1*v1+n2*v2)^2)/(((n1*v1)^2)/(n1-1)+((n2*v2)^2)/(n2-1));
+statistic = n1 * n2 * (m2 - m1) / (n1 + n2) / sqrt(n1*v1+n2*v2);
+dfbm = ((n1 * v1 + n2 * v2)^2) / (((n1 * v1)^2) / (n1 - 1) + ((n2 * v2)^2) / (n2 - 1));
 
 
 %### Users can choose alternative hypothesis ###
 %### Must be one of "two.sided"(default), "greater" or "less" ###
 %### Users can specify just the initial letter ###
 
-alternative='two-sided';
+alternative = 'two-sided';
 switch alternative
-    case{'g','greater'}
-        p=1-tcdf(abs(statistic),dfbm);        
-    case{'l','less'}
-        p=tcdf(abs(statistic),dfbm);        
-    case{'t','two-sided'}
+    case {'g', 'greater'}
+        p = 1 - tcdf(abs(statistic), dfbm);
+    case {'l', 'less'}
+        p = tcdf(abs(statistic), dfbm);
+    case {'t', 'two-sided'}
         statistic
         dfbm
-        p=tcdf(statistic,dfbm)
-        p=2*min([1-p,p])
+        p = tcdf(statistic, dfbm)
+        p = 2 * min([1 - p, p])
 end
 
 %pL=tpdf(abs(statistic),dfbm);
@@ -60,7 +60,6 @@ end
 
 %1-alpha/2
 %pst+tinv(alpha/2,dfbm)
-
 
 
 %### Display Output ###
@@ -77,12 +76,11 @@ end
 %METHOD = "Brunner-Munzel Test"
 i_dispheader('Brunner-Munzel Test');
 fprintf('Statistic = %f\n', statistic);
-fprintf('df = %f\n',dfbm);
+fprintf('df = %f\n', dfbm);
 %fprintf('p-value = %f (%s)\n',pL,'Left tail');
 %fprintf('p-value = %f (%s)\n',pR,'Right tail');
-fprintf('p-value = %d (%s)\n',p,alternative);
+fprintf('p-value = %d (%s)\n', p, alternative);
 fprintf('sample estimates:\n');
 fprintf('P(X<Y)+.5*P(X=Y)\n');
-fprintf('        %f\n',pst); 
+fprintf('        %f\n', pst);
 i_dispfooter;
-

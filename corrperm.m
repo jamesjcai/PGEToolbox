@@ -1,4 +1,4 @@
-function [lowci,upperci,corrsamp,corrobs]=corrperm(x,y,m)
+function [lowci, upperci, corrsamp, corrobs] = corrperm(x, y, m)
 %CORRPERM - permutation test for the correlation between two variables;
 %
 % [lowci,upperci,corrsamp,corrobs]=corrperm(x,y,m)
@@ -17,30 +17,29 @@ function [lowci,upperci,corrsamp,corrobs]=corrperm(x,y,m)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-n=length(x);
-corrobs=corrcoef(x,y);
-corrsamp=zeros(1,m);
+n = length(x);
+corrobs = corrcoef(x, y);
+corrsamp = zeros(1, m);
 
-for i=1:m,
-    ind=randperm(n);
-    x=x(ind);
-    r=corrcoef(x,y);
-    corrsamp(i)=r(2,1);
+for i = 1:m,
+    ind = randperm(n);
+    x = x(ind);
+    r = corrcoef(x, y);
+    corrsamp(i) = r(2, 1);
 end;
 
 % Get a 95% confidence intervals;
 
-[sortcorr,ignore]=sort(corrsamp);
-lowci=sortcorr(0.975*m);
-upperci=sortcorr(0.025*m+1);
-
+[sortcorr, ignore] = sort(corrsamp);
+lowci = sortcorr(0.975*m);
+upperci = sortcorr(0.025*m+1);
 
 
 % xy=[
 % 576 3.39;
 % 635 3.30;
 % 558 2.81;
-% 578 3.03; 
+% 578 3.03;
 % 666 3.44;
 % 580 3.07;
 % 555 3.00;
@@ -59,4 +58,3 @@ upperci=sortcorr(0.025*m+1);
 % hist(corrs,30);
 % title('Permutaion test for correlation');
 % xlabel('correlation of the x & y');
-

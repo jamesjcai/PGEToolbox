@@ -1,4 +1,4 @@
-function [pID,pN] = fdrsimple(p,q)
+function [pID, pN] = fdrsimple(p, q)
 % FORMAT pt = FDR(p,q)
 %
 % p   - vector of p-values
@@ -17,5 +17,5 @@ I = (1:V)';
 cVID = 1;
 cVN = sum(1./(1:V));
 
-pID = p(max(find(p<=I/V*q/cVID)));
-pN = p(max(find(p<=I/V*q/cVN)));
+pID = p(max(find(p <= I/V*q/cVID)));
+pN = p(max(find(p <= I/V*q/cVN)));

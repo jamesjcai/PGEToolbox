@@ -6,7 +6,7 @@ function snp_sfsmwu()
 %Akashi, H. 1999. Inferring the fitness effects of DNA mutations from
 %patterns of polymorphism and divergence: Statistical power to detect
 %directional selection under stationarity and free recombination. Genetics
-%151: 221–238.
+%151: 221â€“238.
 %
 %http://www.genome.org/cgi/content/full/15/11/1566
 %
@@ -26,4 +26,3 @@ function snp_sfsmwu()
 % $LastChangedDate: 2013-01-06 13:39:38 -0600 (Sun, 06 Jan 2013) $
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
-

@@ -1,4 +1,4 @@
-function S=i_encode_n(Seq)
+function S = i_encode_n(Seq)
 %I_ENCODE_N - Convert a nucleotide sequence from a letter to an integer representation
 %Internal function encodes the nucleotide sequences by digits
 %
@@ -19,38 +19,40 @@ function S=i_encode_n(Seq)
 % Website: http://web.hku.hk/~jamescai/
 % Last revision: 5/28/2005
 
-method=1;
-[NT,AA] = seqcode;
+method = 1;
+[NT, AA] = seqcode;
 switch (method)
     case (1)
-	[n,m]=size(Seq);
-	S = ones(n,m).*5;
-	Seq(find(Seq=='U'))='T';    %replace U with T
-	for (k=1:5),
-		S(find(Seq==NT(k)))=k;
-    end
+        [n, m] = size(Seq);
+        S = ones(n, m) .* 5;
+        Seq(find(Seq == 'U')) = 'T'; %replace U with T
+        for (k = 1:5),
+            S(find(Seq == NT(k))) = k;
+        end
 
     case (2)
-	[n,m]=size(Seq);
-	S = zeros(n,m);  i = 1; j = 1;
+        [n, m] = size(Seq);
+        S = zeros(n, m);
+        i = 1;
+        j = 1;
 
-	code = zeros(256,1); 
-	for o = 1:256
-	    code(o) = nan;
-	end
+        code = zeros(256, 1);
+        for o = 1:256
+            code(o) = nan;
+        end
 
-	% NT = 'ACGT-';
-	for o = 1:5
-	   code(abs(NT(o))) = o;  
-	end
+        % NT = 'ACGT-';
+        for o = 1:5
+            code(abs(NT(o))) = o;
+        end
 
-	for i=1:n
-		for j=1:m
-			if Seq(i,j) == 'U' 
-				S(i,j) = code(abs('T'));
-			else
-				S(i,j) = code(abs(Seq(i,j)));
-			end;
-		end;
-	end;
+        for i = 1:n
+            for j = 1:m
+                if Seq(i, j) == 'U'
+                    S(i, j) = code(abs('T'));
+                else
+                    S(i, j) = code(abs(Seq(i, j)));
+                end;
+            end;
+        end;
 end

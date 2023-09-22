@@ -11,4 +11,4 @@ function [bp] = chrlen(id)
 % $LastChangedRevision: 754 $
 % $LastChangedBy: jcai $
 
-bp=chrlen_hg19(id);
+bp = chrlen_hg19(id);

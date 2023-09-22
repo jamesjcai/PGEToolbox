@@ -1,5 +1,5 @@
-function [f]=sfsfolded(seq)
-%SFSFOLDED - 
+function [f] = sfsfolded(seq)
+%SFSFOLDED -
 % [f]=sfsfolded(seq)
 %
 
@@ -16,22 +16,22 @@ function [f]=sfsfolded(seq)
 % $LastChangedBy: jcai $
 
 
-if (isstruct(seq)), seq=seq.seq; end
-[n,m]=size(seq);
+if (isstruct(seq)), seq = seq.seq; end
+[n, m] = size(seq);
 
-f=zeros(1,n-1);
-for k=1:m
-   site=seq(:,k);
-   [a]=unique(site);
-   an=length(a);
-   if (an>1)      % ignore 
-       allelec=zeros(1,an);
-       for x=1:an
-           allelec(x)=sum(site==a(x));
-       end
-       [ancn,idx]=max(allelec);
-       anc=site(idx);
-       mutn=sum(site~=anc);
-       f(mutn)=f(mutn)+1;       
-   end   
+f = zeros(1, n-1);
+for k = 1:m
+    site = seq(:, k);
+    [a] = unique(site);
+    an = length(a);
+    if (an > 1) % ignore
+        allelec = zeros(1, an);
+        for x = 1:an
+            allelec(x) = sum(site == a(x));
+        end
+        [ancn, idx] = max(allelec);
+        anc = site(idx);
+        mutn = sum(site ~= anc);
+        f(mutn) = f(mutn) + 1;
+    end
 end

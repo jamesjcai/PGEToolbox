@@ -1,5 +1,5 @@
-function [f]=snp_fis(geno)
-%SNP_FIS - 
+function [f] = snp_fis(geno)
+%SNP_FIS -
 %
 %[f]=snp_fis(geno)
 
@@ -11,9 +11,7 @@ function [f]=snp_fis(geno)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-n=snp_samplen(geno);
-hi=snp_obshet(geno);
-[hs1,hs2]=snp_diversity(geno);
-f=(hs2-hi)/hs2;
-
-
+n = snp_samplen(geno);
+hi = snp_obshet(geno);
+[hs1, hs2] = snp_diversity(geno);
+f = (hs2 - hi) / hs2;

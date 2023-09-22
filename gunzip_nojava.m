@@ -1,4 +1,4 @@
-function varargout = gunzip_nojava(files,varargin)
+function varargout = gunzip_nojava(files, varargin)
 %GUNZIP Uncompress GNU zip files.
 %
 %   GUNZIP(FILES) uncompresses GNU zip files from the list of files
@@ -51,32 +51,32 @@ function varargout = gunzip_nojava(files,varargin)
 % $LastChangedBy: jcai $
 
 
-narginchk(1,2);
-nargoutchk(0,1);
+narginchk(1, 2);
+nargoutchk(0, 1);
 
 % rootDir is always ''
-dirs = {'',varargin{:}};
+dirs = {'', varargin{:}};
 
 % Check input arguments.
-[files, rootDir, outputDir,dirCreated] = checkFilesDirInputs(mfilename, files, dirs{:});
+[files, rootDir, outputDir, dirCreated] = checkFilesDirInputs(mfilename, files, dirs{:});
 
 try
-% Check files input for URL .
-[files, url, urlFilename] = checkFilesURLInput(files, {'gz'},'FILES',mfilename);
+    % Check files input for URL .
+    [files, url, urlFilename] = checkFilesURLInput(files, {'gz'}, 'FILES', mfilename);
 
-if ~url
-   % Get and gunzip the files
-   entries = getArchiveEntries(files, rootDir, mfilename);
-   names = gunzipEntries(entries, outputDir);
-else
-   % Gunzip the URL
-   names = gunzipURL(files{1}, outputDir, urlFilename);
-end
+    if ~url
+        % Get and gunzip the files
+        entries = getArchiveEntries(files, rootDir, mfilename);
+        names = gunzipEntries(entries, outputDir);
+    else
+        % Gunzip the URL
+        names = gunzipURL(files{1}, outputDir, urlFilename);
+    end
 
-% Return the names if requested
-if nargout == 1
-   varargout{1} = names;
-end
+    % Return the names if requested
+    if nargout == 1
+        varargout{1} = names;
+    end
 catch exception
     if ~isempty(dirCreated)
         rmdir(dirCreated, 's');
@@ -84,148 +84,148 @@ catch exception
     rethrow(exception);
 end
 %--------------------------------------------------------------------------
-function [files, url, urlFilename] = ...
-   checkFilesURLInput(inputFiles, validExtensions, argName, fcnName)
+    function [files, url, urlFilename] = ...
+            checkFilesURLInput(inputFiles, validExtensions, argName, fcnName)
 
-% Assign the default return values
-files = inputFiles;  
-url = false;
-urlFilename = '';
+        % Assign the default return values
+        files = inputFiles;
+        url = false;
+        urlFilename = '';
 
-if numel(inputFiles) == 1 && isempty(strfind(inputFiles{1}, '*')) && ...
-    ~isdir(inputFiles{1})
+        if numel(inputFiles) == 1 && isempty(strfind(inputFiles{1}, '*')) && ...
+                ~isdir(inputFiles{1})
 
-   % Check for a URL in the filename and for the file's existence
-   [fullFileName, url] = checkfilename(inputFiles{1}, validExtensions, fcnName, ...
-                                argName,true, tempdir);
-   if url
-     % Remove extension
-     [~, urlFilename, ext] = fileparts(inputFiles{1});
-     if ~any(strcmp(ext,{'.tgz','.gz'}))
-        % Add the extension if the URL file is not .gz or .tgz
-        % The URL may not be a GZIPPED file, but let pass
-        urlFilename = [urlFilename ext];
-     end
-     files = {fullFileName};
-   end
-end
+            % Check for a URL in the filename and for the file's existence
+            [fullFileName, url] = checkfilename(inputFiles{1}, validExtensions, fcnName, ...
+                argName, true, tempdir);
+            if url
+                % Remove extension
+                [~, urlFilename, ext] = fileparts(inputFiles{1});
+                if ~any(strcmp(ext, {'.tgz', '.gz'}))
+                    % Add the extension if the URL file is not .gz or .tgz
+                    % The URL may not be a GZIPPED file, but let pass
+                    urlFilename = [urlFilename, ext];
+                end
+                files = {fullFileName};
+            end
+        end
 
 
-%--------------------------------------------------------------------------
-function names = gunzipEntries(entries, outputDir)
-streamCopier = ...
-   com.mathworks.mlwidgets.io.InterruptibleStreamCopier.getInterruptibleStreamCopier;
-names = cell(1,numel(entries));
-for k=1:numel(entries)
-  [path, baseName] = fileparts(entries(k).file);
-  
-  % Set the outputDir to the file's path if outputDir is empty
-  % and the path is not the current directory, (since relative
-  % paths are returned in names).
-  if isempty(outputDir) && ~isequal(strrep(path,'/',filesep), pwd) 
-    outputDir = path;
-  end
-  names{k} = gunzipwrite(entries(k).file, outputDir, baseName, streamCopier);
-end
+        %--------------------------------------------------------------------------
+            function names = gunzipEntries(entries, outputDir)
+                streamCopier = ...
+                    com.mathworks.mlwidgets.io.InterruptibleStreamCopier.getInterruptibleStreamCopier;
+                names = cell(1, numel(entries));
+                for k = 1:numel(entries)
+                    [path, baseName] = fileparts(entries(k).file);
 
-%--------------------------------------------------------------------------
-function names = gunzipURL(filename, outputDir, urlFilename)
+                    % Set the outputDir to the file's path if outputDir is empty
+                    % and the path is not the current directory, (since relative
+                    % paths are returned in names).
+                    if isempty(outputDir) && ~isequal(strrep(path, '/', filesep), pwd)
+                        outputDir = path;
+                    end
+                    names{k} = gunzipwrite(entries(k).file, outputDir, baseName, streamCopier);
+                end
 
-streamCopier = ...
-   com.mathworks.mlwidgets.io.InterruptibleStreamCopier.getInterruptibleStreamCopier;
-try
-   names{1} = gunzipwrite(filename, outputDir, urlFilename, streamCopier);
-   % Filename is temporary for URL
-   delete(filename);
-catch exception
-   if ~isequal('MATLAB:gunzip:notGzipFormat', exception.identifier)
-      delete(filename);
-      throw(exception);
-   else
-      names{1} = fullfile(outputDir, urlFilename);
-      if exist(names{1},'file') == 2
-         delete(filename);
-         error(message('MATLAB:gunzip:urlFileExists', names{ 1 }));
-      else
-         copyfile(filename, names{1})
-         delete(filename);
-      end
-   end
-end
+                %--------------------------------------------------------------------------
+                    function names = gunzipURL(filename, outputDir, urlFilename)
 
-%--------------------------------------------------------------------------
-function gunzipFilename = gunzipwrite(gzipFilename, outputDir, baseName, streamCopier)
-% GUNZIPWRITE Write a file in GNU zip format.
-%
-%   GUNZIPWRITE writes the file GZIPFILENAME in GNU zip format. 
-%   OUTPUTDIR is the name of the directory for the output file. 
-%   BASENAME is the base name of the output file.
-%   STREAMCOPIER is a Java copy stream object. 
-%
-%   The output GUNZIPFILENAME is the full filename of the GNU unzipped file.
+                        streamCopier = ...
+                            com.mathworks.mlwidgets.io.InterruptibleStreamCopier.getInterruptibleStreamCopier;
+                        try
+                            names{1} = gunzipwrite(filename, outputDir, urlFilename, streamCopier);
+                            % Filename is temporary for URL
+                            delete(filename);
+                        catch exception
+                            if ~isequal('MATLAB:gunzip:notGzipFormat', exception.identifier)
+                                delete(filename);
+                                throw(exception);
+                            else
+                                names{1} = fullfile(outputDir, urlFilename);
+                                if exist(names{1}, 'file') == 2
+                                    delete(filename);
+                                    error(message('MATLAB:gunzip:urlFileExists', names{1}));
+                                else
+                                    copyfile(filename, names{1})
+                                    delete(filename);
+                                end
+                            end
+                        end
 
-% Create the output filename from [outputDir baseName]
-gunzipFilename = fullfile(outputDir,baseName);
+                        %--------------------------------------------------------------------------
+                            function gunzipFilename = gunzipwrite(gzipFilename, outputDir, baseName, streamCopier)
+                                % GUNZIPWRITE Write a file in GNU zip format.
+                                %
+                                %   GUNZIPWRITE writes the file GZIPFILENAME in GNU zip format.
+                                %   OUTPUTDIR is the name of the directory for the output file.
+                                %   BASENAME is the base name of the output file.
+                                %   STREAMCOPIER is a Java copy stream object.
+                                %
+                                %   The output GUNZIPFILENAME is the full filename of the GNU unzipped file.
 
-% Create Java input stream from the gzipped filename.
-fileInStream = [];
-try
-   fileInStream = java.io.FileInputStream(java.io.File(gzipFilename));
-catch exception
-   % Unable to access the gzipped file.
-   if ~isempty(fileInStream)
-     fileInStream.close;
-   end
-   error(message('MATLAB:gunzip:javaOpenError', gzipFilename));
-end
+                                % Create the output filename from [outputDir baseName]
+                                gunzipFilename = fullfile(outputDir, baseName);
 
-% Create a Java GZPIP input stream from the file input stream.
-try
-   gzipInStream = java.util.zip.GZIPInputStream( fileInStream );
-catch exception
-   % The file is not in gzip format.
-   if ~isempty(fileInStream)
-     fileInStream.close;
-   end
-   error(message('MATLAB:gunzip:notGzipFormat', gzipFilename));
-end
+                                % Create Java input stream from the gzipped filename.
+                                fileInStream = [];
+                                try
+                                    fileInStream = java.io.FileInputStream(java.io.File(gzipFilename));
+                                catch exception
+                                    % Unable to access the gzipped file.
+                                    if ~isempty(fileInStream)
+                                        fileInStream.close;
+                                    end
+                                    error(message('MATLAB:gunzip:javaOpenError', gzipFilename));
+                                end
 
-% Create a Java output stream from the input GZIP stream.
-outStream = [];
-try
-   javaFile  = java.io.File(gunzipFilename);
-   outStream = java.io.FileOutputStream(javaFile);
-catch exception
-   cleanup(gunzipFilename, outStream, gzipInStream, fileInStream);
-   error(message('MATLAB:gunzip:javaOutputOpenError', gunzipFilename));
-end
+                                % Create a Java GZPIP input stream from the file input stream.
+                                try
+                                    gzipInStream = java.util.zip.GZIPInputStream(fileInStream);
+                                catch exception
+                                    % The file is not in gzip format.
+                                    if ~isempty(fileInStream)
+                                        fileInStream.close;
+                                    end
+                                    error(message('MATLAB:gunzip:notGzipFormat', gzipFilename));
+                                end
 
-% Gunzip the file using the streamCopier.
-try   
-   streamCopier.copyStream(gzipInStream,outStream);
-catch exception
-   cleanup(gunzipFilename, outStream, gzipInStream, fileInStream);   
-   error(message('MATLAB:gunzip:javaCopyStreamError', gunzipFilename));
-end
+                                % Create a Java output stream from the input GZIP stream.
+                                outStream = [];
+                                try
+                                    javaFile = java.io.File(gunzipFilename);
+                                    outStream = java.io.FileOutputStream(javaFile);
+                                catch exception
+                                    cleanup(gunzipFilename, outStream, gzipInStream, fileInStream);
+                                    error(message('MATLAB:gunzip:javaOutputOpenError', gunzipFilename));
+                                end
 
-% Cleanup and close the streams.
-outStream.close;
-gzipInStream.close;
-fileInStream.close;
+                                % Gunzip the file using the streamCopier.
+                                try
+                                    streamCopier.copyStream(gzipInStream, outStream);
+                                catch exception
+                                    cleanup(gunzipFilename, outStream, gzipInStream, fileInStream);
+                                    error(message('MATLAB:gunzip:javaCopyStreamError', gunzipFilename));
+                                end
 
-%--------------------------------------------------------------------------
-function cleanup(filename, varargin)
-% Close the Java streams in varargin and delete the filename.
+                                % Cleanup and close the streams.
+                                outStream.close;
+                                gzipInStream.close;
+                                fileInStream.close;
 
-% Close the Java streams.
-for k=1:numel(varargin)
-   if ~isempty(varargin{k})
-      varargin{k}.close;
-   end
-end
+                                %--------------------------------------------------------------------------
+                                    function cleanup(filename, varargin)
+                                        % Close the Java streams in varargin and delete the filename.
 
-% Delete the filename if it exists.
-w = warning;
-warning('off','MATLAB:DELETE:FileNotFound');
-delete(filename);
-warning(w);
+                                        % Close the Java streams.
+                                        for k = 1:numel(varargin)
+                                            if ~isempty(varargin{k})
+                                                varargin{k}.close;
+                                            end
+                                        end
+
+                                        % Delete the filename if it exists.
+                                        w = warning;
+                                        warning('off', 'MATLAB:DELETE:FileNotFound');
+                                        delete(filename);
+                                        warning(w);

@@ -1,4 +1,4 @@
-function [G]=snp_vhviewbw(haplo,dispfooter)
+function [G] = snp_vhviewbw(haplo, dispfooter)
 %SNP_VHVIEW - visual haplotype (VH)
 % Syntax: snp_vhview(haplo)
 %
@@ -10,7 +10,7 @@ function [G]=snp_vhviewbw(haplo,dispfooter)
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-04-23 23:03:55 -0500 (Tue, 23 Apr 2013) $
 % $LastChangedRevision: 530 $
 % $LastChangedBy: jcai $
@@ -24,37 +24,37 @@ function [G]=snp_vhviewbw(haplo,dispfooter)
 %Website reference:
 %http://pga.gs.washington.edu/VH1.html
 
-if nargin<2
-    dispfooter=true;
+if nargin < 2
+    dispfooter = true;
 end
 
-G=[];
+G = [];
 if isempty(haplo), return; end
-[n,m]=size(haplo);
-G=3*ones(n,m);
-for k=1:m
-      x=haplo(:,k);
-      y=x;
-      z=x;
-      y(y>4)=[];
-      [a,~,c]=unique(y);      
-      switch (length(a))
+[n, m] = size(haplo);
+G = 3 * ones(n, m);
+for k = 1:m
+    x = haplo(:, k);
+    y = x;
+    z = x;
+    y(y > 4) = [];
+    [a, ~, c] = unique(y);
+    switch (length(a))
         case (1)
-            x(z==a(1))=1;   % Homozygote-Common allele = 1
+            x(z == a(1)) = 1; % Homozygote-Common allele = 1
         case (2)
-	      if (sum(c==1)>sum(c==2)),
-    		x(z==a(1))=1;   % Homozygote-Common allele = 1
-        	x(z==a(2))=2;   % Homozygote-Rare allele = 2
-          else
-            x(z==a(1))=2;
-    		x(z==a(2))=1;
-	      end
-      end
-      G(:,k)=x;
+            if (sum(c == 1) > sum(c == 2)),
+                x(z == a(1)) = 1; % Homozygote-Common allele = 1
+                x(z == a(2)) = 2; % Homozygote-Rare allele = 2
+            else
+                x(z == a(1)) = 2;
+                x(z == a(2)) = 1;
+            end
+    end
+    G(:, k) = x;
 end
-G=cat(2,G,ones(n,1)*3);
-G=cat(1,G,ones(1,m+1)*3);
-G(G>3)=3;
+G = cat(2, G, ones(n, 1)*3);
+G = cat(1, G, ones(1, m+1)*3);
+G(G > 3) = 3;
 
 %{
 H=[];
@@ -66,19 +66,19 @@ H(H==2|H==3)=1;
 H(H==4)=3;
 %}
 
-h=pcolor(G);
+h = pcolor(G);
 axis ij;
 grid off;
-set(h,'EdgeColor',[.5 .5 .5])
+set(h, 'EdgeColor', [.5, .5, .5])
 
 colormap('default');
-ax=gray;
-colormap(ax([1,end],:))
+ax = gray;
+colormap(ax([1, end], :))
 
-x=axis;
-t=max(x(2),x(4));
-x(2)=t;
-x(4)=t;
+x = axis;
+t = max(x(2), x(4));
+x(2) = t;
+x(4) = t;
 axis(x);
 axis equal
 %axis off
@@ -88,13 +88,13 @@ ylabel('Samples (Chromosomes)')
 
 
 if dispfooter
-i_dispheader('Visual Haplotype (VH) View')
+    i_dispheader('Visual Haplotype (VH) View')
     disp('Blue   : Homozygote-common allele ')
     disp('Yellow : Homozygote-rare allele')
     disp('Cyan   : Undetermined ')
     disp(' ')
     disp('* Column = Markers (SNPs)')
     disp('** Row = Samples (Chromosomes)')
-i_dispfooter
+    i_dispfooter
 end
 %shading flat

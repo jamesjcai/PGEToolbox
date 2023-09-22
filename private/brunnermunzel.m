@@ -38,12 +38,8 @@ function brunnermunzel(x, y, alternative, alpha)
 %
 % http://rss.acs.unt.edu/Rdoc/library/lawstat/html/brunner.munzel.test.html
 % http://www3.interscience.wiley.com/journal/122219068/abstract
-% DOI: 10.1002/sim.3561 
+% DOI: 10.1002/sim.3561
 
 
-## P(X<Y)+.5*P(X=Y)
-##        0.788961
-
-
-
-
+## P(X < Y) + .5 * P(X = Y)
+## 0.788961

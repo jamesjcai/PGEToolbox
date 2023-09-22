@@ -1,4 +1,4 @@
-function [h] = faywu00h_test(aln,ancseq,fromS)
+function [h] = faywu00h_test(aln, ancseq, fromS)
 %FAYWU00H_TEST - Fay and Wu's test
 %  Syntax: [h] = faywu00h_test(aln,ancseq,fromS)
 %
@@ -19,63 +19,66 @@ function [h] = faywu00h_test(aln,ancseq,fromS)
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-01-06 13:39:38 -0600 (Sun, 06 Jan 2013) $
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if nargin<3,
-    fromS=0;    % estimate theta-W from S instead of m_mut.
+if nargin < 3,
+    fromS = 0; % estimate theta-W from S instead of m_mut.
 end
-if nargin<2,
-    ancseq=0;
+if nargin < 2,
+    ancseq = 0;
 end
 
-if (isstruct(aln)), seq=aln.seq; else seq=aln; end
-m = size(seq,2);
+if (isstruct(aln)), seq = aln.seq;
+else seq = aln;
+end
+m = size(seq, 2);
 if (ancseq)
-	[thissfs,smpsize]=sfs(seq,ancseq);
+    [thissfs, smpsize] = sfs(seq, ancseq);
 else
-	[thissfs,smpsize]=sfs(seq);
+    [thissfs, smpsize] = sfs(seq);
 end
 
 %smpsize=n-(max(size(ancseq))==1);
 
-[S,V,m_num,sn_num,sm_num] = countsegregatingsites(aln);
+[S, V, m_num, sn_num, sm_num] = countsegregatingsites(aln);
 
-if (fromS), Sk=S; else Sk=m_num; end
-h=[]; hraw=[];
-if ~(Sk==0&&sum(thissfs(:))==0)
-    [h,hraw] = faywu00h(smpsize, Sk, thissfs);
+if (fromS), Sk = S;
+else Sk = m_num;
+end
+h = [];
+hraw = [];
+if ~(Sk == 0 && sum(thissfs(:)) == 0)
+    [h, hraw] = faywu00h(smpsize, Sk, thissfs);
 end
 
 %thetapi(aln,0,1)
 
-if (nargout<1),
-i_dispheader('Fay and Wu''s H Test')
-	fprintf('No. of Sequences (n) : %d\n', smpsize);
-	fprintf('No. of Sites (m) : %d\n', m);
-	fprintf('\n');
-	%fprintf(['Recombination rate (c) : %f\n'], rcbrate);
-	%fprintf(['Probability of back-mutation : %f\n'], bckrate);
-	%fprintf(['\n']);
-    
+if (nargout < 1),
+    i_dispheader('Fay and Wu''s H Test')
+    fprintf('No. of Sequences (n) : %d\n', smpsize);
+    fprintf('No. of Sites (m) : %d\n', m);
+    fprintf('\n');
+    %fprintf(['Recombination rate (c) : %f\n'], rcbrate);
+    %fprintf(['Probability of back-mutation : %f\n'], bckrate);
+    %fprintf(['\n']);
+
     if isempty(h)
-        fprintf ('Fay and Wu''s H = -NULL-\n');
-        fprintf ('Fay and Wu''s H (normalized) = -NULL-\n');    
+        fprintf('Fay and Wu''s H = -NULL-\n');
+        fprintf('Fay and Wu''s H (normalized) = -NULL-\n');
     else
-        fprintf ('Fay and Wu''s H = %f\n', hraw);
-        fprintf ('Fay and Wu''s H (normalized) = %f\n', h);
+        fprintf('Fay and Wu''s H = %f\n', hraw);
+        fprintf('Fay and Wu''s H (normalized) = %f\n', h);
         [thew] = thetaw(aln);
-        [H] = faywu00h_simu(smpsize,10000,thew,0);
-        p=2.*sum(H>abs(hraw))./10000;
+        [H] = faywu00h_simu(smpsize, 10000, thew, 0);
+        p = 2 .* sum(H > abs(hraw)) ./ 10000;
         %p=sum(hraw<H)./1000;
-        fprintf ('Statistical significance:\n P = %f%s\n',p,sigtag(p));
+        fprintf('Statistical significance:\n P = %f%s\n', p, sigtag(p));
     end
-i_dispfooter
+    i_dispfooter
 end
-
-
 
 
 % The input parameters are:

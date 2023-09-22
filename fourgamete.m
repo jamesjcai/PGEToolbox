@@ -1,4 +1,4 @@
-function [rmin,D]=fourgamete(seq,showit)
+function [rmin, D] = fourgamete(seq, showit)
 %Four-gamete test
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
@@ -10,5 +10,5 @@ function [rmin,D]=fourgamete(seq,showit)
 % $LastChangedBy: jcai $
 
 
-if nargin<2, showit=false; end
-[rmin,D]=hudsonkaplan85rm(seq,showit);
+if nargin < 2, showit = false; end
+[rmin, D] = hudsonkaplan85rm(seq, showit);

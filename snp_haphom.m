@@ -1,4 +1,4 @@
-function [h]=snp_haphom(hap)
+function [h] = snp_haphom(hap)
 
 % Ref:
 % Nei M 1975. Molecular population genetics and evolution. North-Holland/American Elsevier.
@@ -14,8 +14,6 @@ function [h]=snp_haphom(hap)
 % $LastChangedBy: jcai $
 
 
-[numHap,sizHap,seqHap]=counthaplotype(hap);
-p=sizHap./sum(sizHap);
-h=(sum(p.^2)-1/numHap)./(1-1/numHap);
-
-    
+[numHap, sizHap, seqHap] = counthaplotype(hap);
+p = sizHap ./ sum(sizHap);
+h = (sum(p.^2) - 1 / numHap) ./ (1 - 1 / numHap);

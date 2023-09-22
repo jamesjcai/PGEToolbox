@@ -6,19 +6,19 @@ load fdist2test geno12 geno1 geno2
 %hom1=1-snp_heterozygosity(geno12);
 
 
-[a,het2]=snp_heterozygosity(geno2);
-[a,het1]=snp_heterozygosity(geno1);
-[a,het12]=snp_heterozygosity(geno12);
+[a, het2] = snp_heterozygosity(geno2);
+[a, het1] = snp_heterozygosity(geno1);
+[a, het12] = snp_heterozygosity(geno12);
 
-h0=mean([het1;het2]);
-h1=het12;
+h0 = mean([het1; het2]);
+h1 = het12;
 
 
-X=1-h0./h1;
-Y=snp_fst(geno1,geno2);
+X = 1 - h0 ./ h1;
+Y = snp_fst(geno1, geno2);
 
 figure;
-plot(h1,Y,'o')
+plot(h1, Y, 'o')
 
 
 %{

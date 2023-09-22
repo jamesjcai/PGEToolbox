@@ -9,6 +9,6 @@ function snp_sfs(genodata)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-x=snp_maf(genodata);
-isfolded=1;
-histsfs(x,isfolded);
+x = snp_maf(genodata);
+isfolded = 1;
+histsfs(x, isfolded);

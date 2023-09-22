@@ -25,18 +25,18 @@ function [driftmatrix] = kimuradrift(pmatrix, nloci, npops, numalleles)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-    driftmatrix = pmatrix;
-    for k=1:nloci
-        for j=1:npops %allele frequencies drift
-            
-            delta = (2*rand - 1)*sqrt((3*pmatrix(k,j)*(1-pmatrix(k,j)))/(numalleles));
-            if (pmatrix(k,j) + delta)> 1.0
-                driftmatrix(k,j) = 1.0;
-            elseif (pmatrix(k,j) + delta)<0.0
-                driftmatrix(k,j) = 0.0;
-            else
-                driftmatrix(k,j) = pmatrix(k,j) + delta;
-            end
-            
-        end %end npops loop
-    end %end loci loop
+driftmatrix = pmatrix;
+for k = 1:nloci
+    for j = 1:npops %allele frequencies drift
+
+        delta = (2 * rand - 1) * sqrt((3 * pmatrix(k, j) * (1 - pmatrix(k, j)))/(numalleles));
+        if (pmatrix(k, j) + delta) > 1.0
+            driftmatrix(k, j) = 1.0;
+        elseif (pmatrix(k, j) + delta) < 0.0
+            driftmatrix(k, j) = 0.0;
+        else
+            driftmatrix(k, j) = pmatrix(k, j) + delta;
+        end
+
+    end %end npops loop
+end %end loci loop

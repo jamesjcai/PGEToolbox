@@ -20,7 +20,9 @@ function [Y] = mismch(aln)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if (isstruct(aln)), seq=aln.seq; else seq=aln; end
+if (isstruct(aln)), seq = aln.seq;
+else seq = aln;
+end
 
 %[n,m] = size(seq);
 %for i=1:n-1
@@ -29,16 +31,16 @@ if (isstruct(aln)), seq=aln.seq; else seq=aln; end
 %end
 %end
 
-[n,p]=size(seq);
-k=1;
-Y = zeros(1,n*(n-1)./2);
-for i = 1:n-1
-    dsq = zeros(n-i,1);
+[n, p] = size(seq);
+k = 1;
+Y = zeros(1, n*(n - 1)./2);
+for i = 1:n - 1
+    dsq = zeros(n-i, 1);
     for q = 1:p
-        dsq = dsq + (seq(i,q)~= seq((i+1):n,q));
+        dsq = dsq + (seq(i, q) ~= seq((i + 1):n, q));
     end
-    Y(k:(k+n-i-1)) = dsq;
-    k = k + (n-i);
+    Y(k:(k + n - i - 1)) = dsq;
+    k = k + (n - i);
 end
 %squareform(Y)
 
@@ -58,4 +60,3 @@ end
 %Mismatch distributions are histograms showing the pattern of nucleotide (or restriction) site differences between
 %pairs of individuals in a sample. They can be used to test hypotheses about the history of population size and
 %subdivision (if selective neutrality is assumed) or about selection (if a constant population size is assumed).
-

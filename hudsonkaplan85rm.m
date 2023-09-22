@@ -1,4 +1,4 @@
-function [rmin,D]=hudsonkaplan85rm(seq,showit)
+function [rmin, D] = hudsonkaplan85rm(seq, showit)
 %HUDSONKAPLAN85RM - Minimum number of recombination events (Rm)
 %
 % aka: Four-gamete test
@@ -13,77 +13,79 @@ function [rmin,D]=hudsonkaplan85rm(seq,showit)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if nargin<2
-    showit=0;
+if nargin < 2
+    showit = 0;
 end
 
-[haplodata]=extractsegregatingsites(seq,1);
-[m]=size(haplodata,2);
-Dcount=zeros(m);
+[haplodata] = extractsegregatingsites(seq, 1);
+[m] = size(haplodata, 2);
+Dcount = zeros(m);
 
-for i=1:m-1
-for j=i+1:m
-    %[numHap]=counthaplotype([haplodata(:,i),haplodata(:,j)]);
-    numHap=size(unique([haplodata(:,i),haplodata(:,j)],'rows'),1);
-    Dcount(i,j)=numHap;
-end
+for i = 1:m - 1
+    for j = i + 1:m
+        %[numHap]=counthaplotype([haplodata(:,i),haplodata(:,j)]);
+        numHap = size(unique([haplodata(:, i), haplodata(:, j)], 'rows'), 1);
+        Dcount(i, j) = numHap;
+    end
 end
 %Dcount
 
-D=(Dcount==4);
+D = (Dcount == 4);
 
 
-[x,y]=find(triu(D));
+[x, y] = find(triu(D));
 
 if isempty(x)
-    rmin=0;
+    rmin = 0;
 else
-    idx=zeros(1,length(x)+1);
-    x=[x;0]; y=[y;0]; idx(end)=1;
+    idx = zeros(1, length(x)+1);
+    x = [x; 0];
+    y = [y; 0];
+    idx(end) = 1;
     while any(idx)
-        id=find(idx);
-        x(id)=[];
-        y(id)=[];
-        idx(id)=[];
-    if ~isempty(x)
-    for k=2:length(x)
-        if x(k)>=x(k-1) && y(k)<=y(k-1)
-            idx(k-1)=1;
+        id = find(idx);
+        x(id) = [];
+        y(id) = [];
+        idx(id) = [];
+        if ~isempty(x)
+            for k = 2:length(x)
+                if x(k) >= x(k-1) && y(k) <= y(k-1)
+                    idx(k-1) = 1;
+                end
+            end
         end
-    end
-    end
     end
 
-    if length(x)>1
-        x=[x(end:-1:1);0]; y=[y(end:-1:1);0]; idx(end)=1;
+    if length(x) > 1
+        x = [x(end:-1:1); 0];
+        y = [y(end:-1:1); 0];
+        idx(end) = 1;
         while any(idx)
-            id=find(idx);
-            x(id)=[];
-            y(id)=[];
-            idx(id)=[];
-        if ~isempty(x)
-        for k=2:length(x)
-        if x(k)>=x(k-1) && y(k)<=y(k-1)
-            idx(k-1)=1;
-        end
-        end
-        end
+            id = find(idx);
+            x(id) = [];
+            y(id) = [];
+            idx(id) = [];
+            if ~isempty(x)
+                for k = 2:length(x)
+                    if x(k) >= x(k-1) && y(k) <= y(k-1)
+                        idx(k-1) = 1;
+                    end
+                end
+            end
         end
     end
-rmin=length(x);
+    rmin = length(x);
 end
 
-if (nargout<1 || showit)
+if (nargout < 1 || showit)
     i_dispheader('Four-gamete test (Hudson and Kaplan 1985)')
     fprintf('Minimum number of recombination events\n');
-	fprintf ('   Number of biallelic segregating sites: %d\n',m);
-	fprintf ('   Number of pairwise comparisons analyzed: %d\n',nchoosek(m,2));
-	fprintf ('   Number of pairs of sites with four gametic types: %d\n',sum(D(:)));
-	fprintf ('   Minimum number of recombination events, Rm: %d\n',rmin);
+    fprintf('   Number of biallelic segregating sites: %d\n', m);
+    fprintf('   Number of pairwise comparisons analyzed: %d\n', nchoosek(m, 2));
+    fprintf('   Number of pairs of sites with four gametic types: %d\n', sum(D(:)));
+    fprintf('   Minimum number of recombination events, Rm: %d\n', rmin);
     i_dispfooter
 end
-
-
 
 
 %d=Array of pairwise 4GT test results
@@ -96,7 +98,7 @@ end
 
 
 %Wang et al., 2002 - Study
-%R. Hudson’s program for simulating genealogies with mutation, drift and 
+%R. Hudsonâ€™s program for simulating genealogies with mutation, drift and
 % recombination under various demographic scenarios
 %Study of dependence of average lengths of blocks on different factors
 %Comparison of simulation results to data from Patil et al., 2002
@@ -124,4 +126,3 @@ end
 % this point all of the intervals are disjoint, and to each interval we
 % must assign at least one recombination event. Hence, RM equals the final
 % number of intervals on the list.
-

@@ -1,4 +1,4 @@
-function [r2] = r2_test(aln,rvalue)
+function [r2] = r2_test(aln, rvalue)
 %R2_TEST - Ramos-Onsins & Rozas (R2) test
 %
 % Syntax: [r2] = r2test(aln,rvalue)
@@ -39,28 +39,30 @@ function [r2] = r2_test(aln,rvalue)
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-01-06 13:39:38 -0600 (Sun, 06 Jan 2013) $
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
 
-if (nargin<2), rvalue=2; end
+if (nargin < 2), rvalue = 2; end
 
-if (isstruct(aln)), seq=aln.seq; else seq=aln; end
-[n,m]=size(seq);
-if (n<4) error('Four or more sequences are need to compute R_2 statistics'); end
+if (isstruct(aln)), seq = aln.seq;
+else seq = aln;
+end
+[n, m] = size(seq);
+if (n < 4) error('Four or more sequences are need to compute R_2 statistics'); end
 
 [k] = thetapi(aln);
-[S,V,m_num,sn_num,sm_num,Ui] = countsegregatingsites(aln);
+[S, V, m_num, sn_num, sm_num, Ui] = countsegregatingsites(aln);
 %Ui is the vector of numbers of singleton mutations for each allele
 
-r2=sum(abs(Ui-k/2).^rvalue);
-r2=(r2/n)^(1/rvalue);
-r2=r2/S;
+r2 = sum(abs(Ui-k/2).^rvalue);
+r2 = (r2 / n)^(1 / rvalue);
+r2 = r2 / S;
 
-if (nargout<1),
-	i_dispheader('Ramos-Onsins and Rozas''s R2 Test')
-	fprintf (['   R2 : %f\n'],r2);
-	i_dispfooter
+if (nargout < 1),
+    i_dispheader('Ramos-Onsins and Rozas''s R2 Test')
+    fprintf(['   R2 : %f\n'], r2);
+    i_dispfooter
 end

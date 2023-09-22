@@ -1,4 +1,4 @@
-function [haplodata,hmarkinfo]=snp_fastphaserun(genodata,gmarkinfo)
+function [haplodata, hmarkinfo] = snp_fastphaserun(genodata, gmarkinfo)
 %SNP_FASTPHASERUN - runs FastPHASE
 %
 %[haplodata,hmarkinfo] = snp_fastphaserun(genodata,gmarkinfo)
@@ -11,17 +11,19 @@ function [haplodata,hmarkinfo]=snp_fastphaserun(genodata,gmarkinfo)
 % $LastChangedRevision: 758 $
 % $LastChangedBy: jcai $
 
-haplodata=[]; hmarkinfo=[];
-oldpath=pwd;
-cdpge(true); cd('addins/fastPhase');
+haplodata = [];
+hmarkinfo = [];
+oldpath = pwd;
+cdpge(true);
+cd('addins/fastPhase');
 %[exedir,dlgshown]=pge_getprgmdir(sprintf('%s_prgmdir',mfilename));
 %if isempty(exedir)||dlgshown, return; end
 %cd(exedir);
 
 
 fprintf('Writing fastPHASE input file...');
-[status]= snp_writephase(genodata,gmarkinfo,'input.inp');
-if status==1    % good
+[status] = snp_writephase(genodata, gmarkinfo, 'input.inp');
+if status == 1 % good
     fprintf('done.\n');
 else
     cd(oldpath);
@@ -29,11 +31,11 @@ else
 end
 
 if ispc
-    cmdline='fastPHASE.exe input.inp output.txt';
+    cmdline = 'fastPHASE.exe input.inp output.txt';
 elseif ismac
-    cmdline='./fastphase_mac input.inp output.txt';
+    cmdline = './fastphase_mac input.inp output.txt';
 else
-    cmdline='./fastphase_linux input.inp output.txt';
+    cmdline = './fastphase_linux input.inp output.txt';
 end
 
 
@@ -41,19 +43,18 @@ fprintf('Running fastPHASE ...');
 try
     system(cmdline);
 catch ME
-    warning(ME.message,'fastPhase may not have been compiled properly on this machine.');
+    warning(ME.message, 'fastPhase may not have been compiled properly on this machine.');
     cd(oldpath);
     return;
 end
-    fprintf('done.\n');
+fprintf('done.\n');
 try
-[haplodata,hmarkinfo] = snp_readfastphaseout('output.txt',1);
-hmarkinfo.pos=gmarkinfo.pos;
-hmarkinfo.rsid=gmarkinfo.rsid;
+    [haplodata, hmarkinfo] = snp_readfastphaseout('output.txt', 1);
+    hmarkinfo.pos = gmarkinfo.pos;
+    hmarkinfo.rsid = gmarkinfo.rsid;
 catch ME
-    warning(ME.message,'Parsing addins/fastPhase/output.txt error.');
+    warning(ME.message, 'Parsing addins/fastPhase/output.txt error.');
     cd(oldpath);
     return;
 end
 cd(oldpath);
-

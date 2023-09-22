@@ -8,28 +8,27 @@ function snp_haploreginfo(rsid)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if (nargin<1),
-   prompt={sprintf('HaploReg is a tool for exploring annotations of a SNP\n Please enter the SNP RSID: ')};
-   def={'rs2693665'};
-   dlgTitle='Input for SNP RSID';
-   lineNo=1;
-   answer=inputdlg(prompt,dlgTitle,lineNo,def);
- 
-    if ~(isempty(answer)),
-      rsid=answer{1};
-    else
-         return;
-    end
-end
+if (nargin < 1),
+    prompt = {sprintf('HaploReg is a tool for exploring annotations of a SNP\n Please enter the SNP RSID: ')};
+        def = {'rs2693665'};
+        dlgTitle = 'Input for SNP RSID';
+            lineNo = 1;
+            answer = inputdlg(prompt, dlgTitle, lineNo, def);
 
-rsidx=sprintf('%s',rsid);
-urlFetch=sprintf('http://www.broadinstitute.org/mammals/haploreg/detail.php?query=&id=%s',...
-    rsidx);
-web(urlFetch,'-browser')
+            if ~(isempty(answer)),
+                rsid = answer{1};
+            else
+                return;
+            end
+        end
 
-%try
-%    pagecontent=urlread(urlFetch);
-%catch ME
-%    error(ME.message);
-%end
-    
+        rsidx = sprintf('%s', rsid);
+        urlFetch = sprintf('http://www.broadinstitute.org/mammals/haploreg/detail.php?query=&id=%s', ...
+            rsidx);
+        web(urlFetch, '-browser')
+
+        %try
+        %    pagecontent=urlread(urlFetch);
+        %catch ME
+        %    error(ME.message);
+        %end

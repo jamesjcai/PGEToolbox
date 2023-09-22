@@ -1,4 +1,4 @@
-function [ni_mh]=nimh(dn,ds,pn,ps)
+function [ni_mh] = nimh(dn, ds, pn, ps)
 %NI by using the Mantel-Haenszel procedure (Adam Eyre-Walker)
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
@@ -10,7 +10,7 @@ function [ni_mh]=nimh(dn,ds,pn,ps)
 % $LastChangedBy: jcai $
 
 
-if ~(size(dn,2)==1&&size(ds,2)==1&&size(pn,2)==1&&size(ps,2)==1)
+if ~(size(dn, 2) == 1 && size(ds, 2) == 1 && size(pn, 2) == 1 && size(ps, 2) == 1)
     error('xxx')
 end
 
@@ -22,8 +22,8 @@ pn=poissrnd(pn,1000,1);
 ps=poissrnd(ps,1000,1);
 %}
 
-z=dn+ds+pn+ps;
-ni_mh=(nansum(ds.*pn./z))/(nansum(dn.*ps./z));
+z = dn + ds + pn + ps;
+ni_mh = (nansum(ds.*pn./z)) / (nansum(dn.*ps./z));
 
 %fprintf('NI_{MH} = %f\n', ni_mh);
 %fprintf('NI_{1} = %f\n', sum(ds.*pn)./sum(dn.*ps));

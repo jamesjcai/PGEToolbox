@@ -9,12 +9,12 @@ function snptool
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-   ButtonName = questdlg('What is your data type?', ...
-                         'SNP Tool', ...
-                         'Genotype', 'Haplotype', 'Genotype');
-   switch ButtonName,
-     case 'Genotype',
-      snptoolg
-     case 'Haplotype',
-     snptoolh
-   end
+ButtonName = questdlg('What is your data type?', ...
+    'SNP Tool', ...
+    'Genotype', 'Haplotype', 'Genotype');
+switch ButtonName,
+    case 'Genotype',
+        snptoolg
+    case 'Haplotype',
+        snptoolh
+end

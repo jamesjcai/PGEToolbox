@@ -1,4 +1,4 @@
-function [p]=snp_het2maf(h)
+function [p] = snp_het2maf(h)
 %SNP_HET2MAF
 
 % H    -  average heterozygosity of an SNP
@@ -14,10 +14,10 @@ function [p]=snp_het2maf(h)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if h>0.5
+if h > 0.5
     error('average heterozygosity <=0.5');
 end
-p=(1-sqrt(1-2*h))./2;
+p = (1 - sqrt(1-2*h)) ./ 2;
 
 
 %h=(1-(1-2*p)^2)/2

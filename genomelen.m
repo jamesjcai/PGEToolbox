@@ -1,4 +1,4 @@
-function [x]=genomelen(autoonly,species)
+function [x] = genomelen(autoonly, species)
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
@@ -8,16 +8,16 @@ function [x]=genomelen(autoonly,species)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if nargin<1, autoonly=1; end
-if nargin<2, species=1; end
+if nargin < 1, autoonly = 1; end
+if nargin < 2, species = 1; end
 
-x=0;
+x = 0;
 switch species
-    case 1    % human
-        for k=1:22, x=x+chrlen(k); end
+    case 1 % human
+        for k = 1:22, x = x + chrlen(k); end
         if ~autoonly
-            x=x+chrlen(23);
-            x=x+chrlen(24);            
+            x = x + chrlen(23);
+            x = x + chrlen(24);
         end
     otherwise
         error('Unknow.')

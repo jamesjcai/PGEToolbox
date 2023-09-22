@@ -1,4 +1,4 @@
-function [h,hvar]=snp_haphet(hap)
+function [h, hvar] = snp_haphet(hap)
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
@@ -9,20 +9,20 @@ function [h,hvar]=snp_haphet(hap)
 % $LastChangedBy: jcai $
 
 
-[numHap,sizHap,seqHap]=counthaplotype(hap);
-p=sizHap./sum(sizHap);
-h=1-sum(p.^2)./(1-1/numHap);
+[numHap, sizHap, seqHap] = counthaplotype(hap);
+p = sizHap ./ sum(sizHap);
+h = 1 - sum(p.^2) ./ (1 - 1 / numHap);
 
-if nargout>1
-    n=numHap;
-    hvar=(2*(n-1)/n^3)*(2*(n-2)*(sum(p.^3)-(sum(p.^2))^2));
-%(a slight modification of the standard diploid variance; Nei 1987).
-% Nei M Molecular evolutionary genetics. In Columbia University Press 1987
-% New York:Columbia University Press as Nash D, Nair S, Mayxay M, Newton
-% PN, Guthmann JP, Nosten F, Anderson TJ.
-%
-%Selection strength and hitchhiking around two anti-malarial resistance
-%genes. Proc Biol Sci. 2005 Jun 7;272(1568):1153-61. PubMed PMID: 16024377;
-%PubMed Central PMCID: PMC1559806.
+if nargout > 1
+    n = numHap;
+    hvar = (2 * (n - 1) / n^3) * (2 * (n - 2) * (sum(p.^3) - (sum(p.^2))^2));
+    %(a slight modification of the standard diploid variance; Nei 1987).
+    % Nei M Molecular evolutionary genetics. In Columbia University Press 1987
+    % New York:Columbia University Press as Nash D, Nair S, Mayxay M, Newton
+    % PN, Guthmann JP, Nosten F, Anderson TJ.
+    %
+    %Selection strength and hitchhiking around two anti-malarial resistance
+    %genes. Proc Biol Sci. 2005 Jun 7;272(1568):1153-61. PubMed PMID: 16024377;
+    %PubMed Central PMCID: PMC1559806.
 
 end

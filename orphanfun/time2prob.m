@@ -1,4 +1,4 @@
-function [t]=time2prob(p,N)
+function [t] = time2prob(p, N)
 %TIME2PROB - Age of a mutant allele with frequency P.
 %
 %[t]=time2prob(p,N)
@@ -12,9 +12,8 @@ function [t]=time2prob(p,N)
 % http://www.pubmedcentral.nih.gov/picrender.fcgi?artid=1212997&blobtype=pdf
 % Applications e.g., Stephens JC (1998) CCR5-delta32
 % Book: Mathematical Population Genetics, WJ Ewens, (equ. 3.4 and 3.11)
-% 
+%
 % See also: TIME1ST2PROB
 
-if nargin<2, N=10000; end
-t=-4.*N.*(p.*log(p)./(1-p));             % (equ 13)
-
+if nargin < 2, N = 10000; end
+t = -4 .* N .* (p .* log(p) ./ (1 - p)); % (equ 13)

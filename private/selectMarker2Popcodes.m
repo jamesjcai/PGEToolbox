@@ -1,9 +1,9 @@
-function [marker,popcode1,popcode2]=selectMarker2Popcodes(defaulttxt,idx1,idx2)
+function [marker, popcode1, popcode2] = selectMarker2Popcodes(defaulttxt, idx1, idx2)
 
 warning('Example inputs are used.');
-marker='BRCA2';
-popcode1='CEU';
-popcode2='YRI';
+marker = 'BRCA2';
+popcode1 = 'CEU';
+popcode2 = 'YRI';
 
 
 %{
@@ -19,7 +19,7 @@ if nargin<1
     defaulttxt='';
 end
 items(1).name = 'MARKER or REGION:   ';
-items(1).default = 0;        
+items(1).default = 0;
 items(1).values = {defaulttxt};
 items(1).help = 'Search using a sequence name, gene name, locus, or other landmark.';
 
@@ -45,12 +45,12 @@ msg = sprintf(['The wildcard character * is allowed. \n\nExamples: Chr9:660000..
 out = CSEFlagDialog(items, title, msg);
 
 if ~(isempty(out)),
-	marker=deblank(out(1).answer);
-	popcode1=popset{out(2).answer};
-	popcode2=popset{out(3).answer};    
+    marker=deblank(out(1).answer);
+    popcode1=popset{out(2).answer};
+    popcode2=popset{out(3).answer};
 else
     marker='';
     popcode1='';
-    popcode2='';    
+    popcode2='';
 end
 %}

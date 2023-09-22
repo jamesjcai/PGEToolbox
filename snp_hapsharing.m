@@ -1,4 +1,4 @@
-function [data]=snp_hapsharing(hap,pos,refalle)
+function [data] = snp_hapsharing(hap, pos, refalle)
 %SNP_PHS - pairwise haplotype-sharing score
 %
 %  Syntax: [data]=snp_hapsharing(hap,pos,refalle)
@@ -28,41 +28,28 @@ function [data]=snp_hapsharing(hap,pos,refalle)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-s=hap(:,pos);
-idx=s==refalle;
+s = hap(:, pos);
+idx = s == refalle;
 
-n1=sum(idx);
-n0=length(idx);
+n1 = sum(idx);
+n0 = length(idx);
 
-hapref=hap(idx,:);
+hapref = hap(idx, :);
 
-z1=0;
-for i=1:n1-1
-for j=i+1:n1
-    z1=z1+hapsharing(hapref(i,:),hapref(j,:),pos);
+z1 = 0;
+for i = 1:n1 - 1
+    for j = i + 1:n1
+        z1 = z1 + hapsharing(hapref(i, :), hapref(j, :), pos);
+    end
 end
+z1 = z1 ./ ((n1 * (n1 - 1)) / 2);
+
+z0 = 0;
+for i = 1:n0 - 1
+    for j = i + 1:n0
+        z0 = z0 + hapsharing(hap(i, :), hap(j, :), pos);
+    end
 end
-z1=z1./((n1*(n1-1))/2);
+z0 = z0 ./ ((n0 * (n0 - 1)) / 2);
 
-z0=0;
-for i=1:n0-1
-for j=i+1:n0
-    z0=z0+hapsharing(hap(i,:),hap(j,:),pos);
-end
-end
-z0=z0./((n0*(n0-1))/2);
-
-data=z1-z0;
-
-
-
-
-
-
-
-
-
-
-
-
-
+data = z1 - z0;

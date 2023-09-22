@@ -1,11 +1,11 @@
-function [r,d]=raggedness(hap,showhist)
-%RAGGEDNESS - 
+function [r, d] = raggedness(hap, showhist)
+%RAGGEDNESS -
 %
 % [r]=raggedness(hap,showhist)
 %
 %See also: MISMCH
 %
-%REF: 
+%REF:
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
@@ -16,31 +16,31 @@ function [r,d]=raggedness(hap,showhist)
 % $LastChangedBy: jcai $
 
 
-if nargin<2
-    showhist=false;
+if nargin < 2
+    showhist = false;
 end
-    
-d=mismch(hap);
-x=unique(d);
-y=grpstats(d,d,'numel');
-y=y/sum(y);
 
-s1=0:max(x);
-t1=zeros(1,numel(s1));
+d = mismch(hap);
+x = unique(d);
+y = grpstats(d, d, 'numel');
+y = y / sum(y);
 
-[~,idx]=ismember(x,s1);
-t1(idx)=y;
+s1 = 0:max(x);
+t1 = zeros(1, numel(s1));
+
+[~, idx] = ismember(x, s1);
+t1(idx) = y;
 
 if showhist
     %figure;
-    bar(s1,t1)
+    bar(s1, t1)
     ylabel('Number')
     xlabel('Nucleotide difference')
-    xlim([-1 max(s1)+1]);
+    xlim([-1, max(s1) + 1]);
 end
 
-t2=[t1(2:end),nan];
-r=nansum((t2-t1).^2);
+t2 = [t1(2:end), nan];
+r = nansum((t2 - t1).^2);
 
 %{
 if nargout>1

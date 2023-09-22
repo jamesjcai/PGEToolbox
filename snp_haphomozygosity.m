@@ -1,16 +1,16 @@
-function snp_haphomozygosity(hap,centralmark)
-%SNP_HAPHOMOZYGOSITY - A simple pairwise metric of haplotypic homozygosity 
+function snp_haphomozygosity(hap, centralmark)
+%SNP_HAPHOMOZYGOSITY - A simple pairwise metric of haplotypic homozygosity
 %
-%"Consider two biallelic SNPs, denoted A and B, where we are particularly 
+%"Consider two biallelic SNPs, denoted A and B, where we are particularly
 % interested in allele X of SNP A. We define the following metric:
 %    Hx = h_BX - h_B
-% where h_BX is the homozygosity observed at SNP B when we consider only 
-% haplotypes carrying allele X of SNP A, and h_B is the homozygosity 
-% observed at SNP B when we consider all haplotypes. We are particularly 
-% interested in situations where the homozygosity of the partitioned 
-% haplotypes is unusually high or low compared with the result expected 
-% from the general population. Therefore, we calculated a calibrated 
-% partition homozygosity (Hx) by subtracting the general-population 
+% where h_BX is the homozygosity observed at SNP B when we consider only
+% haplotypes carrying allele X of SNP A, and h_B is the homozygosity
+% observed at SNP B when we consider all haplotypes. We are particularly
+% interested in situations where the homozygosity of the partitioned
+% haplotypes is unusually high or low compared with the result expected
+% from the general population. Therefore, we calculated a calibrated
+% partition homozygosity (Hx) by subtracting the general-population
 % homozygosity at SNP B (h_B) from h_BX.
 %
 % A positive value of Hx implies that the homozygosity at locus B on
@@ -19,18 +19,17 @@ function snp_haphomozygosity(hap,centralmark)
 % this metric is that each allele of a single SNP is likely to receive a
 % different Hx value, corresponding to the history of that allele."
 %
-%Reference: 
+%Reference:
 
 %{
-A window size of 50 kb centered on the target allele contains sufficient 
-markers (?20 SNPs) to demonstrate our signal clearly; however, alternative 
+A window size of 50 kb centered on the target allele contains sufficient
+markers (?20 SNPs) to demonstrate our signal clearly; however, alternative
 window sizes could be employed.
 
 Fry AE, Trafford CJ, Kimber MA, Chan MS, Rockett KA, Kwiatkowski DP. Haplotype
 homozygosity and derived alleles in the human genome. Am J Hum Genet. 2006
 Jun;78(6):1053-9. Epub 2006 Apr 5. PubMed PMID: 16685655; PubMed Central PMCID:
 PMC1474085.
-
 
 
 p=(f11+f21)/(f11+f12+f21+f22);

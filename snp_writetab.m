@@ -1,4 +1,4 @@
-function snp_wirtetab(genodata,filename)
+function snp_wirtetab(genodata, filename)
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
@@ -8,20 +8,19 @@ function snp_wirtetab(genodata,filename)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-fid = fopen(filename,'wt');
+fid = fopen(filename, 'wt');
 if (fid == -1), error('Unable to open file.'); end
 
-[indvlen,marklen2]=size(genodata);
-marklen=marklen2/2;
+[indvlen, marklen2] = size(genodata);
+marklen = marklen2 / 2;
 
-fprintf(fid,'%d\t%d\n',indvlen,marklen);
+fprintf(fid, '%d\t%d\n', indvlen, marklen);
 
-for (k=1:indvlen),
-      fprintf(fid,'%d\t',k);
-      for (j=1:marklen2),
-	      fprintf(fid,'%d\t',genodata(k,j));
-      end      
-      fprintf(fid,'\n');
+for (k = 1:indvlen),
+    fprintf(fid, '%d\t', k);
+    for (j = 1:marklen2),
+        fprintf(fid, '%d\t', genodata(k, j));
+    end
+    fprintf(fid, '\n');
 end
 fclose(fid);
-

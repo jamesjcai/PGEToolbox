@@ -1,4 +1,4 @@
-function [p,coresets]=snp_phs(hapldata,n1,n2,showit)
+function [p, coresets] = snp_phs(hapldata, n1, n2, showit)
 %SNP_PHS - pairwise haplotype-sharing score
 %
 %  Syntax: [p,coresets]=snp_phs(hapldata,n1,n2,showit)
@@ -21,10 +21,3 @@ function [p,coresets]=snp_phs(hapldata,n1,n2,showit)
 %A Nonparametric Test Reveals Selection for Rapid Flowering in the
 %Arabidopsis Genome . PLoS Biol 4(5): e137.
 %doi:10.1371/journal.pbio.0040137
-
-
-
-
-
-
-

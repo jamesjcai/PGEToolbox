@@ -1,7 +1,7 @@
-function [y]=randpdf(x,t,x0)
+function [y] = randpdf(x, t, x0)
 
 % gfdrand - gene frequency distribution under random genetic drift
-% 
+%
 % Malecot (1944) obtained the approximation for the probability density for
 % large t:
 %
@@ -16,7 +16,7 @@ function [y]=randpdf(x,t,x0)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
- 
+
 %if nargin<4, Vs=0.0483; end
 %if nargin<4, Vs=0.383; end
 
@@ -43,21 +43,22 @@ y=A.*B.*C;
 %Ci=4*p.*q.*(2*j+1)./(j.*(j+1)).*gegenbauerc(j,1.5,(1-2.*p));
 %
 
-r=1-2*x0;
-z=1-2*x;
+r = 1 - 2 * x0;
+z = 1 - 2 * x;
 
 
-j=1; Ci=0;
+j = 1;
+Ci = 0;
 
-while (j<20)
-    A=((2*j+1).*(1-r.^2))./(j.*(j+1));
+while (j < 20)
+    A = ((2 * j + 1) .* (1 - r.^2)) ./ (j .* (j + 1));
     %A=(2*j+1)./(j.*(j+1));
-    B=gegenbauerc(j,1.5,r);
-    C=gegenbauerc(j,1.5,z);
-    D=exp(-0.5*j.*(j+1).*t);
-    incr = A.*B.*C.*D;
-    j=j+1;
-    Ci=Ci+incr;    
+    B = gegenbauerc(j, 1.5, r);
+    C = gegenbauerc(j, 1.5, z);
+    D = exp(-0.5*j.*(j + 1).*t);
+    incr = A .* B .* C .* D;
+    j = j + 1;
+    Ci = Ci + incr;
 end
 
 %{
@@ -66,12 +67,10 @@ while (j<300 && abs(incr) > 1e-5)
     B=gegenbauerc(j,1.5,r);
     C=gegenbauerc(j,1.5,z);
     D=exp(-0.5*j.*(j+1).*t);
-    incr = A.*B.*C.*D;    
+    incr = A.*B.*C.*D;
     j=j+1;
     Ci=Ci+incr;
 end
 %}
-y=4*x0.*(1-x0).*Ci;
+y = 4 * x0 .* (1 - x0) .* Ci;
 %y=Ci;
-
-

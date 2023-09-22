@@ -1,4 +1,4 @@
-function [ihs,majalle,minalle]=snp_ihs(hapldata,hmarkinfo,coreidx)
+function [ihs, majalle, minalle] = snp_ihs(hapldata, hmarkinfo, coreidx)
 %SNP_IHS - Integrated haplotype score.
 %
 %  Syntax: [ihs]=snp_ihs(hapldata,hmarkinfo,coreidx)
@@ -9,8 +9,8 @@ function [ihs,majalle,minalle]=snp_ihs(hapldata,hmarkinfo,coreidx)
 % if nargin<1, rsid='rs7284767'; end
 % if strcmp(popid,'HCB'), popid='CHB'; end
 % popid=upper(popid);
-% if ~(ismember(popid,{'CEU','CHB','JPT','YRI','JPT+CHB'})), 
-%   error('Not available population code.');	 
+% if ~(ismember(popid,{'CEU','CHB','JPT','YRI','JPT+CHB'})),
+%   error('Not available population code.');
 % end
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
@@ -21,53 +21,52 @@ function [ihs,majalle,minalle]=snp_ihs(hapldata,hmarkinfo,coreidx)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if (nargin<2)
+if (nargin < 2)
     error('SNP_IHS needs at least two inputs.');
 end
-if (nargin<3)
-      nmarker=size(hapldata,2);
-      coreidx=floor(nmarker/2);
+if (nargin < 3)
+    nmarker = size(hapldata, 2);
+    coreidx = floor(nmarker/2);
 end
-[maffreq,majalle,minalle]=snp_maf(hapldata,1);     % MAF of SNPs
-majalle=majalle(coreidx);
-minalle=minalle(coreidx);
+[maffreq, majalle, minalle] = snp_maf(hapldata, 1); % MAF of SNPs
+majalle = majalle(coreidx);
+minalle = minalle(coreidx);
 
 
-cutoff=0.015;
-if maffreq(coreidx)<cutoff
-    ihs=nan;
+cutoff = 0.015;
+if maffreq(coreidx) < cutoff
+    ihs = nan;
     warn('Core SNP has a low MAF (<0.015). iHS cannot be computed.');
     return;
 end
 
-idx=find(maffreq>=cutoff);
+idx = find(maffreq >= cutoff);
 
 if (isempty(idx))
-      error('No valid SNPs (MAF>=0.015)');
+    error('No valid SNPs (MAF>=0.015)');
 end
-if (length(idx)<3)
-      error('Too few valid SNPs (MAF>=0.015)');
+if (length(idx) < 3)
+    error('Too few valid SNPs (MAF>=0.015)');
 end
 
 
-xpos=hmarkinfo.pos(idx);
+xpos = hmarkinfo.pos(idx);
 %xmaf=hmarkinfo.maf(idx);
-xrsid=hmarkinfo.rsid(idx);
-xk=find(ismember(xrsid,hmarkinfo.rsid{coreidx}));
-xhapldata=hapldata(:,idx);
+xrsid = hmarkinfo.rsid(idx);
+xk = find(ismember(xrsid, hmarkinfo.rsid{coreidx}));
+xhapldata = hapldata(:, idx);
 %xk
 
-	ehh=snp_ehh(xhapldata,xk);
-	if size(ehh,1)==2
-    ihh1=trapz(xpos,ehh(1,:));
-    ihh2=trapz(xpos,ehh(2,:));
-        if ihh2>0
-            ihs=log(ihh1/ihh2);
-        else
-            ihs=nan;
-        end
+ehh = snp_ehh(xhapldata, xk);
+if size(ehh, 1) == 2
+    ihh1 = trapz(xpos, ehh(1, :));
+    ihh2 = trapz(xpos, ehh(2, :));
+    if ihh2 > 0
+        ihs = log(ihh1/ihh2);
+    else
+        ihs = nan;
     end
-        
+end
 
 
 %{
@@ -80,18 +79,17 @@ title('|iHS| Scatter Plot')
 hline(2.0)
 %}
 
-%iHS scores can be standardized using estimates of the mean and s.d. 
+%iHS scores can be standardized using estimates of the mean and s.d.
 %obtained via coalescent simulation under a variety of demographic models.
-%These simulations were tailored to match the frequency spectrum, SNP 
-%density and recombination profile of the observed data. 
-%Alternative demographic models included either exponential growth or a 
-%bottleneck (which varied in onset, severity, duration and population size 
-%recovery after the bottleneck). 
+%These simulations were tailored to match the frequency spectrum, SNP
+%density and recombination profile of the observed data.
+%Alternative demographic models included either exponential growth or a
+%bottleneck (which varied in onset, severity, duration and population size
+%recovery after the bottleneck).
 
-if (nargout<1)
-i_dispheader('Integrated Haplotype Score (iHS)')
-        fprintf('%s\t(%s/%s %d)\t%f\n', hmarkinfo.rsid{coreidx},...
-            int2nt(majalle),int2nt(minalle),hmarkinfo.pos(coreidx),ihs);
-i_dispfooter    
+if (nargout < 1)
+    i_dispheader('Integrated Haplotype Score (iHS)')
+    fprintf('%s\t(%s/%s %d)\t%f\n', hmarkinfo.rsid{coreidx}, ...
+        int2nt(majalle), int2nt(minalle), hmarkinfo.pos(coreidx), ihs);
+    i_dispfooter
 end
-

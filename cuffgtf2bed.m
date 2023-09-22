@@ -23,92 +23,90 @@ function cuffgtf2bed(gtf_file, fpkm_file, bed_file, color_value, trackname, desc
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-if isempty(color_value), color_value='0,0,0'; end
-if isempty(trackname), trackname='usertrackname'; end
-if isempty(description), description='user track description'; end
+if isempty(color_value), color_value = '0,0,0'; end
+if isempty(trackname), trackname = 'usertrackname'; end
+if isempty(description), description = 'user track description'; end
 
-fid=fopen(fpkm_file);
-content=textscan(fid,'%s%s%s%s%s%s%s%s%s%f%f%f%s','delimiter','\t','HeaderLines',1);
-fclose (fid);
-isoform=content{1};
-fpkm=content{10};
-gray_boundary=[0 0.5 1 2 4 8 16 32 64];
-gray_value=[111 222 333 444 555 666 777 888 999];
-score=zeros(1,length(fpkm));
-for i=1:length(fpkm)    
-    score(i)=gray_value(sum(fpkm(i)>=gray_boundary));
+fid = fopen(fpkm_file);
+content = textscan(fid, '%s%s%s%s%s%s%s%s%s%f%f%f%s', 'delimiter', '\t', 'HeaderLines', 1);
+fclose(fid);
+isoform = content{1};
+fpkm = content{10};
+gray_boundary = [0, 0.5, 1, 2, 4, 8, 16, 32, 64];
+gray_value = [111, 222, 333, 444, 555, 666, 777, 888, 999];
+score = zeros(1, length(fpkm));
+for i = 1:length(fpkm)
+    score(i) = gray_value(sum(fpkm(i) >= gray_boundary));
 end
 
 
-
-fid=fopen(gtf_file);
-content=textscan(fid,'%s%s%s%s%s%s%s%s%s','delimiter','\t');
-fclose (fid);
-temp=regexp(content{9},'gene_id "([^"]+)"; transcript_id "([^"]+)";','tokens');
-for i=1:length(temp)
-    ID{i}=temp{i}{1}{2};
-    Name{i}=temp{i}{1}{1};
+fid = fopen(gtf_file);
+content = textscan(fid, '%s%s%s%s%s%s%s%s%s', 'delimiter', '\t');
+fclose(fid);
+temp = regexp(content{9}, 'gene_id "([^"]+)"; transcript_id "([^"]+)";', 'tokens');
+for i = 1:length(temp)
+    ID{i} = temp{i}{1}{2};
+    Name{i} = temp{i}{1}{1};
 end
 
 
+fid = fopen(bed_file, 'w');
+fprintf(fid, 'track name=%s description="%s" useScore=1 color=%s visibility=pack\n', trackname, description, color_value);
 
-fid=fopen(bed_file,'w');
-fprintf(fid,'track name=%s description="%s" useScore=1 color=%s visibility=pack\n', trackname, description, color_value);
-
-IDs=uunique(ID);
-for i=1:length(IDs)
-    tag_ID=IDs{i};
+IDs = uunique(ID);
+for i = 1:length(IDs)
+    tag_ID = IDs{i};
     % -------------------------------------
-    listx=strcmp(tag_ID,ID);
+    listx = strcmp(tag_ID, ID);
     %listx=find(ismember(ID,tag_ID));
-    % -------------------------------------    
-    for j=1:8
-        eval(sprintf('c%d=content{%d}(list);',j,j));
+    % -------------------------------------
+    for j = 1:8
+        eval(sprintf('c%d=content{%d}(list);', j, j));
     end
-    tag_name=unique(Name(listx));
-    tag_name=tag_name{1};
-    
-    if length(unique(c1))~=1
+    tag_name = unique(Name(listx));
+    tag_name = tag_name{1};
+
+    if length(unique(c1)) ~= 1
         c1
         error('multiple chromosome ID in one transcription %s.', tag_ID);
     else
-        c1=unique(c1);
-        c1=c1{1};
+        c1 = unique(c1);
+        c1 = c1{1};
     end
 
-    if length(unique(c3))~=2
+    if length(unique(c3)) ~= 2
         unique(c3)
-        
+
         error(sprintf('more type besides exon in %s.', tag_ID));
     end
-    if length(unique(c7))~=1
+    if length(unique(c7)) ~= 1
         c7
         error(sprintf('multiple strand in one transcription %s.', tag_ID));
     else
-        c7=unique(c7);
-        c7=c7{1};
+        c7 = unique(c7);
+        c7 = c7{1};
     end
-    
-    sublist=find(strcmp(c3,'exon'));
-    temp4=c4(sublist);
-    temp5=c5(sublist);
-    exon=[];
-    for j=1:length(temp4)
-        exon=[exon; str2double(temp4{j}) str2double(temp5{j})];
+
+    sublist = find(strcmp(c3, 'exon'));
+    temp4 = c4(sublist);
+    temp5 = c5(sublist);
+    exon = [];
+    for j = 1:length(temp4)
+        exon = [exon; str2double(temp4{j}), str2double(temp5{j})];
     end
     if isempty(exon)
         error('empty exon in transcription %s.', tag_ID);
     end
-    exon=sort(exon,1);
-    exon=sort(exon,2);
-    blocksize=sprintf('%d',exon(1,2)-exon(1,1)+1);
-    blockstart=sprintf('%d',exon(1,1)-exon(1));
-    for j=2:size(exon,1)
-        blocksize=[blocksize sprintf(',%d',exon(j,2)-exon(j,1)+1)];
-        blockstart=[blockstart sprintf(',%d', exon(j,1)-exon(1))];
-    end    
-    fprintf(fid,'%s\t%d\t%d\t%s\t%d\t%s\t0\t0\t0\t%d\t%s\t%s\n',c1, min(min(exon))-1, max(max(exon)),...
-        tag_ID, score(find(strcmp(tag_ID,isoform))), c7, size(exon,1), blocksize, blockstart);
+    exon = sort(exon, 1);
+    exon = sort(exon, 2);
+    blocksize = sprintf('%d', exon(1, 2)-exon(1, 1)+1);
+    blockstart = sprintf('%d', exon(1, 1)-exon(1));
+    for j = 2:size(exon, 1)
+        blocksize = [blocksize, sprintf(',%d', exon(j, 2)-exon(j, 1)+1)];
+        blockstart = [blockstart, sprintf(',%d', exon(j, 1)-exon(1))];
+    end
+    fprintf(fid, '%s\t%d\t%d\t%s\t%d\t%s\t0\t0\t0\t%d\t%s\t%s\n', c1, min(min(exon))-1, max(max(exon)), ...
+        tag_ID, score(find(strcmp(tag_ID, isoform))), c7, size(exon, 1), blocksize, blockstart);
 
 end
 
@@ -117,15 +115,14 @@ fclose(fid);
 end
 
 
-
-function [unsorteduniques, ia, ib] = uunique(vec) 
-    vec = vec(:)'; 
-    [~, a, b] = unique(vec, 'first'); 
-    if nargout > 2 
-        [ia, v] = sort(a); 
-        [~, ib] = ismember(b, v); 
-    else 
-       ia = sort(a); 
-    end 
-    unsorteduniques = vec(ia); 
+function [unsorteduniques, ia, ib] = uunique(vec)
+vec = vec(:)';
+[~, a, b] = unique(vec, 'first');
+if nargout > 2
+    [ia, v] = sort(a);
+    [~, ib] = ismember(b, v);
+else
+    ia = sort(a);
+end
+unsorteduniques = vec(ia);
 end

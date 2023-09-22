@@ -1,4 +1,4 @@
-function [hd]=hapdiv(sizHap,unbiased)
+function [hd] = hapdiv(sizHap, unbiased)
 %HAPDIV - Haplotype diversity/heterozygosity (hd)
 %
 %Returns unbiased hd (Nei Eq 8.4, p.178) and var(hd) (Nei Eq 8.12, p.180)
@@ -14,22 +14,21 @@ function [hd]=hapdiv(sizHap,unbiased)
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-01-06 13:39:38 -0600 (Sun, 06 Jan 2013) $
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
 
-if(nargin<2), unbiased=true; end
-n=sum(sizHap);
+if (nargin < 2), unbiased = true; end
+n = sum(sizHap);
 
 %frqHap=sizHap/sum(sizHap);
 %hd=1-sum((sizHap./m).^2);
-hd=1-sum(sizHap.^2)./n./n;
+hd = 1 - sum(sizHap.^2) ./ n ./ n;
 
 if (unbiased),
-    hd=hd/(1-1./n);
+    hd = hd / (1 - 1 ./ n);
 end
 
 %hd=1-sum((ni./n).*((ni-1)./(n-1)));
-

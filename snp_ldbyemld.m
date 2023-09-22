@@ -1,4 +1,4 @@
-function [ldinfo]=snp_ldbyemld(genodata)
+function [ldinfo] = snp_ldbyemld(genodata)
 %[ldinfo]=snp_ldbyemld(genodata)
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
@@ -9,4 +9,4 @@ function [ldinfo]=snp_ldbyemld(genodata)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-[ldinfo]=emldrun(genodata);
+[ldinfo] = emldrun(genodata);

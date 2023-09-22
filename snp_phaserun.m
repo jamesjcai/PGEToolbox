@@ -1,4 +1,4 @@
-function [haplodata,hmarkinfo]=snp_phaserun(genodata,gmarkinfo)
+function [haplodata, hmarkinfo] = snp_phaserun(genodata, gmarkinfo)
 %PHASERUN - runs PHASE
 %
 %[haplodata,hmarkinfo] = snp_phaserun(genodata,gmarkinfo)
@@ -11,20 +11,22 @@ function [haplodata,hmarkinfo]=snp_phaserun(genodata,gmarkinfo)
 % $LastChangedRevision: 758 $
 % $LastChangedBy: jcai $
 
-haplodata=[]; hmarkinfo=[];
-oldpath=pwd;
-cdpge(true); cd('addins/phase');
+haplodata = [];
+hmarkinfo = [];
+oldpath = pwd;
+cdpge(true);
+cd('addins/phase');
 %[exedir,dlgshown]=pge_getprgmdir(sprintf('%s_prgmdir',mfilename));
 %if isempty(exedir)||dlgshown, return; end
 %cd(exedir);
 
-if nargin<2
-    gmarkinfo=[];
+if nargin < 2
+    gmarkinfo = [];
 end
 
 %fprintf('Writing PHASE input file...');
-[status]= snp_writephase(genodata,gmarkinfo,'input.inp');
-if status==1    % good
+[status] = snp_writephase(genodata, gmarkinfo, 'input.inp');
+if status == 1 % good
     %fprintf('done.\n');
 else
     cd(oldpath);
@@ -32,28 +34,27 @@ else
 end
 
 if ispc
-    cplotcmd='phase.exe input.inp output.txt';
+    cplotcmd = 'phase.exe input.inp output.txt';
 elseif ismac
-    cplotcmd='./phase_mac input.inp output.txt';
+    cplotcmd = './phase_mac input.inp output.txt';
 else
-    cplotcmd='./phase_linux input.inp output.txt';
+    cplotcmd = './phase_linux input.inp output.txt';
 end
 
 
 %fprintf('Running PHASE ... ');
 try
-[~,~]=system(cplotcmd);
+    [~, ~] = system(cplotcmd);
 catch ME
     warning('PHASE may not have been compiled properly on this machine.');
     cd(oldpath);
     return;
 end
-    %fprintf('done.\n');
+%fprintf('done.\n');
 
-[haplodata,hmarkinfo] = snp_readphaseout('output.txt',1);
+[haplodata, hmarkinfo] = snp_readphaseout('output.txt', 1);
 
-hmarkinfo.pos=gmarkinfo.pos;
-hmarkinfo.rsid=gmarkinfo.rsid;
+hmarkinfo.pos = gmarkinfo.pos;
+hmarkinfo.rsid = gmarkinfo.rsid;
 %hmarkinfo.maf=gmarkinfo.maf;
 cd(oldpath);
-

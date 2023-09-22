@@ -1,4 +1,4 @@
-function [seq] = snp_hap2seq(haplodata,hmarkinfo)
+function [seq] = snp_hap2seq(haplodata, hmarkinfo)
 %SNP_HAP2SEQ - converts HAPLODATA to SEQ
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
@@ -10,8 +10,8 @@ function [seq] = snp_hap2seq(haplodata,hmarkinfo)
 % $LastChangedBy: jcai $
 
 
-pos=hmarkinfo.pos;
-pos=pos-min(pos)+1;
-[n]=size(haplodata,1);
-seq=ones(n,max(pos)-min(pos)+1);
-seq(:,pos)=haplodata;
+pos = hmarkinfo.pos;
+pos = pos - min(pos) + 1;
+[n] = size(haplodata, 1);
+seq = ones(n, max(pos)-min(pos)+1);
+seq(:, pos) = haplodata;

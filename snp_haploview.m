@@ -1,4 +1,4 @@
-function snp_haploview(genodata,gmarkinfo)
+function snp_haploview(genodata, gmarkinfo)
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
@@ -8,23 +8,23 @@ function snp_haploview(genodata,gmarkinfo)
 % $LastChangedRevision: 529 $
 % $LastChangedBy: jcai $
 
-oldpath=pwd;
-cdpge; cd('addins/Haploview');
+oldpath = pwd;
+cdpge;
+cd('addins/Haploview');
 
 %[exedir,dlgshown]=pge_getprgmdir(sprintf('%s_prgmdir',mfilename));
 %if isempty(exedir)||dlgshown, return; end
 %cd(exedir);
 
-snp_writelinkage(genodata,gmarkinfo,'input.ped');
-fid=fopen('input.map','w');
-for k=1:length(gmarkinfo.pos)
-    fprintf(fid,'%s\t%d\n',gmarkinfo.rsid{k},gmarkinfo.pos(k));
+snp_writelinkage(genodata, gmarkinfo, 'input.ped');
+fid = fopen('input.map', 'w');
+for k = 1:length(gmarkinfo.pos)
+    fprintf(fid, '%s\t%d\n', gmarkinfo.rsid{k}, gmarkinfo.pos(k));
 end
 fclose(fid);
-cmdline=sprintf('java -jar Haploview.jar -pedfile input.ped -info input.map -skipcheck');
+cmdline = sprintf('java -jar Haploview.jar -pedfile input.ped -info input.map -skipcheck');
 system(cmdline);
 
 %[data]=i_parseblockfile(outfile);
 
 cd(oldpath);
-

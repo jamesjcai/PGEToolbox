@@ -32,35 +32,36 @@ function reportpolysites(aln)
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-01-06 13:39:38 -0600 (Sun, 06 Jan 2013) $
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
 
-[N,M]=size(aln.seq);
+[N, M] = size(aln.seq);
+chkmbeinstall;
 
-Aln2=rmgaps(aln);
-[n,m]=size(Aln2.seq);
-if (n<4) error('n must > 4'); end
+Aln2 = rmgaps(aln);
+[n, m] = size(Aln2.seq);
+if (n < 4), error('n must > 4'); end
 
-	i_dispheader('Statistics of Polymorphic Sites')
-	disp('Mode : Nucleotides');
-	fprintf(['No. of Sequences (n) : %d\n'],n);
-	fprintf(['No. of Sites (m) : %d\n'],M);
-	fprintf(['Total number of sites\n (excluding sites with gaps/missing data) : %d\n'],m);
-	fprintf(['\n']);
-	fprintf(['Sites with alignment gaps or missing data : %d\n'],M-m);
-	[Mono, v_site]=countinvariablesites(aln);
+i_dispheader('Statistics of Polymorphic Sites')
+disp('Mode : Nucleotides');
+fprintf(['No. of Sequences (n) : %d\n'], n);
+fprintf(['No. of Sites (m) : %d\n'], M);
+fprintf(['Total number of sites\n (excluding sites with gaps/missing data) : %d\n'], m);
+fprintf(['\n']);
+fprintf(['Sites with alignment gaps or missing data : %d\n'], M-m);
+[Mono, v_site] = countinvariablesites(aln);
 
-	fprintf(['Invariable (monomorphic) sites : %d\n'],Mono);
+fprintf(['Invariable (monomorphic) sites : %d\n'], Mono);
 
-	[s_site,v_site,m_num,s_num]=countsegregatingsites(aln);
+[s_site, v_site, m_num, s_num] = countsegregatingsites(aln);
 
-	fprintf(['Variable (polymorphic) sites : %d\n'],s_site);
-	fprintf(['   Total number of mutations: %d\n'],m_num);
-	fprintf(['   Singleton variable sites : %d\n'], s_num);
+fprintf(['Variable (polymorphic) sites : %d\n'], s_site);
+fprintf(['   Total number of mutations: %d\n'], m_num);
+fprintf(['   Singleton variable sites : %d\n'], s_num);
 
-	[Aln3,sites]=extractinformativesites(aln);
-	fprintf(['   Parsimony informative sites : %d\n\n'], size(sites,2));
-	i_dispfooter
+[Aln3, sites] = extractinformativesites(aln);
+fprintf(['   Parsimony informative sites : %d\n\n'], size(sites, 2));
+i_dispfooter

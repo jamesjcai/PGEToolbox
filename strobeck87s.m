@@ -10,7 +10,7 @@ function [StrobeckS] = strobeck87s(aln)
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-01-06 13:39:38 -0600 (Sun, 06 Jan 2013) $
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
@@ -18,4 +18,4 @@ function [StrobeckS] = strobeck87s(aln)
 %test statistics (Strobeck 1987; Fu 1996, 1997) use the sampling distribution of
 %K directly .  number of haplotypes (K)
 
-[Fs,StrobeckS] = fu97Fs(aln);
+[Fs, StrobeckS] = fu97Fs(aln);

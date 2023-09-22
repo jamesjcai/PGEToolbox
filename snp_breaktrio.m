@@ -1,4 +1,4 @@
-function [geno]=snp_breaktrio(geno,markerpopid)
+function [geno] = snp_breaktrio(geno, markerpopid)
 %SNP_BREAKTRIO - breaks trio by removing child individuals
 %
 % Usage: [geno]=snp_breaktrio(geno,markerpopid)
@@ -27,64 +27,63 @@ function [geno]=snp_breaktrio(geno,markerpopid)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-n=size(geno,1);
-if n<3, error('Genotype data is not in trio'); end
+n = size(geno, 1);
+if n < 3, error('Genotype data is not in trio'); end
 
-if nargin<2
-    idx=i_defaultchildidx(geno);
+if nargin < 2
+    idx = i_defaultchildidx(geno);
 elseif isempty(markerpopid)
-    idx=i_defaultchildidx(geno);
+    idx = i_defaultchildidx(geno);
 else
     if isstruct(markerpopid)
-        
-        if isfield(markerpopid,'popid')
-            popid=markerpopid.popid;
-             switch upper(popid)
-                case {'CEU','YRI'}
-                    idx=snp_hapmapchild(popid);
-                 otherwise
-                    idx=i_defaultchildidx(geno);
-             end           
+
+        if isfield(markerpopid, 'popid')
+            popid = markerpopid.popid;
+            switch upper(popid)
+                case {'CEU', 'YRI'}
+                    idx = snp_hapmapchild(popid);
+                otherwise
+                    idx = i_defaultchildidx(geno);
+            end
         else
-            [id]=selectTrioBreakMethod;
+            [id] = selectTrioBreakMethod;
             switch id
                 case 1
-                    idx=snp_hapmapchild('YRI');
+                    idx = snp_hapmapchild('YRI');
                 case 2
-                    idx=snp_hapmapchild('CEU');                  
+                    idx = snp_hapmapchild('CEU');
                 case 3
-                    idx=i_defaultchildidx(geno);
+                    idx = i_defaultchildidx(geno);
                 otherwise
                     error('POPID is unknown.')
             end
         end
-        
-    elseif ischar(markerpopid)                   % markerpopid is popid        
-%       idx=snp_hapmapchild(markerpopid);
-        popid=markerpopid;
-             switch upper(popid)
-                case {'CEU','YRI'}
-                    idx=snp_hapmapchild(popid);
-                 otherwise
-                    idx=i_defaultchildidx(geno);
-             end           
-        
+
+    elseif ischar(markerpopid) % markerpopid is popid
+        %       idx=snp_hapmapchild(markerpopid);
+        popid = markerpopid;
+        switch upper(popid)
+            case {'CEU', 'YRI'}
+                idx = snp_hapmapchild(popid);
+            otherwise
+                idx = i_defaultchildidx(geno);
+        end
+
     else
-         error('POPID is unknown.')
+        error('POPID is unknown.')
     end
 end
 
 if ~isempty(idx)
-if max(idx)>size(geno,1)
-    error('SNP_BREAKTRIO found no child indv.')
-else    
-    geno(idx,:)=[];
-end
+    if max(idx) > size(geno, 1)
+        error('SNP_BREAKTRIO found no child indv.')
+    else
+        geno(idx, :) = [];
+    end
 end
 
 
-function idx=i_defaultchildidx(geno)
-    n=size(geno,1);
-    idx=3:3:n;
-%    warning('SNP_BREAKTRIO assumes the third individuals are children.')
-    
+    function idx = i_defaultchildidx(geno)
+        n = size(geno, 1);
+        idx = 3:3:n;
+        %    warning('SNP_BREAKTRIO assumes the third individuals are children.')

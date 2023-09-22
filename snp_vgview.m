@@ -1,4 +1,4 @@
-function [G]=snp_vgview(geno,ancalle)
+function [G] = snp_vgview(geno, ancalle)
 %SNP_VGVIEW - visual genotype (VG)
 % Syntax: snp_vgview(geno)
 %presents complete raw datasets of individuals' genotype data using a display format called a visual genotype (VG)
@@ -18,7 +18,7 @@ function [G]=snp_vgview(geno,ancalle)
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
 % Email: jcai@tamu.edu
-% 
+%
 % $LastChangedDate: 2013-04-28 14:12:08 -0500 (Sun, 28 Apr 2013) $
 % $LastChangedRevision: 533 $
 % $LastChangedBy: jcai $
@@ -31,10 +31,10 @@ function [G]=snp_vgview(geno,ancalle)
 %http://pga.gs.washington.edu/VG2.html
 
 if isempty(geno), return; end
-if nargin>1
-    G=snp_hhgeno(geno,ancalle);
+if nargin > 1
+    G = snp_hhgeno(geno, ancalle);
 else
-    G=snp_hhgeno(geno);
+    G = snp_hhgeno(geno);
 end
 %G(find(G==1))=1; % blue = Homozygote-Common allele
 %G(find(G==2))=40; % yellow = Homozygote-Rare allele   3
@@ -43,22 +43,22 @@ end
 
 
 %G=sortrows(G);
-[n,m]=size(G);
+[n, m] = size(G);
 
 %add extra row and column for pcolor
 %don't have to do this for imagesc
 
-if length(G)>401
+if length(G) > 401
     imagesc(G);
 else
-    G2=cat(2,G,ones(n,1)*4);
-    G2=cat(1,G2,ones(1,m+1)*4);
+    G2 = cat(2, G, ones(n, 1)*4);
+    G2 = cat(1, G2, ones(1, m+1)*4);
     pcolor(double(G2));
     axis ij
 end
 %colormap('default'); %colorindx=jet;
 %colormap(colorindx([1,40,64,24],:));    %[40 yellow, 64 red, 24 cyan]
-colormap([0 0 0.5625; 1 1 0; 0.5 0 0; 0.50196 0.50196 0.50196]);
+colormap([0, 0, 0.5625; 1, 1, 0; 0.5, 0, 0; 0.50196, 0.50196, 0.50196]);
 
 axis equal
 %axis off
@@ -78,4 +78,3 @@ disp(' ')
 disp('* Column = Markers (SNPs)')
 disp('** Row = Samples (Individuals)')
 i_dispfooter
-

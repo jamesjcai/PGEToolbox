@@ -1,4 +1,4 @@
-function [ancalle,chrmm]=snp_ancallechimp(chrid,pos,chrmm)
+function [ancalle, chrmm] = snp_ancallechimp(chrid, pos, chrmm)
 
 % Population Genetics and Evolution Toolbox (PGEToolbox)
 % Author: James Cai
@@ -8,17 +8,17 @@ function [ancalle,chrmm]=snp_ancallechimp(chrid,pos,chrmm)
 % $LastChangedRevision: 331 $
 % $LastChangedBy: jcai $
 
-ancalle=[];
-if chrid>22 || chrid<1
+ancalle = [];
+if chrid > 22 || chrid < 1
     return;
 end
 
-if nargin<3
-    chrmm=[];
-chrmm = memmapfile(sprintf('Y:/Alignments/chimpaln/mmFilenamechr%d',chrid),...
-    'format', 'uint8');
+if nargin < 3
+    chrmm = [];
+    chrmm = memmapfile(sprintf('Y:/Alignments/chimpaln/mmFilenamechr%d', chrid), ...
+        'format', 'uint8');
 end
-ancalle=chrmm.Data(pos);
+ancalle = chrmm.Data(pos);
 %if ancalle==15
 %    ancalle=5;
 %end
