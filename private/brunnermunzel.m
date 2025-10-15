@@ -41,5 +41,5 @@ function brunnermunzel(x, y, alternative, alpha)
 % DOI: 10.1002/sim.3561
 
 
-## P(X < Y) + .5 * P(X = Y)
-## 0.788961
+% ## P(X < Y) + .5 * P(X = Y)
+% ## 0.788961
